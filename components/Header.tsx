@@ -46,13 +46,7 @@
                 {item.name}
               </a>
             ))}
-            <a
-              href="#"
-              className="text-sm/6 font-semibold text-background"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+            </div>
         </nav>
         <Dialog
           open={mobileMenuOpen}
@@ -60,7 +54,7 @@
           className="lg:hidden"
         >
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-foreground p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10 ">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-foreground p-6 sm:max-w-[280px] sm:ring-1 sm:ring-gray-900/10 transition-all">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">No grout about it</span>
