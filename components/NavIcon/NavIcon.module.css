@@ -7,10 +7,10 @@
   height: 30px;
   position: relative;
   margin: 0px auto;
-  -webkit-transform: rotate(0deg) scale(0.5);
-  -moz-transform: rotate(0deg) scale(0.5);
-  -o-transform: rotate(0deg) scale(0.5);
-  transform: rotate(0deg) scale(0.5);
+  -webkit-transform: rotate(0deg) scale(0.45);
+  -moz-transform: rotate(0deg) scale(0.45);
+  -o-transform: rotate(0deg) scale(0.45);
+  transform: rotate(0deg) scale(0.45);
   -webkit-transition: .5s ease-in-out;
   -moz-transition: .5s ease-in-out;
   -o-transition: .5s ease-in-out;
@@ -24,7 +24,7 @@
   position: absolute;
   height: 6px;
   width: 100%;
-  background: #d3531a;
+
   border-radius: 9px;
   opacity: 1;
   left: 0;

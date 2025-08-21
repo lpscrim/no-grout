@@ -3,7 +3,7 @@
 /*import { useState } from "react"; */
 import styles from "./NavIcon.module.css";
 
-export default function NavIcon( { open } : { open: boolean } ) {
+export default function NavIcon( { open, color } : { open: boolean, color: string } ) {
   /*const [open, setOpen] = useState(false);*/
 
   return (
@@ -13,9 +13,9 @@ export default function NavIcon( { open } : { open: boolean } ) {
       /*onClick={() => setOpen((prev) => !prev)} */
       style={{ position: "relative" }}
     >
-      <span ></span>
-      <span ></span>
-      <span ></span>
+      <span className={`bg-${color}`}></span>
+      <span className={`bg-${color}`}></span>
+      <span className={`bg-${color}`}></span>
     </div>
   );
 }
