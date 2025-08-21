@@ -4,7 +4,7 @@
 .navIcon {
   z-index: 999;
   width: 60px;
-  height: 30px;
+  height: 40px;
   position: relative;
   margin: 0px auto;
   -webkit-transform: rotate(0deg) scale(0.45);
@@ -24,7 +24,6 @@
   position: absolute;
   height: 6px;
   width: 100%;
-
   border-radius: 9px;
   opacity: 1;
   left: 0;
