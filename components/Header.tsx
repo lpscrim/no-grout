@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-primary text-accent z-999">
+    <header className="bg-primary text-background z-999">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8 z-999"
@@ -35,7 +35,7 @@ export default function Header() {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 z-999 cursor-pointer"
           >
             <span className="sr-only">Open main menu</span>
-            <NavIcon open={mobileMenuOpen} color='secondary' />
+            <NavIcon open={mobileMenuOpen} color={'foreground'} />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
@@ -43,7 +43,7 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-sm/6 font-semibold text-accent"
+              className="text-sm/6 font-semibold text-background"
             >
               {item.name}
             </a>
@@ -73,7 +73,7 @@ export default function Header() {
                     <a
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-accent hover:bg-secondary/10 transition-colors duration-300"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-background hover:bg-secondary/10 transition-colors duration-300"
                     >
                       {item.name}
                     </a>

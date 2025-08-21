@@ -13,9 +13,9 @@ export default function NavIcon( { open, color } : { open: boolean, color: strin
       /*onClick={() => setOpen((prev) => !prev)} */
       style={{ position: "relative" }}
     >
-      <span className={`bg-${color}`}></span>
-      <span className={`bg-${color}`}></span>
-      <span className={`bg-${color}`}></span>
+      <span style={{ background: `var(--color-${color})` }}></span>
+      <span style={{ background: `var(--color-${color})` }}></span>
+      <span style={{ background: `var(--color-${color})` }}></span>
     </div>
   );
 }
