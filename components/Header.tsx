@@ -26,7 +26,7 @@ export default function Header() {
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
       >
-        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold ">
+        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-accent">
           No Grout About It
         </a>
         <div className="flex lg:hidden z-999">
@@ -36,7 +36,7 @@ export default function Header() {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 z-999 cursor-pointer"
           >
             <span className="sr-only">Open main menu</span>
-            <NavIcon open={mobileMenuOpen} color={"foreground"} />
+            <NavIcon open={mobileMenuOpen} color={"accent"} />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
