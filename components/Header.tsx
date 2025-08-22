@@ -26,7 +26,7 @@ export default function Header() {
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
       >
-        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-accent">
+        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-accent invisible sm:visible">
           No Grout About It
         </a>
         <div className="flex lg:hidden z-999">
@@ -56,7 +56,7 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden z-50"
       >
-        <DialogPanel className="fixed top-0 inset-y-0 right-0 z-50 w-full h-screen overflow-y-auto bg-transparent backdrop-blur-[3px] p-6 sm:max-w-[280px]">
+        <DialogPanel className="fixed top-0 inset-y-0 right-0 z-50 w-full h-screen overflow-y-auto bg-transparent backdrop-blur-[5px] p-6 sm:max-w-[280px]">
           <div className="flex items-center justify-end">
             <button
               type="button"
