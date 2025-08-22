@@ -1,7 +1,7 @@
 import { ArrowDownIcon } from "@heroicons/react/16/solid";
 export default function Home() {
   return (
-    <section id="hero" className="relative bg-primary min-h-[100vh] flex flex-col justify-center items-center">
+    <section id="hero" className="relative bg-primary bg-[url('/diagonal-striped-brick.png')] min-h-[100vh] flex flex-col justify-center items-center">
       <div className="group text-center flex flex-row sm:flex-col justify-center items-center">
         <p className="text-2xl sm:text-3xl sm:mb-5 text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">Bespoke</p>
         <div className="pl-5 text-center text-6xl items-center font-bold flex flex-col sm:flex-row">
