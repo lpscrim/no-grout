@@ -19,7 +19,9 @@ export default function AnimatedOnView({
 
   useEffect(() => {
     const observer = new window.IntersectionObserver(
-      ([entry]) => setVisible(entry.isIntersecting),
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true); // Only set to true, never back to false
+      },
       { threshold }
     );
     if (ref.current) observer.observe(ref.current);

@@ -7,29 +7,31 @@ export default function Home() {
     <main>
       <Hero />
       <section
-  id="about"
-  className="relative min-h-[100vh] flex  justify-end items-start overflow-hidden"
->
-  <Image
-    src="/hall.jpg"
-    alt="Tiling background"
-    width={1920}
-    height={1080}
-    priority
-    className="absolute inset-0 w-full h-full object-cover z-0"
-  />
-  <AnimatedOnView animationClass="slide-in-right">
-    <div className="relative min-h-[100vh] z-10 bg-accent p-6 max-w-[45vw] sm:max-w-[35vw] lg:max-w-[25vw] w-full flex flex-col justify-center text-left">
-      <h2 className="text-3xl font-bold mb-4 text-foreground">About Us</h2>
-      <p className="text-lg text-foreground">
-        We are a passionate tiling company dedicated to quality craftsmanship and beautiful results. Let us transform your space!
-      </p>
-    </div>
-  </AnimatedOnView>
+        id="about"
+        className="relative min-h-[100vh] flex  justify-end items-start overflow-hidden"
+      >
+        <Image
+          src="/hall.jpg"
+          alt="Tiling background"
+          width={1920}
+          height={1080}
+          priority
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+        <AnimatedOnView animationClass="slide-in-right">
+          <div className="relative min-h-[100vh] z-10 bg-accent p-6 max-w-[45vw] sm:max-w-[35vw] lg:max-w-[25vw] w-full flex flex-col justify-center text-left">
+            <h2 className="text-3xl font-bold mb-4 text-foreground">
+              About Us
+            </h2>
+            <p className="text-lg text-foreground">
+              We are a passionate tiling company dedicated to quality
+              craftsmanship and beautiful results. Let us transform your space!
+            </p>
+          </div>
+        </AnimatedOnView>
 
-  <div className="absolute inset-0 bg-black/0 transition-colors z-0" />
-</section>
+        <div className="absolute inset-0 bg-black/0 transition-colors z-0" />
+      </section>
     </main>
   );
 }
-
