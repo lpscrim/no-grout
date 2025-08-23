@@ -73,7 +73,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-xl/7 sm:text-base/7 font-semibold text-background hover:bg-background/5 hover:backdrop-brightness-150 duration-300 transition-all  hover:scale-105 drop-in"
+                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-xl/7 sm:text-base/7 font-semibold text-background hover:text-accent duration-300 transition-all  hover:scale-105 drop-in"
                     style={{ animationDelay: `${idx * 0.12}s` }}
                   >
                     {item.name}
