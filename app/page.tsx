@@ -3,24 +3,24 @@ export default function Home() {
   return (
     <section
       id="hero"
-      className="relative bg-primary bg-[url('/diagonal-striped-brick.png')] min-h-[100vh] flex flex-col justify-center items-center"
+      className="relative bg-primary  min-h-[100vh] flex flex-col justify-center items-center"
     >
-      <div className="group text-center flex flex-row sm:flex-col justify-center items-center">
-        <p className="text-2xl sm:text-3xl sm:mb-5 text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
+      <div className="absolute z-0 bg-fade-gradient inset-0 w-full h-full bg-[url('/diagonal-striped-brick.png')] pointer-events-none" />
+      <div className="group z-1 text-center flex flex-row sm:flex-col justify-center items-center -ml-5">
+        <p className="text-xl sm:text-3xl text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
           Bespoke
         </p>
-        <div className="pl-5 text-center text-6xl items-center font-bold flex flex-col sm:flex-row">
+        <div className="text-center text-6xl items-center font-bold flex flex-col sm:flex-row m-5">
           <h1 className="text-accent">No&nbsp;</h1>
           <h1 className="text-background"> Grout&nbsp;</h1>
           <h1 className="text-accent"> About&nbsp;</h1>
           <h1 className="text-background">It&nbsp;</h1>
         </div>
-        <p className="text-2xl sm:text-3xl text-background sm:mt-6 ml-2 sm:ml-0 opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
-          {" "}
+        <p className="text-xl sm:text-3xl text-background  opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
           Tiling
         </p>
       </div>
-      <div className="absolute bottom-10 max-w-7xl w-full">
+      <div className="absolute bottom-10 max-w-7xl w-full z-1">
         <div className="absolute left-10 lg:left-0">
           <ArrowDownIcon className="h-6 w-6 text-background animate-bounce" />
         </div>

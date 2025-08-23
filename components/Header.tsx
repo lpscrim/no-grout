@@ -26,7 +26,7 @@ export default function Header() {
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
       >
-        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-accent invisible sm:visible">
+        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-accent invisible lg:visible">
           No Grout About It
         </a>
         <div className="flex lg:hidden z-999">

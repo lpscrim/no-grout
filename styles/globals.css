@@ -44,6 +44,16 @@ body {
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .drop-in {
   animation: dropIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.bg-fade-gradient {
+  mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.1));
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.1));
 }
