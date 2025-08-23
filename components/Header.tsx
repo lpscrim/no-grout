@@ -36,7 +36,7 @@ export default function Header() {
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 z-999 cursor-pointer"
           >
             <span className="sr-only">Open main menu</span>
-            <NavIcon open={mobileMenuOpen} color={"accent"} />
+            <NavIcon open={mobileMenuOpen} color={"background"} />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
@@ -49,6 +49,12 @@ export default function Header() {
               {item.name}
             </a>
           ))}
+          <a
+                href="mailto:example@example.com"
+              >
+                <EnvelopeIcon className="h-6 w-6 text-background hover:text-accent transition-color duration-300" />
+                <span className="sr-only">Email</span>
+              </a>
         </div>
       </nav>
       <Dialog
@@ -56,7 +62,7 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden z-50"
       >
-        <DialogPanel className="fixed top-0 inset-y-0 right-0 z-50 w-full h-screen overflow-y-auto bg-transparent backdrop-blur-[5px] p-6 sm:max-w-[280px]">
+        <DialogPanel className="fixed top-0 inset-y-0 right-0 z-50 bg-foreground/15 w-full h-screen overflow-y-auto backdrop-blur-[5px] p-6 lg:max-w-[280px]">
           <div className="flex items-center justify-end">
             <button
               type="button"
@@ -73,7 +79,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-xl/7 sm:text-base/7 font-semibold text-background hover:text-accent duration-300 transition-all  hover:scale-105 drop-in"
+                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-xl/7 sm:text-2xl/7 font-semibold text-background hover:text-foreground duration-300 transition-all  hover:scale-105 drop-in"
                     style={{ animationDelay: `${idx * 0.12}s` }}
                   >
                     {item.name}
@@ -82,8 +88,12 @@ export default function Header() {
               </div>
             </div>
             <div className="absolute bottom-8 left-10 cursor-pointer">
-              <EnvelopeIcon className="h-6 w-6 text-background transition-transform duration-300 hover:scale-125" />
-              <span className="sr-only">Email</span>
+              <a
+                href="mailto:example@example.com"
+              >
+                <EnvelopeIcon className="h-6 w-6 text-background hover:text-foreground transition-all duration-300 hover:scale-125" />
+                <span className="sr-only">Email</span>
+              </a>
             </div>
           </div>
         </DialogPanel>
