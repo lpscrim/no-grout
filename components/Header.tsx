@@ -81,7 +81,7 @@ export default function Header() {
                 ))}
               </div>
             </div>
-            <div className="absolute bottom-8 cursor-pointer">
+            <div className="absolute bottom-8 left-10 cursor-pointer">
               <EnvelopeIcon className="h-6 w-6 text-background transition-transform duration-300 hover:scale-125" />
               <span className="sr-only">Email</span>
             </div>

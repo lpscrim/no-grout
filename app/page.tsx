@@ -7,7 +7,7 @@ export default function Home() {
     >
       <div className="absolute z-0 bg-fade-gradient inset-0 w-full h-full bg-[url('/diagonal-striped-brick.png')] pointer-events-none" />
       <div className="group z-1 text-center flex flex-row sm:flex-col justify-center items-center -ml-5">
-        <p className="text-xl sm:text-3xl text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
+        <p className="text-xl sm:text-2xl text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
           Bespoke
         </p>
         <div className="text-center text-6xl items-center font-bold flex flex-col sm:flex-row m-5">
@@ -16,7 +16,7 @@ export default function Home() {
           <h1 className="text-accent"> About&nbsp;</h1>
           <h1 className="text-background">It&nbsp;</h1>
         </div>
-        <p className="text-xl sm:text-3xl text-background  opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
+        <p className="text-xl sm:text-2xl text-background  opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
           Tiling
         </p>
       </div>
