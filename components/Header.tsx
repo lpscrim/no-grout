@@ -21,12 +21,12 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-primary text-background z-999">
+    <header className="fixed w-full bg-transparent text-background z-999">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
       >
-        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-accent invisible lg:visible">
+        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-background hover:text-accent transition-colors invisible lg:visible">
           No Grout About It
         </a>
         <div className="flex lg:hidden z-999">
@@ -44,7 +44,7 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-base/6 font-semibold text-background hover:text-accent transition-all"
+              className="text-base/6 font-semibold text-background hover:text-accent transition-colors"
             >
               {item.name}
             </a>
