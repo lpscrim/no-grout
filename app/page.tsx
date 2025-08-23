@@ -20,12 +20,12 @@ export default function Home() {
           Tiling
         </p>
       </div>
-      <div className="absolute bottom-10 max-w-7xl w-full z-1">
+      <div className="absolute bottom-10 max-w-[100rem] w-full z-1">
         <div className="absolute left-10 lg:left-0">
-          <ArrowDownIcon className="h-6 w-6 text-background animate-bounce" />
+          <ArrowDownIcon className="h-5 w-5 text-background animate-bounce" />
         </div>
         <div className="absolute invisible lg:visible right-10 xl:right-0">
-          <ArrowDownIcon className="h-6 w-6 text-background animate-bounce" />
+          <ArrowDownIcon className="h-5 w-5 text-background animate-bounce" />
         </div>
       </div>
     </section>
