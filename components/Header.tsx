@@ -10,7 +10,6 @@ const navigation = [
   { name: "Product", href: "#" },
   { name: "Features", href: "#" },
   { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
 ];
 
 export default function Header() {
@@ -50,11 +49,11 @@ export default function Header() {
             </a>
           ))}
           <a
-                href="mailto:example@example.com"
-              >
-                <EnvelopeIcon className="h-6 w-6 text-background hover:text-accent transition-color duration-300" />
-                <span className="sr-only">Email</span>
-              </a>
+            href="mailto:example@example.com"
+            className="text-base/6 font-semibold text-background hover:text-accent transition-colors"
+          >
+            Contact
+          </a>
         </div>
       </nav>
       <Dialog
@@ -74,12 +73,12 @@ export default function Header() {
           </div>
           <div className="flow-root mt-10">
             <div className="-my-6 divide-y divide-background-500 ">
-              <div className="space-y-6 py-6 text-center ">
+              <div className="space-y-10 py-6 text-center ">
                 {navigation.map((item, idx) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-xl/7 sm:text-2xl/7 font-semibold text-background hover:text-foreground duration-300 transition-all  hover:scale-105 drop-in"
+                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold text-background hover:text-foreground duration-200 transition-all  hover:scale-105 drop-in"
                     style={{ animationDelay: `${idx * 0.12}s` }}
                   >
                     {item.name}
