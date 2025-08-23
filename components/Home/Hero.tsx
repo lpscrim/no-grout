@@ -1,12 +1,11 @@
 import { ArrowDownIcon } from "@heroicons/react/16/solid";
-import FadingSection from "../FadingSection";
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-primary z-0 min-h-[100vh] flex flex-col justify-center items-center"
+      className="relative bg-primary z-0 min-h-[100vh] flex flex-col justify-center items-center max-w-screen"
     >
-      <FadingSection>
+
         <div className="absolute z-1 bg-fade-gradient inset-0 w-full h-full bg-[url('/diagonal-striped-brick.png')] pointer-events-none" />
         <div className="group z-2 text-center flex flex-row sm:flex-col justify-center items-center -ml-5">
           <p className="text-xl sm:text-2xl text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
@@ -30,7 +29,7 @@ export default function Hero() {
             <ArrowDownIcon className="h-5 w-5 text-background animate-bounce" />
           </div>
         </div>
-      </FadingSection>
+
     </section>
   );
 }
