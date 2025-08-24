@@ -34,7 +34,7 @@ export default function Home() {
           className="absolute inset-0 z-0 pointer-events-none transition-colors invisible"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(238, 210, 204, 0.6) 0%, rgba(238, 210, 204, 0.2) 15%, rgba(238, 210, 204, 0) 50%)",
+              "linear-gradient(to bottom, rgba(0,0,0, 0.6) 0%, rgba(238, 210, 204, 0.2) 15%, rgba(238, 210, 204, 0) 50%)",
           }}
         />
       </section>

@@ -43,9 +43,8 @@ export default function Header() {
     };
   }, []);
 
-  // Use Tailwind classes for text color
   const textClass =
-    headerMode === "light" ? "black" : "background";
+    headerMode === "light" ? "background" : "background";
 
 
   return (
@@ -99,7 +98,7 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden z-50"
       >
-        <DialogPanel className="fixed top-0 inset-y-0 right-0 z-50 bg-foreground/15 w-full h-screen overflow-y-auto backdrop-blur-[5px] p-6 lg:max-w-[280px]">
+        <DialogPanel className={`fixed top-0 inset-y-0 right-0 z-50 w-full bg-black/15 h-screen overflow-y-auto backdrop-blur-[5px] p-6 lg:max-w-[280px]`}>
           <div className="flex items-center justify-end">
             <button
               type="button"
