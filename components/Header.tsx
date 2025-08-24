@@ -72,7 +72,7 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <NavIcon
               open={mobileMenuOpen}
-              color={headerMode === "light" ? `${textClass}` : `${textClass}`}
+              color={textClass}
             />
           </button>
         </div>
