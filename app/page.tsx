@@ -8,7 +8,7 @@ export default function Home() {
       <Hero />
       <section
         id="about"
-        className="relative min-h-[100vh] flex  justify-end items-start overflow-hidden"
+        className="relative min-h-[100vh] flex  justify-end items-start overflow-hidden section-light"
       >
         <Image
           src="/hall.jpg"

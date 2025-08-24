@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { EnvelopeIcon } from "@heroicons/react/16/solid";
 import NavIcon from "./NavIcon/NavIcon";
 import "@/styles/globals.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -14,28 +18,63 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [headerMode, setHeaderMode] = useState<"light" | "dark">("dark");
+  const headerRef = useRef<HTMLElement>(null);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
   };
 
+  useEffect(() => {
+    const sections = Array.from(document.querySelectorAll(".section-light, .section-dark"));
+    console.log("Sections found:", sections);
+    sections.forEach((section: Element) => {
+      const isLight = section.classList.contains("section-light");
+      console.log("Section class:", section.className, "isLight:", isLight);
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom top",
+        onEnter: () => setHeaderMode(isLight ? "light" : "dark"),
+        onEnterBack: () => setHeaderMode(isLight ? "light" : "dark"),
+      });
+    });
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
+  // Use Tailwind classes for text color
+  const textClass =
+    headerMode === "light" ? "text-foreground" : "text-background";
+
+    console.log("Header mode:", headerMode);
   return (
-    <header className="fixed w-full bg-transparent  text-background z-999">
+    <header
+      ref={headerRef}
+      className={`fixed w-full z-999 transition-colors duration-300`}
+    >
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
       >
-        <a href="#" className="-m-1.5 p-1.5 text-xl font-bold text-background hover:text-accent transition-colors invisible lg:visible">
+        <a
+          href="#"
+          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible ${textClass} transition-colors`}
+        >
           No Grout About It
         </a>
         <div className="flex lg:hidden z-999">
           <button
             type="button"
-            onClick={() => toggleMobileMenu()}
+            onClick={toggleMobileMenu}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 z-999 cursor-pointer"
           >
             <span className="sr-only">Open main menu</span>
-            <NavIcon open={mobileMenuOpen} color={"background"} />
+            <NavIcon
+              open={mobileMenuOpen}
+              color={headerMode === "light" ? "foreground" : "background"}
+            />
           </button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
@@ -43,14 +82,14 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-base/6 font-semibold text-background  hover:text-foreground  transition-colors"
+              className={`text-base/6 font-semibold transition-colors ${textClass}`}
             >
               {item.name}
             </a>
           ))}
           <a
             href="mailto:example@example.com"
-            className="text-base/6 font-semibold text-background hover:text-foreground transition-colors"
+            className={`text-base/6 font-semibold transition-colors ${textClass}`}
           >
             Contact
           </a>
@@ -65,7 +104,7 @@ export default function Header() {
           <div className="flex items-center justify-end">
             <button
               type="button"
-              onClick={() => toggleMobileMenu()}
+              onClick={toggleMobileMenu}
               className="w-10 rounded-md p-4 mr-2.5 z-999 cursor-pointer "
             >
               <span className="sr-only">Close menu</span>
@@ -78,8 +117,10 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold text-background hover:text-foreground duration-200 transition-all  hover:scale-105 drop-in"
-                    style={{ animationDelay: `${idx * 0.12}s` }}
+                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in ${textClass}`}
+                    style={{
+                      animationDelay: `${idx * 0.12}s`,
+                    }}
                   >
                     {item.name}
                   </a>
@@ -87,10 +128,10 @@ export default function Header() {
               </div>
             </div>
             <div className="absolute bottom-8 left-10 cursor-pointer">
-              <a
-                href="mailto:example@example.com"
-              >
-                <EnvelopeIcon className="h-6 w-6 text-background hover:text-foreground transition-all duration-300 hover:scale-125" />
+              <a href="mailto:example@example.com">
+                <EnvelopeIcon
+                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 ${textClass}`}
+                />
                 <span className="sr-only">Email</span>
               </a>
             </div>

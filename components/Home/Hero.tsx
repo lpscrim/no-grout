@@ -1,10 +1,9 @@
 import { ArrowDownIcon } from "@heroicons/react/16/solid";
-import AnimatedOnView from "../AnimatedOnView";
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-primary z-0 min-h-[100vh] flex flex-col justify-center items-center max-w-screen"
+      className="relative bg-primary z-0 min-h-[100vh] flex flex-col justify-center items-center max-w-screen section-dark"
     >
 
         <div className="absolute z-1 bg-fade-gradient inset-0 w-full h-full bg-[url('/diagonal-striped-brick.png')] pointer-events-none fade-in" />
