@@ -80,14 +80,14 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className={`text-base/6 font-semibold transition-colors text-background`}
+              className={`text-base/6 font-semibold transition-colors text-background text-shadow-md hover:text-white`}
             >
               {item.name}
             </a>
           ))}
           <a
             href="mailto:example@example.com"
-            className={`text-base/6 font-semibold transition-colors text-background`}
+            className={`text-base/6 font-semibold transition-colors text-background text-shadow-md`}
           >
             Contact
           </a>
