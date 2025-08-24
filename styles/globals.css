@@ -2,9 +2,9 @@
 
 @theme inline {
   --background: #fffbf8;
-  --foreground: #5B4B49;
+  --foreground: #524746;
   --color-background: #fffbf8;
-  --color-foreground: #5B4B49;
+  --color-foreground: #524746;
   --color-primary: #6C9A8B;
   --color-secondary: #E8998D;
   --color-accent: #EED2CC;
@@ -15,9 +15,9 @@
 
 :root {
   --background: #fffbf8;
-  --foreground: #5B4B49;
+  --foreground: #524746;
   --color-background: #fffbf8;
-  --color-foreground: #5B4B49;
+  --color-foreground: #524746;
   --color-primary: #6C9A8B;
   --color-secondary: #eea094;
   --color-accent: #EED2CC;
@@ -77,7 +77,7 @@ body {
 }
 
 /*mobile scrollbar hidden*/
-@media (max-width: 1024px) { /* Tailwind's sm breakpoint */
+@media (max-width: 1024px) {
   body, * {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE 10+ */

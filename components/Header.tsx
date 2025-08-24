@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-transparent text-background z-999">
+    <header className="fixed w-full bg-transparent  text-background z-999">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
@@ -43,14 +43,14 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="text-base/6 font-semibold text-background hover:text-accent transition-colors"
+              className="text-base/6 font-semibold text-background  hover:text-foreground  transition-colors"
             >
               {item.name}
             </a>
           ))}
           <a
             href="mailto:example@example.com"
-            className="text-base/6 font-semibold text-background hover:text-accent transition-colors"
+            className="text-base/6 font-semibold text-background hover:text-foreground transition-colors"
           >
             Contact
           </a>
