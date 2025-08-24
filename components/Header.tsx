@@ -44,7 +44,7 @@ export default function Header() {
   }, []);
 
   const textClass =
-    headerMode === "light" ? "background" : "background";
+    headerMode === "light" ? "foreground" : "background";
 
 
   return (
@@ -58,7 +58,7 @@ export default function Header() {
       >
         <a
           href="#"
-          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible text-${textClass} transition-colors`}
+          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible text-background transition-colors`}
         >
           No Grout About It
         </a>
@@ -80,14 +80,14 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className={`text-base/6 font-semibold transition-colors text-${textClass}`}
+              className={`text-base/6 font-semibold transition-colors text-background`}
             >
               {item.name}
             </a>
           ))}
           <a
             href="mailto:example@example.com"
-            className={`text-base/6 font-semibold transition-colors text-${textClass}`}
+            className={`text-base/6 font-semibold transition-colors text-background`}
           >
             Contact
           </a>
@@ -115,7 +115,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in text-${textClass}`}
+                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in text-background`}
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
@@ -128,7 +128,7 @@ export default function Header() {
             <div className="absolute bottom-8 left-10 cursor-pointer">
               <a href="mailto:example@example.com">
                 <EnvelopeIcon
-                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-${textClass}`}
+                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-background`}
                 />
                 <span className="sr-only">Email</span>
               </a>
