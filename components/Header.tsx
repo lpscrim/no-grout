@@ -30,7 +30,6 @@ export default function Header() {
     console.log("Sections found:", sections);
     sections.forEach((section: Element) => {
       const isLight = section.classList.contains("section-light");
-      console.log("Section class:", section.className, "isLight:", isLight);
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -46,9 +45,9 @@ export default function Header() {
 
   // Use Tailwind classes for text color
   const textClass =
-    headerMode === "light" ? "text-foreground" : "text-background";
+    headerMode === "light" ? "black" : "background";
 
-    console.log("Header mode:", headerMode);
+
   return (
     <header
       ref={headerRef}
@@ -60,7 +59,7 @@ export default function Header() {
       >
         <a
           href="#"
-          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible ${textClass} transition-colors`}
+          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible text-${textClass} transition-colors`}
         >
           No Grout About It
         </a>
@@ -73,7 +72,7 @@ export default function Header() {
             <span className="sr-only">Open main menu</span>
             <NavIcon
               open={mobileMenuOpen}
-              color={headerMode === "light" ? "foreground" : "background"}
+              color={headerMode === "light" ? `${textClass}` : `${textClass}`}
             />
           </button>
         </div>
@@ -82,14 +81,14 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className={`text-base/6 font-semibold transition-colors ${textClass}`}
+              className={`text-base/6 font-semibold transition-colors text-${textClass}`}
             >
               {item.name}
             </a>
           ))}
           <a
             href="mailto:example@example.com"
-            className={`text-base/6 font-semibold transition-colors ${textClass}`}
+            className={`text-base/6 font-semibold transition-colors text-${textClass}`}
           >
             Contact
           </a>
@@ -117,7 +116,7 @@ export default function Header() {
                   <a
                     key={item.name}
                     href={item.href}
-                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in ${textClass}`}
+                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in text-${textClass}`}
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
@@ -130,7 +129,7 @@ export default function Header() {
             <div className="absolute bottom-8 left-10 cursor-pointer">
               <a href="mailto:example@example.com">
                 <EnvelopeIcon
-                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 ${textClass}`}
+                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-${textClass}`}
                 />
                 <span className="sr-only">Email</span>
               </a>

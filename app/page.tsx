@@ -30,7 +30,13 @@ export default function Home() {
           </div>
         </AnimatedOnView>
 
-        <div className="absolute inset-0 bg-black/0 transition-colors z-0" />
+        <div
+          className="absolute inset-0 z-0 pointer-events-none transition-colors invisible"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(238, 210, 204, 0.6) 0%, rgba(238, 210, 204, 0.2) 15%, rgba(238, 210, 204, 0) 50%)",
+          }}
+        />
       </section>
     </main>
   );
