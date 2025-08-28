@@ -17,7 +17,7 @@ export default function Hero() {
               <h1 className="text-accent"> About&nbsp;</h1>
               <h1 className="text-background">It&nbsp;</h1>
             </div>
-            <p className="text-xl sm:text-2xl text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
+            <p className="text-xl sm:text-2xl mt-2 text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
               Tiling
             </p>
           </div>

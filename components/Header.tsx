@@ -45,12 +45,14 @@ export default function Header() {
 
   const textClass =
     headerMode === "light" ? "foreground" : "background";
-
+  const hoverClass =
+    headerMode === "light" ? "hover:text-background" : "hover:text-accent";
 
   return (
     <header
       ref={headerRef}
-      className={`fixed w-full z-999 transition-colors duration-300`}
+        className={`fixed w-full z-999 transition-all duration-300 text-${textClass} bg-transparent ${headerMode === "light" ? "lg:bg-accent" : "lg:bg-transparent"}`}
+
     >
       <nav
         aria-label="Global"
@@ -58,7 +60,7 @@ export default function Header() {
       >
         <a
           href="#"
-          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible text-background transition-colors`}
+          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible ${hoverClass} transition-colors`}
         >
           No Grout About It
         </a>
@@ -80,14 +82,14 @@ export default function Header() {
             <a
               key={item.name}
               href={item.href}
-              className={`text-base/6 font-semibold transition-colors text-background text-shadow-md hover:text-white`}
+              className={`text-base/6 font-semibold transition-colors `}
             >
               {item.name}
             </a>
           ))}
           <a
             href="mailto:example@example.com"
-            className={`text-base/6 font-semibold transition-colors text-background text-shadow-md`}
+            className={`text-base/6 font-semibold transition-colors  `}
           >
             Contact
           </a>
