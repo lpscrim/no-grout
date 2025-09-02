@@ -1,14 +1,14 @@
 
 import About from "@/components/Home/About";
 import Hero from "@/components/Home/Hero";
-import Services from "@/components/Home/Services";
+import Projects from "@/components/Home/Projects";
 
 export default function Home() {
   return (
     <main>
       <Hero />
       <About />
-      <Services />
+      <Projects />
     </main>
   );
 }
