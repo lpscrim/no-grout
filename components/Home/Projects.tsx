@@ -58,13 +58,16 @@ export default function Projects() {
                     <div className="md:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[56%]"></div>
 					<div className="md:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%]"></div>
                     {projects.map((project, idx) => (
+                        
 						<a
 							id={`project-${idx}`}
 							key={project.title}
 							href={project.href}
-							className="bg-secondary overflow-hidden flex flex-col group relative "
+							className="bg-secondary overflow-hidden flex flex-col group relative h-120"
 						>
-							<div className="relative w-full h-80 z-0">
+                            <div className="absolute bg-background top-0 h-[1px] w-[90%] -translate-x-1/2 left-1/2 z-99"></div>
+
+							<div className="relative w-full h-[80%]">
 								<Image
 									src={project.img}
 									alt={project.alt}
@@ -73,17 +76,17 @@ export default function Projects() {
 									sizes="(max-width: 479px) 100vw, (max-width: 767px) 89vw, (max-width: 991px) 42vw, 48vw"
 								/>
 							</div>
-							<div className="p-6 flex-1 flex flex-col justify-between text-foreground group-hover:text-background relative z-10">
+							<div className="bg-secondary p-6 flex-1 flex flex-col justify-between text-foreground group-hover:text-background z-10 h-[20%] overflow-hidden">
 								<div>
-									<div className="flex items-center mb-2 gap-4">
-										<span className="text-xs uppercase ">
+									<div className="flex mb-2 justify-between gap-4">
+										<span className="text-xs uppercase">
 											{project.category}
 										</span>
-										<span className="text-xs  uppercase">
+										<span className="text-xs">
 											{project.year}
 										</span>
 									</div>
-									<h3 className="text-lg font-semibold  mb-2">
+									<h3 className="text-lg font-semibold">
 										{project.title}
 									</h3>
 								</div>
