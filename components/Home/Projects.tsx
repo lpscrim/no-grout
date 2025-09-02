@@ -28,9 +28,7 @@ const projects = [
 ];
 
 export default function Projects() {
-	// Repeat tile image across the top
-	const tileCount = 12;
-	const tiles = Array.from({ length: tileCount });
+
 
 	return (
 		<section className="section_projects bg-primary relative overflow-hidden">
@@ -79,7 +77,6 @@ export default function Projects() {
 						</a>
 					))}
 				</div>
-				{/* View all projects button */}
 				<div className="flex justify-center mt-12">
 					<a
 						href="/en/projects"
