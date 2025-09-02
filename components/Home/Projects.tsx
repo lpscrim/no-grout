@@ -37,7 +37,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="section_projects bg-primary relative overflow-hidden">
+    <section className="section-dark bg-primary relative overflow-hidden">
       <div className="px-4 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto pt-24 pb-16">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
