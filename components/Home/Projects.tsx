@@ -25,6 +25,14 @@ const projects = [
 		img: "/kitchen.jpg",
 		alt: "Modern Kitchen",
 	},
+    {
+		title: "Modern Kitchen2",
+		category: "kitchen design2",
+		year: "2022",
+		href: "/kitchen.jpg",
+		img: "/kitchen.jpg",
+		alt: "Modern Kitchen2",
+	},
 ];
 
 export default function Projects() {
@@ -42,15 +50,18 @@ export default function Projects() {
 						ready to take on any kind of projects, be that small or complex.
 					</p>
 				</div>
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+				<div className="relative grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-10">
+                    <div className="md:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
+                    <div className="md:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
+                    <div className="md:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
 					{projects.map((project, idx) => (
 						<a
 							id={`project-${idx}`}
 							key={project.title}
 							href={project.href}
-							className="bg-secondary overflow-hidden flex flex-col group relative"
+							className="bg-secondary overflow-hidden flex flex-col group relative "
 						>
-							<div className="relative w-full h-64 z-0">
+							<div className="relative w-full h-80 z-0">
 								<Image
 									src={project.img}
 									alt={project.alt}
