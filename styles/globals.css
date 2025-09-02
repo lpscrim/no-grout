@@ -99,7 +99,7 @@ body {
 @keyframes lineGrowVertical {
   to {
     opacity: 1;
-    height: 90%;
+    height: 40%;
   }
 }
 

@@ -51,7 +51,7 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-        className={`fixed w-full z-999 transition-color duration-500 text-${textClass} bg-transparent ${headerMode === "light" ? "lg:bg-accent" : "lg:bg-transparent"}`}
+        className={`fixed w-full z-999 transition-color duration-500 text-${textClass} bg-transparent ${headerMode === "light" ? "lg:bg-accent" : "lg:bg-primary"}`}
 
     >
       <nav
