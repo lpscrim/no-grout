@@ -76,9 +76,40 @@ body {
   animation: slideInRight 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+
+.line-animate-horizontal {
+  opacity: 0;
+  width: 0;
+  animation: lineGrowHorizontal 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes lineGrowHorizontal {
+  to {
+    opacity: 1;
+    width: 90%;
+  }
+}
+
+.line-animate-vertical {
+  opacity: 0;
+  height: 0;
+  animation: lineGrowVertical 0.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+@keyframes lineGrowVertical {
+  to {
+    opacity: 1;
+    height: 90%;
+  }
+}
+
 /*mobile scrollbar hidden*/
 @media (max-width: 1024px) {
-  body, * {
+  body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  * {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE 10+ */
   }

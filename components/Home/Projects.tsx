@@ -49,16 +49,16 @@ export default function Projects() {
           </p>
         </div>
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-10">
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
+          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
+          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
+          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
 
-          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[56%]"></div>
-          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%]"></div>
+          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[56%] line-animate-vertical"></div>
+          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%] line-animate-vertical"></div>
           {projects.map((project, idx) => (
             <div key={project.title} className="relative">
               {idx !== 0 && (
-                <div className="block lg:hidden absolute bg-background -top-10 h-[1px] w-[90%] -translate-x-1/2 left-1/2 z-99"></div>
+                <div className="block lg:hidden absolute bg-background -top-10 h-[1px] w-[90%] -translate-x-1/2 left-1/2 z-99 line-animate-horizontal"></div>
               )}
               <a
                 id={`project-${idx}`}
