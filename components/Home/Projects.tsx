@@ -1,4 +1,10 @@
+'use client'
 import Image from "next/image";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -36,6 +42,30 @@ const projects = [
 ];
 
 export default function Projects() {
+  const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    lineRefs.current.forEach((line, idx) => {
+      if (line) {
+        gsap.fromTo(
+          line,
+          { width: 0, opacity: 0 },
+          {
+            width: "90%",
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: line,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
+      }
+    });
+  }, []);
+
   return (
     <section className="section-dark bg-primary relative overflow-hidden">
       <div className="px-4 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto pt-24 pb-16">
@@ -49,16 +79,13 @@ export default function Projects() {
           </p>
         </div>
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-10">
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
-
-          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[56%] line-animate-vertical"></div>
-          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%] line-animate-vertical"></div>
           {projects.map((project, idx) => (
             <div key={project.title} className="relative">
               {idx !== 0 && (
-                <div className="block lg:hidden absolute bg-background -top-10 h-[1px] w-[90%] -translate-x-1/2 left-1/2 z-99 line-animate-horizontal"></div>
+                <div
+                  ref={(el) => (lineRefs.current[idx] = el)}
+                  className="block lg:hidden absolute bg-background -top-10 h-[1px] w-[90%] -translate-x-1/2 left-1/2 opacity-0"
+                ></div>
               )}
               <a
                 id={`project-${idx}`}
