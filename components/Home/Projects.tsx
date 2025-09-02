@@ -45,7 +45,7 @@ export default function Projects() {
   const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    lineRefs.current.forEach((line, idx) => {
+    lineRefs.current.forEach((line) => {
       if (line) {
         gsap.fromTo(
           line,
