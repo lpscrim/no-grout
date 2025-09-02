@@ -72,7 +72,7 @@ export default function Projects() {
       <div className="px-4 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto pt-24 pb-16">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
-            <span className="inline-block text-accent">Our Latest Work</span>
+            <span className="inline-block text-accent my-5">Our Latest Work</span>
           </h2>
           <p className="text-lg max-w-xl text-background font-light text-left">
             Each project is custom tailored, based on each client needs. We are
@@ -97,7 +97,7 @@ export default function Projects() {
               <a
                 id={`project-${idx}`}
                 href={project.href}
-                className="bg-secondary overflow-hidden flex flex-col group h-120"
+                className="bg-secondary overflow-hidden flex flex-col group h-120 "
               >
                 <div className="relative w-full h-[80%]">
                   <Image
