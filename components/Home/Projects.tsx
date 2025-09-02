@@ -54,7 +54,10 @@ export default function Projects() {
                     <div className="md:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
                     <div className="md:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
                     <div className="md:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto "></div>
-					{projects.map((project, idx) => (
+
+                    <div className="md:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[56%]"></div>
+					<div className="md:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%]"></div>
+                    {projects.map((project, idx) => (
 						<a
 							id={`project-${idx}`}
 							key={project.title}
