@@ -24,10 +24,10 @@ export default function Hero() {
 
 
         <div className="absolute bottom-10 max-w-[100rem] w-full z-1">
-          <div className="absolute left-10 lg:left-0">
+          <div className="absolute left-10 ">
             <ArrowDownIcon className="h-5 w-5 text-background animate-bounce" />
           </div>
-          <div className="absolute invisible lg:visible right-10 xl:right-0">
+          <div className="absolute invisible lg:visible right-10 ">
             <ArrowDownIcon className="h-5 w-5 text-background animate-bounce" />
           </div>
         </div>
