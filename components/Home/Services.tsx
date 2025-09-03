@@ -44,13 +44,13 @@ export default function Services() {
                 <h2 className="text-4xl lg:text-5xl font-bold mb-24 text-center">Our Services</h2>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
                     {/* Left: Pictured Example */}
-                    <div className="flex justify-center items-center sm:h-[700px]">
+                    <div className="flex justify-center items-center h-[350px] sm:h-[700px]">
                         <Image
                             src={imageSrc}
                             width={500}
                             height={800}
                             alt="Service Example"
-                            className="w-full max-w-xl h-[700px]  object-cover transition-all duration-300"
+                            className="w-full max-w-xl h-[350px] sm:h-[700px] object-cover transition-all duration-300"
                         />
                     </div>
                     {/* Right: Services List */}
