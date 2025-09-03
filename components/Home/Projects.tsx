@@ -71,10 +71,10 @@ export default function Projects() {
 
   return (
     <section className="section-dark bg-primary relative overflow-hidden">
-      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto pt-24 pb-16">
+      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
-            <span className="inline-block text-accent my-8">Our Latest Work</span>
+            <span className="inline-block text-accent my-10">Our Latest Work</span>
           </h2>
           <p className="text-lg max-w-xl text-background font-light text-left ">
             Each project is custom tailored, based on each client needs. We are
