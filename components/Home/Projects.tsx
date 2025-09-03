@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -40,6 +41,7 @@ const projects = [
     img: "/kitchen.jpg",
     alt: "Modern Kitchen2",
   },
+  
 ];
 
 export default function Projects() {
@@ -69,17 +71,22 @@ export default function Projects() {
 
   return (
     <section className="section-dark bg-primary relative overflow-hidden">
-      <div className="px-4 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto pt-24 pb-16">
+      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto pt-24 pb-16">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
-            <span className="inline-block text-accent my-5">Our Latest Work</span>
+            <span className="inline-block text-accent my-8">Our Latest Work</span>
           </h2>
-          <p className="text-lg max-w-xl text-background font-light text-left">
+          <p className="text-lg max-w-xl text-background font-light text-left ">
             Each project is custom tailored, based on each client needs. We are
             ready to take on any kind of projects, be that small or complex.
+            <br />
+            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <br />
+            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
           </p>
         </div>
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-10">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-30 my-20">
                 
                 <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
 
@@ -87,14 +94,14 @@ export default function Projects() {
                 <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%] line-animate-vertical"></div>
           
           {projects.map((project, idx) => (
-            <div key={project.title} className="relative">
+            <div key={project.title} className="relative w-full sm:w-[90%] md:w-[80%] lg:w-full mx-auto">
               {idx !== 0 && (
                 <div
                   ref={(el) => { lineRefs.current[idx] = el; }}
                   className="block lg:hidden absolute bg-background -top-10 h-[1px] w-[90%] -translate-x-1/2 left-1/2 opacity-0"
                 ></div>
               )}
-              <a
+              <Link
                 id={`project-${idx}`}
                 href={project.href}
                 className="bg-secondary overflow-hidden flex flex-col group h-120 "
@@ -105,7 +112,6 @@ export default function Projects() {
                     alt={project.alt}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 479px) 100vw, (max-width: 767px) 89vw, (max-width: 991px) 42vw, 48vw"
                   />
                 </div>
                 <div className=" bg-secondary p-6 flex-1 flex flex-col justify-between text-foreground group-hover:text-background z-10 h-[20%] overflow-hidden">
@@ -119,25 +125,25 @@ export default function Projects() {
                     <h3 className="text-lg font-semibold">{project.title}</h3>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           ))}
         </div>
         <div className="flex justify-center mt-12">
-          <a
-            href="/en/projects"
-            className="bg-accent text-foreground px-6 py-3 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-secondary hover:text-background transition-colors"
+          <Link
+            href="/#"
+            className="bg-accent text-foreground px-6 py-4 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-secondary hover:text-background transition-colors"
           >
-            view all projects
+            All projects
             <svg
               width="20"
               height="20"
               fill="currentColor"
-              className="inline-block"
+              className="inline-block mb-2"
             >
               <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,21 +1,24 @@
 'use client'
 
-/*import { useState } from "react"; */
+import { useState } from "react";
 import styles from "./NavIcon.module.css";
 
-export default function NavIcon( { open, color } : { open: boolean, color: string } ) {
-  /*const [open, setOpen] = useState(false);*/
+export default function NavIcon( { open, color, hoverColor } : { open: boolean, color: string, hoverColor?: string } ) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const currentColor = isHovered && hoverColor ? hoverColor : color;
 
   return (
     <div
       id="nav-icon"
       className={`${styles.navIcon} ${open ? styles.open : ""}`}
-      /*onClick={() => setOpen((prev) => !prev)} */
       style={{ position: "relative" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <span style={{ background: `var(--color-${color})` }}></span>
-      <span style={{ background: `var(--color-${color})` }}></span>
-      <span style={{ background: `var(--color-${color})` }}></span>
+      <span style={{ background: `var(--color-${currentColor})` }}></span>
+      <span style={{ background: `var(--color-${currentColor})` }}></span>
+      <span style={{ background: `var(--color-${currentColor})` }}></span>
     </div>
   );
 }
