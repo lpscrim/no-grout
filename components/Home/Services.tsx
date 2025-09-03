@@ -39,7 +39,7 @@ export default function Services() {
     const imageSrc = services[hoveredIdx].image;
 
     return (
-        <section id="services" className=" bg-accent section-light min-h-[105vh]">
+        <section id="services" className=" bg-accent section-light">
             <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
                 <h2 className="text-4xl lg:text-5xl font-bold mb-24 text-center">Our Services</h2>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -60,6 +60,7 @@ export default function Services() {
                                 key={service.title}
                                 className="bg-background/50 p-6  cursor-pointer transition-all duration-200 "
                                 onMouseEnter={() => setHoveredIdx(idx)}
+                                onClick={() => setHoveredIdx(idx)}
                             >
                                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                                 <p className="text-foreground">{service.description}</p>
