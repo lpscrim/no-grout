@@ -12,7 +12,7 @@ export default function Contact() {
         <h2 className="text-4xl font-semibold tracking-tight text-balance text-background sm:text-5xl ">
           Contact sales
         </h2>
-        <p className="mt-2 text-lg/8 text-accent ">
+        <p className="mt-2 text-lg/8 text-background/90 ">
           Aute magna irure deserunt veniam aliqua magna enim voluptate.
         </p>
       </div>
@@ -28,7 +28,7 @@ export default function Contact() {
                 name="first-name"
                 type="text"
                 autoComplete="given-name"
-                className="block w-full rounded-md bg-primary px-3.5 py-2 text-base text-background outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-secondary  "
+                className="block w-full rounded-md bg-background/90 px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-accent  "
               />
             </div>
           </div>
@@ -42,7 +42,7 @@ export default function Contact() {
                 name="last-name"
                 type="text"
                 autoComplete="family-name"
-                className="block w-full rounded-md bg-primary px-3.5 py-2 text-base text-background outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-secondary  "
+                className="block w-full rounded-md bg-background/90 px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-accent  "
               />
             </div>
           </div>
@@ -56,7 +56,7 @@ export default function Contact() {
                 name="company"
                 type="text"
                 autoComplete="organization"
-                className="block w-full rounded-md bg-primary px-3.5 py-2 text-base text-background outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-secondary  "
+                className="block w-full rounded-md bg-background/90 px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-accent  "
               />
             </div>
           </div>
@@ -70,7 +70,7 @@ export default function Contact() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                className="block w-full rounded-md bg-primary px-3.5 py-2 text-base text-background outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-secondary  "
+                className="block w-full rounded-md bg-background/90 px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-accent  "
               />
             </div>
           </div>
@@ -79,13 +79,13 @@ export default function Contact() {
               Phone number
             </label>
             <div className="mt-2.5">
-              <div className="flex rounded-md bg-primary outline-1 -outline-offset-1 outline-background/80 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-secondary  ">
+              <div className="flex rounded-md bg-background/90 outline-1 -outline-offset-1 outline-background/80 has-[input:focus-within]:outline-2 has-[input:focus-within]:-outline-offset-2 has-[input:focus-within]:outline-secondary  ">
                 <input
                   id="phone-number"
                   name="phone-number"
                   type="text"
                   placeholder="07123456789"
-                  className="block min-w-0 grow py-1.5 px-3 text-base text-background placeholder:text-accent/50 focus:outline-none sm:text-sm/6   "
+                  className="block min-w-0 grow py-1.5 px-3 text-base text-foreground placeholder:text-secondary focus:outline-none sm:text-sm/6   "
                 />
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function Contact() {
                 id="message"
                 name="message"
                 rows={4}
-                className="block w-full rounded-md bg-primary px-3.5 py-2 text-base text-background outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-secondary  "
+                className="block w-full rounded-md bg-background/90 px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-accent  "
                 defaultValue={''}
               />
             </div>
@@ -110,7 +110,7 @@ export default function Contact() {
             type="submit"
             className="block w-full rounded-md bg-secondary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary cursor-pointer"
           >
-            Let&#39;s talk
+            Send
           </button>
         </div>
       </form>
