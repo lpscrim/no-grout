@@ -17,7 +17,7 @@ export default function About() {
       <div>
         <AnimatedOnView animationClass="slide-in-right">
           <div className="relative min-h-[115vh] z-10 bg-accent p-6 w-[50vw] sm:w-[40vw] lg:w-[35vw] xl:w-[25vw] flex flex-col justify-center text-left">
-            <h2 className="text-3xl font-bold mb-4 text-foreground">
+            <h2 className="text-4xl font-bold mb-12 text-secondary">
               About Us
             </h2>
             <p className="text-lg text-foreground">
