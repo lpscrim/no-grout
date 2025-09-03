@@ -32,24 +32,25 @@ const services = [
 ];
 
 export default function Services() {
-    const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+    // Start with first image
+    const [hoveredIdx, setHoveredIdx] = useState<number>(0);
 
-    // Default to first image if nothing is hovered
-    const imageSrc = hoveredIdx !== null ? services[hoveredIdx].image : services[0].image;
+    // Use last hovered index always
+    const imageSrc = services[hoveredIdx].image;
 
     return (
-        <section id="services" className=" bg-accent">
-            <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24">
+        <section id="services" className=" bg-accent section-light">
+            <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-32">
                 <h2 className="text-3xl lg:text-5xl font-bold mb-16 text-center">Our Services</h2>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
                     {/* Left: Pictured Example */}
-                    <div className="flex justify-center items-center">
+                    <div className="flex justify-center items-center sm:h-[700px]">
                         <Image
                             src={imageSrc}
                             width={500}
                             height={800}
                             alt="Service Example"
-                            className="w-full max-w-xl h-auto max-h-[650px] object-cover transition-all duration-300"
+                            className="w-full max-w-xl h-[700px]  object-cover transition-all duration-300"
                         />
                     </div>
                     {/* Right: Services List */}
@@ -59,7 +60,6 @@ export default function Services() {
                                 key={service.title}
                                 className="bg-background p-6  cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-accent"
                                 onMouseEnter={() => setHoveredIdx(idx)}
-                                onMouseLeave={() => setHoveredIdx(null)}
                             >
                                 <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
                                 <p className="text-foreground">{service.description}</p>
