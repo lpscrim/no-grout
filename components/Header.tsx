@@ -11,8 +11,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const navigation = [
-  { name: "Projects", href: "#" },
-  { name: "Services", href: "#" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Services", href: "/#services" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -87,12 +88,6 @@ export default function Header() {
               {item.name}
             </Link>
           ))}
-          <Link
-            href="mailto:example@example.com"
-            className={`text-base/6 font-semibold transition-colors  hover:text-${hoverClass} `}
-          >
-            Contact
-          </Link>
         </div>
       </nav>
       <Dialog
@@ -121,6 +116,7 @@ export default function Header() {
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
