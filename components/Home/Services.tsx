@@ -40,8 +40,8 @@ export default function Services() {
 
     return (
         <section id="services" className=" bg-accent section-light">
-            <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-32">
-                <h2 className="text-3xl lg:text-5xl font-bold mb-16 text-center">Our Services</h2>
+            <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-36">
+                <h2 className="text-3xl lg:text-5xl font-bold mb-24 text-center">Our Services</h2>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
                     {/* Left: Pictured Example */}
                     <div className="flex justify-center items-center sm:h-[700px]">
