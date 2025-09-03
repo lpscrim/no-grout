@@ -38,7 +38,7 @@ export default function Services() {
     const imageSrc = hoveredIdx !== null ? services[hoveredIdx].image : services[0].image;
 
     return (
-        <section id="services" className="py-24 bg-accent">
+        <section id="services" className=" bg-accent">
             <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24">
                 <h2 className="text-3xl lg:text-5xl font-bold mb-16 text-center">Our Services</h2>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -49,7 +49,7 @@ export default function Services() {
                             width={500}
                             height={800}
                             alt="Service Example"
-                            className="w-full max-w-xl h-auto object-cover transition-all duration-300"
+                            className="w-full max-w-xl h-auto max-h-[650px] object-cover transition-all duration-300"
                         />
                     </div>
                     {/* Right: Services List */}
