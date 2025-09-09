@@ -46,9 +46,9 @@ export default function Header() {
   const textClass =
     headerMode === "light" ? "foreground" : "background";
   const hoverClass =
-    headerMode === "light" ? "secondary" : "accent";
+    headerMode === "light" ? "background" : "accent";
   const menuBack =
-    headerMode === "light" ? "bg-accent/45" : "bg-black/25";
+    headerMode === "light" ? "bg-accent/25" : "bg-black/25";
 
   return (
     <header
@@ -108,7 +108,7 @@ export default function Header() {
               <span className="sr-only">Close menu</span>
             </button>
           </div>
-          <div className="flow-root mt-10">
+          <div className="flow-root mt-[34vh] ">
             <div className="-my-6 divide-y divide-background-500 ">
               <div className="space-y-10 py-6 text-center ">
                 {navigation.map((item, idx) => (
