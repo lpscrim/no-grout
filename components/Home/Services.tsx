@@ -43,7 +43,6 @@ export default function Services() {
             <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
                 <h2 className="text-4xl lg:text-5xl font-bold mb-24 text-center">Our Services</h2>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
-                    {/* Left: Pictured Example */}
                     <div className="flex justify-center items-center h-[350px] sm:h-[700px]">
                         <Image
                             src={imageSrc}
@@ -53,12 +52,11 @@ export default function Services() {
                             className="w-full max-w-xl h-[350px] sm:h-[700px] object-cover transition-all duration-300"
                         />
                     </div>
-                    {/* Right: Services List */}
                     <ul className="grid gap-8">
                         {services.map((service, idx) => (
                             <li
                                 key={service.title}
-                                className="bg-background/50 p-6  cursor-pointer transition-all duration-200 "
+                                className="bg-background/50 hover:bg-background/70 p-6  cursor-pointer transition-all duration-200 "
                                 onMouseEnter={() => setHoveredIdx(idx)}
                                 onClick={() => setHoveredIdx(idx)}
                             >
