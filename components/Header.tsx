@@ -46,7 +46,9 @@ export default function Header() {
   const textClass =
     headerMode === "light" ? "foreground" : "background";
   const hoverClass =
-    headerMode === "light" ? "background" : "accent";
+    headerMode === "light" ? "secondary" : "accent";
+  const menuBack = 
+    headerMode === "light" ? "bg-white/25" : "bg-black/25";
 
   return (
     <header
@@ -95,7 +97,7 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden z-50"
       >
-        <DialogPanel className={`fixed top-0 inset-y-0 right-0 z-50 w-full bg-black/15 h-screen overflow-y-auto backdrop-blur-[5px] p-6 lg:max-w-[280px]`}>
+        <DialogPanel className={`fixed top-0 inset-y-0 right-0 z-50 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-[5px] p-6 lg:max-w-[280px]`}>
           <div className="flex items-center justify-end">
             <button
               type="button"
