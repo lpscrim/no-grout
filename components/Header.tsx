@@ -47,8 +47,8 @@ export default function Header() {
     headerMode === "light" ? "foreground" : "background";
   const hoverClass =
     headerMode === "light" ? "secondary" : "accent";
-  const menuBack = 
-    headerMode === "light" ? "bg-white/25" : "bg-black/25";
+  const menuBack =
+    headerMode === "light" ? "bg-accent/45" : "bg-black/25";
 
   return (
     <header
@@ -85,7 +85,8 @@ export default function Header() {
             <Link
               key={item.name}
               href={item.href}
-              className={`text-base/6 font-semibold transition-colors hover:text-${hoverClass}`}
+              className={`text-base/6 font-semibold transition-colors 
+  ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
             >
               {item.name}
             </Link>
@@ -114,7 +115,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in text-${textClass} hover:text-${hoverClass}`}
+                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-color drop-in text-${textClass} hover:text-${hoverClass}`}
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
