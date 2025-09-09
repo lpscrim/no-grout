@@ -104,7 +104,7 @@ export default function Projects() {
               <Link
                 id={`project-${idx}`}
                 href={project.href}
-                className="bg-secondary overflow-hidden flex flex-col group h-120 "
+                className="bg-secondary overflow-hidden flex flex-col group h-120 rounded-xs"
               >
                 <div className="relative w-full h-[80%]">
                   <Image

@@ -49,14 +49,14 @@ export default function Services() {
                             width={500}
                             height={800}
                             alt="Service Example"
-                            className="w-full max-w-xl h-[350px] sm:h-[700px] object-cover transition-all duration-300"
+                            className="w-full max-w-xl h-[350px] rounded-xs sm:h-[700px] object-cover transition-all duration-300"
                         />
                     </div>
                     <ul className="grid gap-8">
                         {services.map((service, idx) => (
                             <li
                                 key={service.title}
-                                className="bg-background/50 hover:bg-background/70 p-6  cursor-pointer transition-all duration-200 "
+                                className="bg-background/50 hover:bg-background/70 p-6  rounded-xs cursor-pointer transition-all duration-200 "
                                 onMouseEnter={() => setHoveredIdx(idx)}
                                 onClick={() => setHoveredIdx(idx)}
                             >
