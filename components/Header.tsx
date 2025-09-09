@@ -112,7 +112,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in text-background`}
+                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-all hover:scale-105 drop-in text-${textClass} hover:text-${hoverClass}`}
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
@@ -126,7 +126,7 @@ export default function Header() {
             <div className="absolute bottom-8 left-10 cursor-pointer">
               <Link href="mailto:example@example.com">
                 <EnvelopeIcon
-                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-background`}
+                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-${textClass} hover:text-${hoverClass}`}
                 />
                 <span className="sr-only">Email</span>
               </Link>
