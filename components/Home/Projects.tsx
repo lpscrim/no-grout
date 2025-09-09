@@ -114,7 +114,7 @@ export default function Projects() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className=" bg-secondary p-6 flex-1 flex flex-col justify-between text-foreground group-hover:text-background z-10 h-[20%] overflow-hidden">
+                <div className=" bg-secondary p-6 flex-1 flex flex-col justify-between text-foreground group-hover:text-background transition-all z-10 h-[20%] overflow-hidden">
                   <div>
                     <div className="flex mb-2 justify-between gap-4">
                       <span className="text-xs uppercase">

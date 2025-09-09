@@ -98,7 +98,7 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden z-50"
       >
-        <DialogPanel className={`fixed top-0 inset-y-0 right-0 z-50 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-[5px] p-6 lg:max-w-[280px]`}>
+        <DialogPanel className={`fixed top-0 inset-y-0 right-0 z-50 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-[7px] p-6 lg:max-w-[280px]`}>
           <div className="flex items-center justify-end">
             <button
               type="button"
@@ -108,14 +108,14 @@ export default function Header() {
               <span className="sr-only">Close menu</span>
             </button>
           </div>
-          <div className="flow-root mt-[34vh] ">
+          <div className="flow-root mt-[32vh] ">
             <div className="-my-6 divide-y divide-background-500 ">
-              <div className="space-y-10 py-6 text-center ">
+              <div className="space-y-12 py-6 text-center ">
                 {navigation.map((item, idx) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-2xl/7 sm:text-3xl/7 font-semibold duration-200 transition-color drop-in text-${textClass} hover:text-${hoverClass}`}
+                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-3xl sm:text-4xl font-semibold duration-200 transition-color drop-in text-${textClass} hover:text-${hoverClass}`}
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}

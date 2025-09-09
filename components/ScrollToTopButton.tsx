@@ -21,7 +21,7 @@ export default function ScrollToTopButton() {
     <button
       onClick={scrollToTop}
       aria-label="Scroll to top"
-      className="fixed cursor-pointer bottom-6 right-6 z-[1000]  text-background rounded-full p-3 shadow-lg hover:bg-foreground transition-colors"
+      className="fixed cursor-pointer bottom-6 right-6 z-[1000]  text-background rounded-full p-3 shadow-lg hover:bg-background transition-colors"
       style={{ boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
     >
         <ArrowUpIcon className="w-6 h-6 text-secondary" />
