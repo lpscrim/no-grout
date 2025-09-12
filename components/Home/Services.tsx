@@ -41,7 +41,12 @@ export default function Services() {
     return (
         <section id="services" className=" bg-accent section-light">
             <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-24 text-center">Our Services</h2>
+                
+                <h2 className="text-4xl lg:text-5xl font-bold mb-24 mt-10 text-center">Our Services</h2>
+                 <p className="text-lg max-w-xl text-background font-light text-left ">
+            Each project is custom tailored, based on each client needs. We are
+            ready to take on any kind of projects, be that small or complex
+          </p>
                 <div className="grid md:grid-cols-2 gap-20 items-center">
                     <div className="flex justify-center items-center h-[350px] sm:h-[700px]">
                         <Image
