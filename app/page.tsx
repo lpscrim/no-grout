@@ -8,7 +8,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export default function Home() {
   return (
-    <main >
+    <main className="bg-primary">
       <Hero />
       <About />
       <Projects />
