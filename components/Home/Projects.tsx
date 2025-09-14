@@ -73,7 +73,7 @@ export default function Projects() {
     <section id="projects" className="section-dark bg-primary relative overflow-hidden">
       <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
         <div className="mb-16 flex flex-col items-center">
-          <h2 className="text-4xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
             <span className="inline-block text-accent my-10">Our Latest Work</span>
           </h2>
           <p className="text-lg max-w-xl text-background font-light text-left ">

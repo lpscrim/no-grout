@@ -8,14 +8,14 @@ export default function Hero() {
 
         <div className="absolute z-1 bg-fade-gradient inset-0 w-full h-full bg-[url('/diagonal-striped-brick.png')] pointer-events-none fade-in" />
           <div className="group z-2 text-center flex flex-row sm:flex-col justify-center items-center -ml-5 fade-in">
-            <p className="text-xl sm:text-2xl text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
+            <p className="text-xl sm:text-2xl text-background opacity-0 group-hover:opacity-50 duration-2200 hover:opacity-100">
               Bespoke
             </p>
             <div className="text-center text-6xl items-center font-bold flex flex-col sm:flex-row m-5">
-              <h1 className="text-accent">No&nbsp;</h1>
-              <h1 className="text-background"> Grout&nbsp;</h1>
-              <h1 className="text-accent"> About&nbsp;</h1>
-              <h1 className="text-background">It&nbsp;</h1>
+              <h1 className="text-accent hover:brightness-110 duration-2000">No&nbsp;</h1>
+              <h1 className="text-background hover:brightness-110 duration-2000"> Grout&nbsp;</h1>
+              <h1 className="text-accent hover:brightness-110 duration-2000"> About&nbsp;</h1>
+              <h1 className="text-background hover:brightness-110 duration-2000">It&nbsp;</h1>
             </div>
             <p className="text-xl sm:text-2xl mt-2 text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
               Tiling
