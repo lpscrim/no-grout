@@ -134,7 +134,7 @@ export default function Projects() {
             href="/#"
             className="bg-accent text-foreground px-6 py-4 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-secondary hover:text-background transition-colors"
           >
-            All projects
+           <h3>All projects</h3> 
             <svg
               width="20"
               height="20"
