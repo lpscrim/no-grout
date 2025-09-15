@@ -71,7 +71,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section-dark bg-primary relative overflow-hidden">
-      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
+      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-24 lg:py-32">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
             <span className="inline-block text-accent my-10">Our Latest Work</span>
@@ -94,7 +94,7 @@ export default function Projects() {
                 <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%] line-animate-vertical"></div>
           
           {projects.map((project, idx) => (
-            <div key={project.title} className="relative w-full sm:w-[90%] md:w-[80%] lg:w-full mx-auto">
+            <div key={project.title} className="relative w-full sm:w-[80%] md:w-[70%] lg:w-[90%] mx-auto ">
               {idx !== 0 && (
                 <div
                   ref={(el) => { lineRefs.current[idx] = el; }}
@@ -104,7 +104,7 @@ export default function Projects() {
               <Link
                 id={`project-${idx}`}
                 href={project.href}
-                className="bg-secondary overflow-hidden flex flex-col group h-120 rounded-xs"
+                className="bg-secondary overflow-hidden flex flex-col group h-100 rounded-xs"
               >
                 <div className="relative w-full h-[80%]">
                   <Image
@@ -114,8 +114,8 @@ export default function Projects() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className=" bg-secondary p-6 flex-1 flex flex-col justify-between text-foreground group-hover:text-background transition-all z-10 h-[20%] overflow-hidden">
-                  <div>
+                <div className=" bg-secondary px-6 py-4  flex-1 flex flex-col justify-between text-foreground group-hover:text-background transition-all z-10 h-[20%] overflow-hidden">
+                  <div >
                     <div className="flex mb-2 justify-between gap-4">
                       <span className="text-xs uppercase">
                         {project.category}
