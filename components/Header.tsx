@@ -26,7 +26,9 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const sections = Array.from(document.querySelectorAll(".section-light, .section-dark"));
+    const sections = Array.from(
+      document.querySelectorAll(".section-light, .section-dark")
+    );
     console.log("Sections found:", sections);
     sections.forEach((section: Element) => {
       const isLight = section.classList.contains("section-light");
@@ -43,18 +45,16 @@ export default function Header() {
     };
   }, []);
 
-  const textClass =
-    headerMode === "light" ? "foreground" : "background";
-  const hoverClass =
-    headerMode === "light" ? "background" : "accent";
-  const menuBack =
-    headerMode === "light" ? "bg-accent/25" : "bg-black/25";
+  const textClass = headerMode === "light" ? "foreground" : "background";
+  const hoverClass = headerMode === "light" ? "background" : "accent";
+  const menuBack = headerMode === "light" ? "bg-accent/25" : "bg-black/25";
 
   return (
     <header
       ref={headerRef}
-        className={`fixed w-full z-999 transition-color duration-500 text-${textClass} bg-transparent ${headerMode === "light" ? "lg:bg-accent" : "lg:bg-primary"}`}
-
+      className={`fixed w-full z-999 transition-color duration-500 text-${textClass} bg-transparent ${
+        headerMode === "light" ? "lg:bg-accent" : "lg:bg-primary"
+      }`}
     >
       <nav
         aria-label="Global"
@@ -86,7 +86,17 @@ export default function Header() {
               key={item.name}
               href={item.href}
               className={`text-base/6 font-semibold transition-colors 
-  ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
+              ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                const section = document.querySelector(
+                  item.href.replace("/", "")
+                );
+                if (section) {
+                  const isLight = section.classList.contains("section-light");
+                  setHeaderMode(isLight ? "light" : "dark");
+                }
+              }}
             >
               {item.name}
             </Link>
@@ -98,7 +108,9 @@ export default function Header() {
         onClose={setMobileMenuOpen}
         className="lg:hidden z-50"
       >
-        <DialogPanel className={`fixed top-0 inset-y-0 right-0 z-50 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-[7px] p-6 lg:max-w-[280px]`}>
+        <DialogPanel
+          className={`fixed top-0 inset-y-0 right-0 z-50 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-[7px] p-6 lg:max-w-[280px]`}
+        >
           <div className="flex items-center justify-end">
             <button
               type="button"
@@ -121,9 +133,12 @@ export default function Header() {
                     }}
                     onClick={() => {
                       setMobileMenuOpen(false);
-                      const section = document.querySelector(item.href.replace('/',''));
+                      const section = document.querySelector(
+                        item.href.replace("/", "")
+                      );
                       if (section) {
-                        const isLight = section.classList.contains("section-light");
+                        const isLight =
+                          section.classList.contains("section-light");
                         setHeaderMode(isLight ? "light" : "dark");
                       }
                     }}
