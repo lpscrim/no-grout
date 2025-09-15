@@ -11,6 +11,8 @@
   --color-button: #d3531a;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-karla: var(--font-karla);
+  --font-josefin-sans: var(--font-josefin-sans);
 }
 
 :root {
@@ -24,12 +26,18 @@
   --color-button: #864d34;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-karla: var(--font-karla);
+  --font-josefin-sans: var(--font-josefin-sans);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-karla), Helvetica, sans-serif;
+}
+
+H1, H2, H3, H4, H5, H6 {
+  font-family: var(--font-geist-sans), Helvetica, sans-serif;
 }
 
 
