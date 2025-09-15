@@ -119,7 +119,14 @@ export default function Header() {
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      const section = document.querySelector(item.href.replace('/',''));
+                      if (section) {
+                        const isLight = section.classList.contains("section-light");
+                        setHeaderMode(isLight ? "light" : "dark");
+                      }
+                    }}
                   >
                     {item.name}
                   </Link>
