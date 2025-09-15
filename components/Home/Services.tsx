@@ -40,11 +40,11 @@ export default function Services() {
 
   return (
     <section id="services" className=" bg-accent section-light ">
-      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-10 lg:mb-16 mt-10 text-center text-secondary">
+      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-30">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-10 lg:mb-12 mt-10 text-center text-secondary">
           Our Services
         </h2>
-        <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-20">
+        <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
           Each project is custom tailored, based on each client needs. We are
           ready to take on any kind of projects, be that small or complex
         </p>
