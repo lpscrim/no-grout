@@ -40,7 +40,7 @@ export default function Services() {
 
   return (
     <section id="services" className=" bg-accent section-light">
-      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-24 lg:py-32">
+      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-2xl mx-auto py-18 sm:py-24 lg:py-32">
         <h2 className="text-4xl sm:text-5xl font-bold mb-10 lg:mb-12 mt-10 text-center text-secondary">
           Our Services
         </h2>
@@ -49,7 +49,7 @@ export default function Services() {
           ready to take on any kind of projects, be that small or complex
         </p>
         <div className="grid md:grid-cols-2 gap-20 items-center">
-          <div className="flex justify-center items-center h-[350px] sm:h-[700px]">
+          <div className="flex justify-center items-center h-[300px] sm:h-[700px]">
             <Image
               src={imageSrc}
               width={500}
@@ -58,11 +58,11 @@ export default function Services() {
               className="w-full max-w-xl h-[350px] rounded-xs sm:h-[700px] object-cover transition-all duration-300"
             />
           </div>
-          <ul className="grid gap-8">
+          <ul className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:gap-8">
             {services.map((service, idx) => (
               <li
                 key={service.title}
-                className="bg-background/50 hover:bg-background/70 p-6  rounded-xs cursor-pointer transition-all duration-200 "
+                className="bg-background/50 hover:bg-background/70 p-4 sm:p-6  rounded-xs cursor-pointer transition-all duration-200 "
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
               >
