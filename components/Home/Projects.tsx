@@ -126,9 +126,9 @@ export default function Projects() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
                     />
                   </div>
-                  <div className={`${idx % 2 ? "bg-accent" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground group-hover:text-background group-hover:brightness-105 transition-all z-10 h-[20%] overflow-hidden`}>
+                  <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground group-hover:bg-accent group-hover:brightness-105 transition-all z-10 h-[20%] overflow-hidden`}>
                     <div>
-                      <div className="flex mb-2 justify-between gap-4">
+                      <div className="flex mb-1 justify-between gap-4">
                         <span className="text-xs uppercase">
                           {project.category}
                         </span>
