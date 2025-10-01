@@ -89,8 +89,6 @@ export default function Projects() {
             <br />
             lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            <br />
-            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
           </p>
         </div>
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-y-25 my-20">

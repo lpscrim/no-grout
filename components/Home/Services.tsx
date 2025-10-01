@@ -46,13 +46,13 @@ export default function Services() {
   return (
     <section id="services" className=" bg-accent section-light">
       <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18 sm:py-24 lg:py-32">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-10 lg:mb-12 mt-10 text-center text-secondary">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Services
         </h2>
-        <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
+        {/* <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
           Each project is custom tailored, based on each client needs. We are
           ready to take on any kind of projects, be that small or complex
-        </p>
+        </p>*/}
         <div className="grid md:grid-cols-2 gap-20 items-center">
           <div className="flex justify-center items-center h-[300px] md:h-[700px]">
             <Image
@@ -63,7 +63,7 @@ export default function Services() {
               className="w-full max-w-xl h-[350px] rounded-xs md:h-[700px] object-cover transition-all duration-300"
             />
           </div>
-          <ul className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 xl:gap-6 max-w-xl mx-auto">
+          <ul className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 xl:gap-5 max-w-xl mx-auto">
             {services.map((service, idx) => (
               <li
                 key={service.title}
