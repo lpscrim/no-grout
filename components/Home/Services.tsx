@@ -63,7 +63,7 @@ export default function Services() {
               className="w-full max-w-xl h-[350px] rounded-xs md:h-[700px] object-cover transition-all duration-300"
             />
           </div>
-          <ul className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 xl:gap-6 max-w-lg mx-auto">
+          <ul className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-4 xl:gap-6 max-w-xl mx-auto">
             {services.map((service, idx) => (
               <li
                 key={service.title}
