@@ -103,7 +103,7 @@ export default function Projects() {
             return (
               <div
                 key={project.title}
-                className="relative w-full sm:w-[80%] md:w-[70%] lg:w-[90%] mx-auto "
+                className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[90%] mx-auto "
               >
                 {idx !== 0 && (
                   <div
