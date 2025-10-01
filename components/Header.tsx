@@ -86,15 +86,20 @@ export default function Header() {
               key={item.name}
               href={item.href}
               className={`text-base/6 font-semibold transition-colors 
-              ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
-              onClick={() => {
+      ${headerMode === "light"
+        ? "hover:text-secondary"
+        : "hover:text-accent"
+      }`}
+              onClick={(e) => {
                 setMobileMenuOpen(false);
-                const section = document.querySelector(
-                  item.href.replace("/", "")
-                );
+                // Smooth scroll with offset
+                const sectionId = item.href.replace("/#", "");
+                const section = document.getElementById(sectionId);
                 if (section) {
-                  const isLight = section.classList.contains("section-light");
-                  setHeaderMode(isLight ? "light" : "dark");
+                  e.preventDefault();
+                  const yOffset = 5; // Adjust this value for your header height or desired offset
+                  const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                  window.scrollTo({ top: y, behavior: "smooth" });
                 }
               }}
             >
@@ -133,14 +138,6 @@ export default function Header() {
                     }}
                     onClick={() => {
                       setMobileMenuOpen(false);
-                      const section = document.querySelector(
-                        item.href.replace("/", "")
-                      );
-                      if (section) {
-                        const isLight =
-                          section.classList.contains("section-light");
-                        setHeaderMode(isLight ? "light" : "dark");
-                      }
                     }}
                   >
                     {item.name}
