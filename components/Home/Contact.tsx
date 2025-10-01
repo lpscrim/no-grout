@@ -6,7 +6,7 @@ export default function Contact() {
     >
       <div className="px-6 py-18 sm:py-24 lg:py-32 lg:px-8 min-h-[110vh]">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-semibold my-10 tracking-tight text-balance text-background sm:text-5xl ">
+          <h2 className="text-4xl font-semibold my-10 tracking-tight text-balance text-accent sm:text-5xl ">
             Contact us
           </h2>
           <p className="mt-2 text-lg/8 text-background/90 ">

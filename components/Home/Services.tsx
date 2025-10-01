@@ -49,20 +49,20 @@ export default function Services() {
           ready to take on any kind of projects, be that small or complex
         </p>
         <div className="grid md:grid-cols-2 gap-20 items-center">
-          <div className="flex justify-center items-center h-[300px] sm:h-[700px]">
+          <div className="flex justify-center items-center h-[300px] md:h-[700px]">
             <Image
               src={imageSrc}
               width={500}
               height={800}
               alt="Service Example"
-              className="w-full max-w-xl h-[350px] rounded-xs sm:h-[700px] object-cover transition-all duration-300"
+              className="w-full max-w-xl h-[350px] rounded-xs md:h-[700px] object-cover transition-all duration-300"
             />
           </div>
-          <ul className="grid grid-cols-2 sm:grid-cols-1 gap-2 sm:gap-8">
+          <ul className="grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-8">
             {services.map((service, idx) => (
               <li
                 key={service.title}
-                className="bg-background/50 hover:bg-background/70 p-4 sm:p-6  rounded-xs cursor-pointer transition-all duration-200 "
+                className="bg-background/50 hover:bg-background/70 p-4 md:p-6  rounded-xs cursor-pointer transition-all duration-200 "
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
               >

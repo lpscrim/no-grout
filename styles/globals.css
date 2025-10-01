@@ -2,9 +2,9 @@
 
 @theme inline {
   --background: #fffefd;
-  --foreground: #524746;
+  --foreground: #3f3838;
   --color-background: #fffefd;
-  --color-foreground: #524746;
+  --color-foreground: #3f3838;
   --color-primary: #6C9A8B;
   --color-secondary: #E8998D;
   --color-accent: #EED2CC;
@@ -17,9 +17,9 @@
 
 :root {
   --background: #fffefd;
-  --foreground: #524746;
+  --foreground: #3f3838;
   --color-background: #fffefd;
-  --color-foreground: #524746;
+  --color-foreground: #3f3838;
   --color-primary: #6C9A8B;
   --color-secondary: #eea094;
   --color-accent: #EED2CC;
