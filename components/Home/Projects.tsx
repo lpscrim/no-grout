@@ -83,15 +83,14 @@ export default function Projects() {
               Our Latest Work
             </span>
           </h2>
-          <p className="text-lg max-w-xl text-background font-light text-left ">
+          <p className="text-lg max-w-2xl text-background font-light text-left ">
             Each project is custom tailored, based on each client needs. We are
             ready to take on any kind of projects, be that small or complex.
             <br />
             lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
             <br />
-            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.
           </p>
         </div>
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-y-25 my-20">

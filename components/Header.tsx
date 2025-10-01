@@ -94,7 +94,7 @@ export default function Header() {
                 const section = document.getElementById(sectionId);
                 if (section) {
                   e.preventDefault();
-                  const yOffset = 5;
+                  const yOffset = 60;
                   const y =
                     section.getBoundingClientRect().top +
                     window.pageYOffset +
