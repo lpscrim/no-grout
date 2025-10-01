@@ -21,8 +21,8 @@ const projects = [
     title: "Classic White Kitchen",
     category: "kitchen design",
     year: "2023",
-    href: "/kitchen.jpg",
-    img: "/kitchen.jpg",
+    href: "/hall.jpg",
+    img: "/hall.jpg",
     alt: "Classic White Kitchen",
   },
   {
@@ -37,8 +37,8 @@ const projects = [
     title: "Modern Kitchen2",
     category: "kitchen design2",
     year: "2022",
-    href: "/kitchen.jpg",
-    img: "/kitchen.jpg",
+    href: "/hall.jpg",
+    img: "/hall.jpg",
     alt: "Modern Kitchen2",
   },
   
@@ -76,7 +76,7 @@ export default function Projects() {
       id="projects"
       className="section-dark bg-primary relative overflow-hidden"
     >
-      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18 sm:py-24 lg:py-30">
+      <div className="px-6 sm:px-8 lg:px-20 max-w-screen-xl mx-auto py-18 sm:py-24 lg:py-30">
         <div className="mb-16 flex flex-col items-center">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
             <span className="inline-block text-accent my-10">
@@ -94,23 +94,23 @@ export default function Projects() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 xl:gap-30 my-20">
-          <div className="lg:block hidden absolute inset-0 bg-background top-[50%] h-[1px] w-[90%] mx-auto line-animate-horizontal"></div>
-          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[56%] line-animate-vertical"></div>
-          <div className="lg:block hidden absolute inset-0 bg-background left-[50%] w-[1px] h-[40%] top-[4%] line-animate-vertical"></div>
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-y-25 my-20">
+          <div className="lg:block hidden absolute inset-0 bg-accent top-[50%] h-[1px] w-[70%] mx-auto line-animate-horizontal"></div>
+          <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[60%] line-animate-vertical"></div>
+          <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[5%] line-animate-vertical"></div>
 
           {projects.map((project, idx) => {
             return (
               <div
                 key={project.title}
-                className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[90%] mx-auto "
+                className="relative w-[90%] sm:w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
               >
                 {idx !== 0 && (
                   <div
                     ref={(el) => {
                       lineRefs.current[idx] = el;
                     }}
-                    className="block lg:hidden absolute bg-background -top-10 h-[1px] w-[90%] -translate-x-1/2 left-1/2 opacity-0"
+                    className="block lg:hidden absolute bg-accent -top-10 h-[1px] w-[70%] -translate-x-1/2 left-1/2 opacity-0 line-animate-horizontal"
                   ></div>
                 )}
                 <Link
@@ -123,10 +123,10 @@ export default function Projects() {
                       src={project.img}
                       alt={project.alt}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
                     />
                   </div>
-                  <div className={`${idx % 2 ? "bg-secondary" : "bg-accent"} sm:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground group-hover:text-background group-hover:brightness-105 transition-all z-10 h-[20%] overflow-hidden`}>
+                  <div className={`${idx % 2 ? "bg-accent" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground group-hover:text-background group-hover:brightness-105 transition-all z-10 h-[20%] overflow-hidden`}>
                     <div>
                       <div className="flex mb-2 justify-between gap-4">
                         <span className="text-xs uppercase">
