@@ -86,19 +86,19 @@ export default function Header() {
               key={item.name}
               href={item.href}
               className={`text-base/6 font-semibold transition-colors 
-      ${headerMode === "light"
-        ? "hover:text-secondary"
-        : "hover:text-accent"
-      }`}
+      ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
               onClick={(e) => {
                 setMobileMenuOpen(false);
-                // Smooth scroll with offset
+
                 const sectionId = item.href.replace("/#", "");
                 const section = document.getElementById(sectionId);
                 if (section) {
                   e.preventDefault();
-                  const yOffset = 5; // Adjust this value for your header height or desired offset
-                  const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                  const yOffset = 5;
+                  const y =
+                    section.getBoundingClientRect().top +
+                    window.pageYOffset +
+                    yOffset;
                   window.scrollTo({ top: y, behavior: "smooth" });
                 }
               }}
@@ -136,8 +136,20 @@ export default function Header() {
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
-                    onClick={() => {
+                    onClick={(e) => {
                       setMobileMenuOpen(false);
+
+                      const sectionId = item.href.replace("/#", "");
+                      const section = document.getElementById(sectionId);
+                      if (section) {
+                        e.preventDefault();
+                        const yOffset = 5;
+                        const y =
+                          section.getBoundingClientRect().top +
+                          window.pageYOffset +
+                          yOffset;
+                        window.scrollTo({ top: y, behavior: "smooth" });
+                      }
                     }}
                   >
                     {item.name}
