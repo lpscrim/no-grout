@@ -29,6 +29,11 @@ const services = [
     description: "Comprehensive waterproofing for wet areas.",
     image: "/hall.jpg",
   },
+  {
+    title: "Floor Heating",
+    description: "Comprehensive heating for floor areas.",
+    image: "/hall.jpg",
+  },
 ];
 
 export default function Services() {

@@ -41,6 +41,7 @@ const projects = [
     img: "/kitchen.jpg",
     alt: "Modern Kitchen2",
   },
+  
 ];
 
 export default function Projects() {
