@@ -11,24 +11,24 @@ const projects = [
     title: "Modern Hall",
     images: [
       { src: "/hall.jpg", alt: "Hall Main" },
-      { src: "/hall2.jpg", alt: "Hall Alt 1" },
-      { src: "/hall3.jpg", alt: "Hall Alt 2" },
+      { src: "/kitchen.jpg", alt: "Hall Alt 1" },
+      { src: "/hall.jpg", alt: "Hall Alt 2" },
     ],
   },
   {
     title: "Kitchen Renovation",
     images: [
       { src: "/kitchen.jpg", alt: "Kitchen Main" },
-      { src: "/kitchen2.jpg", alt: "Kitchen Alt 1" },
-      { src: "/kitchen3.jpg", alt: "Kitchen Alt 2" },
+      { src: "/hall.jpg", alt: "Kitchen Alt 1" },
+      { src: "/kitchen.jpg", alt: "Kitchen Alt 2" },
     ],
   },
   {
     title: "Luxury Bathroom",
     images: [
-      { src: "/bathroom.jpg", alt: "Bathroom Main" },
-      { src: "/bathroom2.jpg", alt: "Bathroom Alt 1" },
-      { src: "/bathroom3.jpg", alt: "Bathroom Alt 2" },
+      { src: "/hall.jpg", alt: "Bathroom Main" },
+      { src: "/kitchen.jpg", alt: "Bathroom Alt 1" },
+      { src: "/hall.jpg", alt: "Bathroom Alt 2" },
     ],
   },
 ];
