@@ -97,7 +97,7 @@ export default function Projects() {
               <div
                 className={`${
                   fixedIdx === projIdx
-                    ? "fixed top-20 right-0 z-50 flex justify-end pointer-events-none w-full"
+                    ? "fixed top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full"
                     : "sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full"
                 } transition-all`}
                 style={{ height: "60px" }}
