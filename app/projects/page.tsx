@@ -88,15 +88,14 @@ export default function Projects() {
           and attention to detail. Each project is custom tailored to meet our
           clients&#39; needs and preferences.
         </p>
-        <div className="flex flex-col items-center gap-20">
+        <div className="flex flex-col items-center gap-2 md:gap-20">
           {projects.map((project, projIdx) => (
             <div
               ref={(el) => { projectRefs.current[projIdx] = el; }}
               id={project.title.replace(/\s+/g, "-").toLowerCase()}
               key={project.title}
-              className="relative w-full h-[100svh] xl:rounded-md overflow-hidden flex mb-10"
+              className="relative w-full h-[100svh] xl:rounded-md overflow-hidden flex "
             >
-              {/* Overlay: sticky by default, fixed if active */}
               <div
                 className={`${
                   fixedIdx === projIdx
