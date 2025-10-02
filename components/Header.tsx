@@ -11,7 +11,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const navigation = [
-  { name: "Projects", href: "/#projects" },
+  { name: "Home", href: "/#home" },
+  { name: "Projects", href: "/projects" },
   { name: "Services", href: "/#services" },
   { name: "Contact", href: "/#contact" },
 ];

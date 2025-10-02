@@ -45,7 +45,7 @@ export default function Services() {
 
   return (
     <section id="services" className=" bg-accent section-light">
-      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18 sm:py-24 lg:py-32">
+      <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18 md:py-24 lg:py-32">
         <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Services
         </h2>

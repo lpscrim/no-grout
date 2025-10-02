@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
   {
     title: "Modern Hall",
+    date: "June 2025",
     images: [
       { src: "/hall.jpg", alt: "Hall Main" },
       { src: "/kitchen.jpg", alt: "Hall Alt 1" },
@@ -17,6 +18,7 @@ const projects = [
   },
   {
     title: "Kitchen Renovation",
+    date: "May 2025",
     images: [
       { src: "/kitchen.jpg", alt: "Kitchen Main" },
       { src: "/hall.jpg", alt: "Kitchen Alt 1" },
@@ -25,6 +27,7 @@ const projects = [
   },
   {
     title: "Luxury Bathroom",
+    date: "April 2025",
     images: [
       { src: "/hall.jpg", alt: "Bathroom Main" },
       { src: "/kitchen.jpg", alt: "Bathroom Alt 1" },
@@ -76,7 +79,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="bg-accent section-light min-h-screen">
-      <div className="mx-auto py-18 sm:py-24 xl:px-10 ">
+      <div className="mx-auto py-18 md:py-24 xl:px-10 ">
         <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Projects
         </h2>
@@ -106,7 +109,11 @@ export default function Projects() {
                   <h3 className="text-2xl font-semibold text-background">
                     {project.title}
                   </h3>
+                  <h4 className="text-md text-right text-background/95">
+                    {project.date}
+                  </h4>
                 </div>
+                
               </div>
               {/* Side menu */}
               <div
