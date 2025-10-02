@@ -61,7 +61,7 @@ export default function Projects() {
               {/* Side menu */}
               <div
                 className={`absolute left-0 top-0 h-full z-20 transition-all duration-500 ${
-                  menuOpens[projIdx] ? "w-40" : "w-10"
+                  menuOpens[projIdx] ? "w-40" : "w-5 sm:w-10"
                 }`}
               >
                 <div className="flex flex-col h-full bg-primary/80 shadow-lg">
