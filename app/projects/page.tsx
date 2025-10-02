@@ -34,7 +34,7 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [activeTitleIdx, setActiveTitleIdx] = useState<number | null>(null);
+  const [fixedIdx, setFixedIdx] = useState<number | null>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIdxs, setActiveIdxs] = useState(projects.map(() => 0));
   const [menuOpens, setMenuOpens] = useState(projects.map(() => false));
@@ -42,28 +42,17 @@ export default function Projects() {
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
 
-    // Hide overlay when above the first project
-    if (projectRefs.current[0]) {
-      triggers.push(
-        ScrollTrigger.create({
-          trigger: projectRefs.current[0],
-          start: "top top+=80",
-          onLeaveBack: () => setActiveTitleIdx(null),
-          onEnter: () => setActiveTitleIdx(0),
-        })
-      );
-    }
-
-    // Show overlay for each project as it reaches the top
     projectRefs.current.forEach((ref, idx) => {
       if (!ref) return;
       triggers.push(
         ScrollTrigger.create({
           trigger: ref,
-          start: "top top+=80",
+          start: "top top+=80", // adjust for header height
           end: "bottom top+=80",
-          onEnter: () => setActiveTitleIdx(idx),
-          onEnterBack: () => setActiveTitleIdx(idx),
+          onEnter: () => setFixedIdx(idx),
+          onEnterBack: () => setFixedIdx(idx),
+          onLeave: () => setFixedIdx(null),
+          onLeaveBack: () => setFixedIdx(idx === 0 ? null : idx - 1),
         })
       );
     });
@@ -94,29 +83,34 @@ export default function Projects() {
         <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
           A showcase of our recent tiling projects, demonstrating our expertise
           and attention to detail. Each project is custom tailored to meet our
-          clients' needs and preferences.
+          clients&#39; needs and preferences.
         </p>
-        {/* Fixed project title overlay */}
-        {activeTitleIdx !== null && (
-  <div className="fixed top-20 right-0 left-0 flex justify-center pointer-events-none z-50">
-    <div className="bg-background/80 px-8 py-4 rounded-xl text-center shadow-lg inline-block">
-      <h3 className="text-2xl font-semibold text-secondary">
-        {projects[activeTitleIdx]?.title}
-      </h3>
-    </div>
-  </div>
-)}
         <div className="flex flex-col items-center gap-20">
           {projects.map((project, projIdx) => (
             <div
-              ref={(el) => (projectRefs.current[projIdx] = el)}
+              ref={(el) => { projectRefs.current[projIdx] = el; }}
               id={project.title.replace(/\s+/g, "-").toLowerCase()}
               key={project.title}
               className="relative w-full h-[100svh] xl:rounded-md overflow-hidden flex mb-10"
             >
+              {/* Overlay: sticky by default, fixed if active */}
+              <div
+                className={`${
+                  fixedIdx === projIdx
+                    ? "fixed top-20 right-0 z-50 flex justify-end pointer-events-none w-full"
+                    : "sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full"
+                } transition-all`}
+                style={{ height: "60px" }}
+              >
+                <div className="px-8 py-4 text-center inline-block">
+                  <h3 className="text-2xl font-semibold text-background">
+                    {project.title}
+                  </h3>
+                </div>
+              </div>
               {/* Side menu */}
               <div
-                className={`absolute left-0 top-0 h-full z-20 transition-all duration-500 ${
+                className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
                   menuOpens[projIdx] ? "w-40" : "w-5 sm:w-10"
                 }`}
               >
@@ -143,8 +137,8 @@ export default function Projects() {
                   </button>
                   {/* Thumbnails */}
                   <div
-                    className={`overflow-y-auto mt-16 transition-opacity duration-300 ${
-                      menuOpens[projIdx] ? "opacity-100" : "opacity-0"
+                    className={`overflow-y-auto px-2 mx-auto mt-16 transition-opacity  ${
+                      menuOpens[projIdx] ? "opacity-100 delay-100 duration-300" : "opacity-0 duration-100"
                     }`}
                   >
                     {project.images.map((img, imgIdx) => (
