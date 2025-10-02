@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Josefin_Sans, Karla } from "next/font/google";
 import "@/styles/globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { Providers } from "./providers";
 
 const geistSans = Geist({
@@ -39,9 +37,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${josefinSans.variable} ${karla.variable} antialiased scroll-smooth`}
       >
-        <Header />
+        
           <Providers>{children}</Providers>
-        <Footer />
+        
       </body>
     </html>
   );

@@ -17,7 +17,7 @@ const navigation = [
   { name: "Contact", href: "/#contact" },
 ];
 
-export default function Header() {
+export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [headerMode, setHeaderMode] = useState<"light" | "dark">("dark");
   const headerRef = useRef<HTMLElement>(null);
@@ -27,10 +27,20 @@ export default function Header() {
   };
 
   useEffect(() => {
+
+    if (forceMode) {
+      setHeaderMode(forceMode);
+      return;
+    }
+
+    if (typeof window !== "undefined" && window.location.pathname === "/#home") {
+      setHeaderMode("dark");
+      return;
+    }   
+    
     const sections = Array.from(
       document.querySelectorAll(".section-light, .section-dark")
     );
-    console.log("Sections found:", sections);
     sections.forEach((section: Element) => {
       const isLight = section.classList.contains("section-light");
       ScrollTrigger.create({
@@ -44,7 +54,7 @@ export default function Header() {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [forceMode]);
 
   const textClass = headerMode === "light" ? "foreground" : "background";
   const hoverClass = headerMode === "light" ? "background" : "accent";
@@ -144,7 +154,7 @@ export default function Header() {
                       const section = document.getElementById(sectionId);
                       if (section) {
                         e.preventDefault();
-                        const yOffset = 5;
+                        const yOffset = 60;
                         const y =
                           section.getBoundingClientRect().top +
                           window.pageYOffset +
