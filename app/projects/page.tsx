@@ -1,6 +1,10 @@
 'use client';
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
@@ -30,9 +34,44 @@ const projects = [
 ];
 
 export default function Projects() {
-  // Track active image for each project
+  const [activeTitleIdx, setActiveTitleIdx] = useState<number | null>(null);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIdxs, setActiveIdxs] = useState(projects.map(() => 0));
   const [menuOpens, setMenuOpens] = useState(projects.map(() => false));
+
+  useEffect(() => {
+    const triggers: ScrollTrigger[] = [];
+
+    // Hide overlay when above the first project
+    if (projectRefs.current[0]) {
+      triggers.push(
+        ScrollTrigger.create({
+          trigger: projectRefs.current[0],
+          start: "top top+=80",
+          onLeaveBack: () => setActiveTitleIdx(null),
+          onEnter: () => setActiveTitleIdx(0),
+        })
+      );
+    }
+
+    // Show overlay for each project as it reaches the top
+    projectRefs.current.forEach((ref, idx) => {
+      if (!ref) return;
+      triggers.push(
+        ScrollTrigger.create({
+          trigger: ref,
+          start: "top top+=80",
+          end: "bottom top+=80",
+          onEnter: () => setActiveTitleIdx(idx),
+          onEnterBack: () => setActiveTitleIdx(idx),
+        })
+      );
+    });
+
+    return () => {
+      triggers.forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   const handleThumbClick = (projIdx: number, imgIdx: number) => {
     setActiveIdxs((prev) =>
@@ -48,15 +87,32 @@ export default function Projects() {
 
   return (
     <section id="projects" className="bg-accent section-light min-h-screen">
-      <div className="mx-auto py-18 sm:py-24 lg:py-32 xl:px-10 ">
+      <div className="mx-auto py-18 sm:py-24 xl:px-10 ">
         <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Projects
         </h2>
+        <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
+          A showcase of our recent tiling projects, demonstrating our expertise
+          and attention to detail. Each project is custom tailored to meet our
+          clients' needs and preferences.
+        </p>
+        {/* Fixed project title overlay */}
+        {activeTitleIdx !== null && (
+  <div className="fixed top-20 right-0 left-0 flex justify-center pointer-events-none z-50">
+    <div className="bg-background/80 px-8 py-4 rounded-xl text-center shadow-lg inline-block">
+      <h3 className="text-2xl font-semibold text-secondary">
+        {projects[activeTitleIdx]?.title}
+      </h3>
+    </div>
+  </div>
+)}
         <div className="flex flex-col items-center gap-20">
           {projects.map((project, projIdx) => (
             <div
+              ref={(el) => (projectRefs.current[projIdx] = el)}
+              id={project.title.replace(/\s+/g, "-").toLowerCase()}
               key={project.title}
-              className="relative w-full h-[90svh] xl:rounded-md overflow-hidden flex mb-10"
+              className="relative w-full h-[100svh] xl:rounded-md overflow-hidden flex mb-10"
             >
               {/* Side menu */}
               <div
@@ -122,12 +178,6 @@ export default function Projects() {
                 className="object-cover transition-all duration-500"
                 priority
               />
-              {/* Project title overlay */}
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-background/80 px-8 py-4 rounded-xl text-center shadow-lg">
-                <h3 className="text-2xl font-semibold text-secondary">
-                  {project.title}
-                </h3>
-              </div>
             </div>
           ))}
         </div>
