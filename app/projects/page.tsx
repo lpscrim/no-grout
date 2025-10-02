@@ -111,11 +111,10 @@ export default function Projects() {
               {/* Side menu */}
               <div
                 className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
-                  menuOpens[projIdx] ? "w-40" : "w-5 sm:w-10"
+                  menuOpens[projIdx] ? "w-45" : "w-3 sm:w-10"
                 }`}
               >
-                <div className="flex flex-col h-full bg-primary/80 shadow-lg">
-                  {/* Arrow button */}
+                <div className="flex flex-col h-full bg-primary/90 shadow-lg">
                   <button
                     className="absolute top-1/2 left-full -translate-y-1/2 bg-accent rounded-r-full p-2 shadow cursor-pointer"
                     onClick={() => handleMenuToggle(projIdx)}
@@ -144,7 +143,7 @@ export default function Projects() {
                     {project.images.map((img, imgIdx) => (
                       <button
                         key={img.src}
-                        className={`block w-28 h-20 m-2 rounded overflow-hidden border-2 ${
+                        className={`block w-28 h-20 m-3 rounded overflow-hidden border-2 ${
                           activeIdxs[projIdx] === imgIdx
                             ? "border-accent"
                             : "border-transparent"
