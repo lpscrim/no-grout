@@ -119,12 +119,14 @@ export default function Projects() {
                   {/* Side menu */}
                   <div
                     className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
-                      menuOpens[projIdx] ? "w-45" : "w-3 sm:w-10"
+                      menuOpens[projIdx] ? "w-35 sm:w-40" : "w-3 sm:w-7 lg:w-10"
                     }`}
                   >
-                    <div className="flex flex-col h-full bg-primary/90 shadow-lg">
+                    <div className={`flex flex-col h-full transition-all shadow-lg ${
+                      menuOpens[projIdx] ? "bg-primary/90" : "bg-primary/50"
+                    }`}>
                       <button
-                        className="absolute top-1/2 left-full -translate-y-1/2 bg-accent rounded-r-full p-2 shadow cursor-pointer"
+                        className="absolute top-1/2 left-full -translate-y-1/2 bg-accent/90 rounded-r-full p-2 shadow cursor-pointer"
                         onClick={() => handleMenuToggle(projIdx)}
                         aria-label="Toggle menu"
                       >
@@ -144,7 +146,7 @@ export default function Projects() {
                       </button>
                       {/* Thumbnails */}
                       <div
-                        className={`overflow-y-auto px-2 mx-auto mt-16 transition-opacity  ${
+                        className={`overflow-y-auto mx-auto mt-16 transition-opacity  ${
                           menuOpens[projIdx]
                             ? "opacity-100 delay-100 duration-300"
                             : "opacity-0 duration-100"
