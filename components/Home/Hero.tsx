@@ -12,10 +12,10 @@ export default function Hero() {
               Bespoke
             </p>
             <div className="text-center text-6xl items-center font-bold flex flex-col sm:flex-row m-5">
-              <h1 className="text-accent hover:brightness-110 duration-2000">No&nbsp;</h1>
-              <h1 className="text-background hover:brightness-110 duration-2000"> Grout&nbsp;</h1>
-              <h1 className="text-accent hover:brightness-110 duration-2000"> About&nbsp;</h1>
-              <h1 className="text-background hover:brightness-110 duration-2000">It&nbsp;</h1>
+              <h1 className="text-accent hover:brightness-110 duration-1000">No&nbsp;</h1>
+              <h1 className="text-background hover:brightness-110 duration-1000"> Grout&nbsp;</h1>
+              <h1 className="text-accent hover:brightness-110 duration-1000"> About&nbsp;</h1>
+              <h1 className="text-background hover:brightness-110 duration-1000">It&nbsp;</h1>
             </div>
             <p className="text-xl sm:text-2xl mt-2 text-background opacity-0 group-hover:opacity-50 duration-2500 hover:opacity-100">
               Tiling

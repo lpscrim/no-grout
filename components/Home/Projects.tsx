@@ -123,7 +123,7 @@ export default function Projects() {
                       className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
                     />
                   </div>
-                  <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground group-hover:bg-accent group-hover:brightness-105 transition-all z-10 h-[20%] overflow-hidden`}>
+                  <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}>
                     <div>
                       <div className="flex mb-1 justify-between gap-4">
                         <span className="text-xs uppercase">
@@ -142,7 +142,7 @@ export default function Projects() {
         <div className="flex justify-center mt-12">
           <Link
             href="/#"
-            className="bg-accent text-foreground px-6 py-4 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-secondary hover:text-background transition-colors"
+            className="bg-secondary text-foreground px-6 py-4 rounded-full text-sm font-semibold flex items-center gap-2 hover:brightness-110 transition-brightness duration-500"
           >
             <h3>All projects</h3>
             <svg

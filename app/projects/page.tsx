@@ -123,7 +123,7 @@ export default function Projects() {
                     }`}
                   >
                     <div className={`flex flex-col h-full transition-all shadow-lg ${
-                      menuOpens[projIdx] ? "bg-primary/90" : "bg-primary/50"
+                      menuOpens[projIdx] ? "bg-primary/80" : "bg-primary/60"
                     }`}>
                       <button
                         className="absolute top-1/2 left-full -translate-y-1/2 bg-accent/90 rounded-r-full p-2 shadow cursor-pointer"
