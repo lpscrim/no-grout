@@ -108,7 +108,7 @@ export default function Projects() {
             >
             {/* Navigation buttons */}
               <button
-                className="fixed top-[48%] right-2 z-50 text-background text-2xl"
+                className="fixed top-[48%] right-4 z-50 text-background text-2xl"
                 onClick={() => {
                   if (fixedIdx !== null && fixedIdx > 0) {
                     const prevIdx = fixedIdx - 1;
@@ -120,7 +120,7 @@ export default function Projects() {
                 ↑
               </button>
               <button
-                className="fixed top-[52%] right-2 z-50 text-background text-2xl"
+                className="fixed top-[52%] right-4 z-50 text-background text-2xl"
                 onClick={() => {
                   if (fixedIdx === null) {
                     scrollToProject(0);
@@ -182,7 +182,7 @@ export default function Projects() {
                   </button>
                   {/* Thumbnails */}
                   <div
-                    className={`overflow-y-auto mx-auto mt-16 transition-opacity  ${
+                    className={`overflow-y-auto mx-auto mt-20 transition-opacity  ${
                       menuOpens[projIdx]
                         ? "opacity-100 delay-100 duration-300"
                         : "opacity-0 duration-100"
