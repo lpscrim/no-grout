@@ -47,7 +47,7 @@ export default function ProjectSection({
     >
       {/* Navigation buttons */}
       <button
-        className="fixed top-[48%] right-4 z-50 text-background text-2xl"
+        className="fixed top-[45%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl  cursor-pointer"
         onClick={() => {
           if (fixedIdx !== null && fixedIdx > 0) {
             const prevIdx = fixedIdx - 1;
@@ -59,7 +59,7 @@ export default function ProjectSection({
         ↑
       </button>
       <button
-        className="fixed top-[52%] right-4 z-50 text-background text-2xl"
+        className="fixed top-[55%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl cursor-pointer"
         onClick={() => {
           if (fixedIdx === null) {
             scrollToProject(0);
@@ -75,7 +75,7 @@ export default function ProjectSection({
       <div
         className={`${
           fixedIdx === projIdx
-            ? "fixed top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full"
+            ? "fixed top-15 lg:top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full"
             : "sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full"
         } transition-all`}
         style={{ height: "60px" }}

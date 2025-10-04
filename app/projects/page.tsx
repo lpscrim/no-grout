@@ -11,7 +11,6 @@ export default function Projects() {
   interface ProjectImage {
     src: string;
     alt: string;
-    // add other image properties if needed
   }
 
   interface Project {
