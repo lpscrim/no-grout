@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 const navigation = [
   { name: "Home", href: "/#home" },
   { name: "Projects", href: "/projects" },
-  { name: "Services", href: "/#services" },
   { name: "Contact", href: "/#contact" },
 ];
 
