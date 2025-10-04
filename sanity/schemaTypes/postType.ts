@@ -23,9 +23,6 @@ export const postType = defineType({
       name: 'imageGallery',
       type: 'array',
       of: [{type: 'image'}],
-      options: {
-        hotspot: true,
-      },
     }),
     defineField({
       name: 'date',
