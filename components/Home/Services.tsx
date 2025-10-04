@@ -37,10 +37,7 @@ const services = [
 ];
 
 export default function Services() {
-  // Start with first image
   const [hoveredIdx, setHoveredIdx] = useState<number>(0);
-
-  // Use last hovered index always
   const imageSrc = services[hoveredIdx].image;
 
   return (
