@@ -80,12 +80,12 @@ export default function ProjectSection({
         style={{ height: "60px" }}
       >
         <div className="px-8 py-4 text-center inline-block">
-          <h3 className="text-2xl font-semibold text-background">
+          <h6 className="text-2xl font-semibold text-background">
             {project.title}
-          </h3>
-          <h4 className="text-md text-right text-background/95">
+          </h6>
+          <h6 className="text-md text-right text-background/95">
             {formatDate(project.date)}
-          </h4>
+          </h6>
         </div>
       </div>
       {/* Side menu */}

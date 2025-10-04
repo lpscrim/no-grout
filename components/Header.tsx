@@ -95,7 +95,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
             <Link
               key={item.name}
               href={item.href}
-              className={`text-base/6 font-semibold transition-colors 
+              className={`text-lg/6 font-semibold transition-colors 
       ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
               onClick={(e) => {
                 setMobileMenuOpen(false);
@@ -113,7 +113,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
                 }
               }}
             >
-              {item.name}
+              <h6>{item.name}</h6>
             </Link>
           ))}
         </div>
@@ -142,7 +142,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`opacity-0 -mx-3 block rounded-lg px-3 py-2 text-3xl sm:text-4xl font-semibold duration-200 transition-color drop-in text-${textClass} hover:text-${hoverClass}`}
+                    className={` opacity-0 -mx-3 block rounded-lg px-3 py-2 text-3xl sm:text-4xl font-semibold duration-200 transition-color drop-in text-${textClass} hover:text-${hoverClass}`}
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
@@ -162,7 +162,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
                       }
                     }}
                   >
-                    {item.name}
+                    <h6>{item.name}</h6>
                   </Link>
                 ))}
               </div>
@@ -181,3 +181,5 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
     </header>
   );
 }
+
+{"hover:text-background hover:text-foreground text-background text-foreground"}
