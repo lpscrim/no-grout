@@ -104,7 +104,7 @@ export default function Projects() {
   }
 
   return (
-    <main className="bg-accent section-light min-h-screen">
+    <main className="bg-accent section-light min-h-[100svh]">
       <div className="mx-auto py-18 md:py-24 xl:px-10 ">
         <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Projects
