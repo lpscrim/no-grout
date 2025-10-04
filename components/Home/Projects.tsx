@@ -29,6 +29,7 @@ export default function Projects() {
   }
 
   const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
   const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -42,7 +43,10 @@ export default function Projects() {
           "alt": imageGallery[0].alt
         }`
       )
-      .then((data) => setProjects(data));
+      .then((data) => {
+        setProjects(data);
+        setLoading(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -87,6 +91,17 @@ export default function Projects() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
+        { loading ? (
+          <div className="flex flex-col justify-center items-center h-96">
+            <span className="text-xl text-secondary animate-pulse">
+              Loading projects...
+            </span>
+            <svg className="animate-spin mx-auto mt-5 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </div>
+        ) : (
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-y-25 my-20">
           <div className="lg:block hidden absolute inset-0 bg-accent top-[50%] h-[1px] w-[70%] mx-auto line-animate-horizontal"></div>
           <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[60%] line-animate-vertical"></div>
@@ -132,7 +147,7 @@ export default function Projects() {
               </Link>
             </div>
           ))}
-        </div>
+        </div> )}
         <div className="flex justify-center mt-12">
           <Link
             href="/#"
