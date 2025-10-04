@@ -3,54 +3,53 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { client } from "@/sanity/lib/client"; 
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    title: "Modern Hall",
-    date: "June 2025",
-    images: [
-      { src: "/hall.jpg", alt: "Hall Main" },
-      { src: "/kitchen.jpg", alt: "Hall Alt 1" },
-      { src: "/hall.jpg", alt: "Hall Alt 2" },
-    ],
-  },
-  {
-    title: "Kitchen Renovation",
-    date: "May 2025",
-    images: [
-      { src: "/kitchen.jpg", alt: "Kitchen Main" },
-      { src: "/hall.jpg", alt: "Kitchen Alt 1" },
-      { src: "/kitchen.jpg", alt: "Kitchen Alt 2" },
-    ],
-  },
-  {
-    title: "Luxury Bathroom",
-    date: "April 2025",
-    images: [
-      { src: "/hall.jpg", alt: "Bathroom Main" },
-      { src: "/kitchen.jpg", alt: "Bathroom Alt 1" },
-      { src: "/hall.jpg", alt: "Bathroom Alt 2" },
-    ],
-  },
-];
-
 export default function Projects() {
+  interface ProjectImage {
+    src: string;
+    alt: string;
+    // add other image properties if needed
+  }
+
+  interface Project {
+    title: string;
+    date: string;
+    images?: ProjectImage[];
+  }
+
+  const [projects, setProjects] = useState<Project[]>([]);
   const [fixedIdx, setFixedIdx] = useState<number | null>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeIdxs, setActiveIdxs] = useState(projects.map(() => 0));
-  const [menuOpens, setMenuOpens] = useState(projects.map(() => false));
+  const [activeIdxs, setActiveIdxs] = useState<number[]>([]);
+  const [menuOpens, setMenuOpens] = useState<boolean[]>([]);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "post"] | order(date desc){
+        title,
+        date,
+        "images": imageGallery[]{..., "src": asset->url, "alt": alt}
+      }`
+      )
+      .then((data) => {
+        setProjects(data);
+        setActiveIdxs(data.map(() => 0));
+        setMenuOpens(data.map(() => false));
+      });
+  }, []);
 
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
-
     projectRefs.current.forEach((ref, idx) => {
       if (!ref) return;
       triggers.push(
         ScrollTrigger.create({
           trigger: ref,
-          start: "top top+=80", // adjust for header height
+          start: "top top+=80",
           end: "bottom top+=80",
           onEnter: () => setFixedIdx(idx),
           onEnterBack: () => setFixedIdx(idx),
@@ -59,11 +58,10 @@ export default function Projects() {
         })
       );
     });
-
     return () => {
       triggers.forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [projects]);
 
   const handleThumbClick = (projIdx: number, imgIdx: number) => {
     setActiveIdxs((prev) =>
@@ -80,10 +78,16 @@ export default function Projects() {
   const scrollToProject = (idx: number) => {
     const el = projectRefs.current[idx];
     if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY;
+      const offset = window.innerWidth < 1024 ? 0 : 80;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
+
+  function formatDate(dateString: string) {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-US", { month: "long", year: "numeric" });
+  }
 
   return (
     <main className="bg-accent section-light min-h-screen">
@@ -106,7 +110,7 @@ export default function Projects() {
               key={project.title}
               className="relative w-full h-[100svh] xl:rounded-md overflow-hidden flex "
             >
-            {/* Navigation buttons */}
+              {/* Navigation buttons */}
               <button
                 className="fixed top-[48%] right-4 z-50 text-background text-2xl"
                 onClick={() => {
@@ -146,7 +150,7 @@ export default function Projects() {
                     {project.title}
                   </h3>
                   <h4 className="text-md text-right text-background/95">
-                    {project.date}
+                    {formatDate(project.date)}
                   </h4>
                 </div>
               </div>
@@ -188,9 +192,9 @@ export default function Projects() {
                         : "opacity-0 duration-100"
                     }`}
                   >
-                    {project.images.map((img, imgIdx) => (
+                    {project.images?.map((img: ProjectImage, imgIdx: number) => (
                       <button
-                        key={img.src}
+                        key={img.src + "-" + imgIdx} 
                         className={`block w-28 h-20 m-3 rounded overflow-hidden border-2 ${
                           activeIdxs[projIdx] === imgIdx
                             ? "border-accent"
@@ -212,13 +216,15 @@ export default function Projects() {
                 </div>
               </div>
               {/* Main image */}
-              <Image
-                src={project.images[activeIdxs[projIdx]].src}
-                alt={project.images[activeIdxs[projIdx]].alt}
-                fill
-                className="object-cover transition-all duration-500"
-                priority
-              />
+              {(project.images?.length ?? 0) > 0 && (
+                <Image
+                  src={project.images![activeIdxs[projIdx]].src}
+                  alt={project.images![activeIdxs[projIdx]].alt}
+                  fill
+                  className="object-cover transition-all duration-500"
+                  priority
+                />
+              )}
             </div>
           ))}
         </div>

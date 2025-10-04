@@ -18,36 +18,15 @@ export const postType = defineType({
         source: 'title',
       },
     }),
+ 
     defineField({
-      name: 'mainImage',
-      type: 'image',
+      name: 'imageGallery',
+      type: 'array',
+      of: [{type: 'image'}],
       options: {
         hotspot: true,
       },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ]
     }),
-    defineField({
-      name: 'Images',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-        })
-      ]
-    }),
-
-
     defineField({
       name: 'date',
       type: 'datetime',
