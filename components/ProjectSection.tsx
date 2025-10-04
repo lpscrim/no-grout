@@ -88,7 +88,7 @@ export default function ProjectSection({
         </div>
       )}
 
-      {/* Sticky header (only if NOT fixed) */}
+      {/* Sticky header*/}
       {fixedIdx !== projIdx && (
         <div
           className="sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full transition-all"
