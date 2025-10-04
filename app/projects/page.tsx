@@ -3,7 +3,8 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { client } from "@/sanity/lib/client"; 
+import { client } from "@/sanity/lib/client";
+import ProjectSection from "@/components/ProjectSection";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,8 +26,10 @@ export default function Projects() {
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIdxs, setActiveIdxs] = useState<number[]>([]);
   const [menuOpens, setMenuOpens] = useState<boolean[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     client
       .fetch(
         `*[_type == "post"] | order(date desc){
@@ -39,6 +42,7 @@ export default function Projects() {
         setProjects(data);
         setActiveIdxs(data.map(() => 0));
         setMenuOpens(data.map(() => false));
+        setLoading(false); 
       });
   }, []);
 
@@ -100,134 +104,38 @@ export default function Projects() {
           and attention to detail. Each project is custom tailored to meet our
           clients&#39; needs and preferences.
         </p>
-        <div className="flex flex-col items-center gap-2 md:gap-20">
-          {projects.map((project, projIdx) => (
-            <div
-              ref={(el) => {
-                projectRefs.current[projIdx] = el;
-              }}
-              id={project.title.replace(/\s+/g, "-").toLowerCase()}
-              key={project.title}
-              className="relative w-full h-[100svh] xl:rounded-md overflow-hidden flex "
-            >
-              {/* Navigation buttons */}
-              <button
-                className="fixed top-[48%] right-4 z-50 text-background text-2xl"
-                onClick={() => {
-                  if (fixedIdx !== null && fixedIdx > 0) {
-                    const prevIdx = fixedIdx - 1;
-                    scrollToProject(prevIdx);
-                  }
+        {loading ? (
+          <div className="flex justify-center items-center h-96">
+            <span className="text-xl text-secondary animate-pulse">
+              Loading projects...
+            </span>
+            <svg className="animate-spin ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center gap-2 md:gap-20">
+            {projects.map((project, projIdx) => (
+              <ProjectSection
+                key={project.title}
+                project={project}
+                projIdx={projIdx}
+                fixedIdx={fixedIdx}
+                projectRef={(el) => {
+                  projectRefs.current[projIdx] = el;
                 }}
-                aria-label="Previous project"
-              >
-                ↑
-              </button>
-              <button
-                className="fixed top-[52%] right-4 z-50 text-background text-2xl"
-                onClick={() => {
-                  if (fixedIdx === null) {
-                    scrollToProject(0);
-                  } else if (fixedIdx < projects.length - 1) {
-                    const nextIdx = fixedIdx + 1;
-                    scrollToProject(nextIdx);
-                  }
-                }}
-                aria-label="Next project"
-              >
-                ↓
-              </button>
-              <div
-                className={`${
-                  fixedIdx === projIdx
-                    ? "fixed top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full"
-                    : "sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full"
-                } transition-all`}
-                style={{ height: "60px" }}
-              >
-                <div className="px-8 py-4 text-center inline-block">
-                  <h3 className="text-2xl font-semibold text-background">
-                    {project.title}
-                  </h3>
-                  <h4 className="text-md text-right text-background/95">
-                    {formatDate(project.date)}
-                  </h4>
-                </div>
-              </div>
-              {/* Side menu */}
-              <div
-                className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
-                  menuOpens[projIdx] ? "w-35 sm:w-40" : "w-3 sm:w-7 lg:w-10"
-                }`}
-              >
-                <div
-                  className={`flex flex-col h-full transition-all shadow-lg ${
-                    menuOpens[projIdx] ? "bg-primary/80" : "bg-primary/60"
-                  }`}
-                >
-                  <button
-                    className="absolute top-1/2 left-full -translate-y-1/2 bg-accent/90 rounded-r-full p-2 shadow cursor-pointer"
-                    onClick={() => handleMenuToggle(projIdx)}
-                    aria-label="Toggle menu"
-                  >
-                    <svg
-                      width="24"
-                      height="24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      className={`transition-transform duration-300 ${
-                        menuOpens[projIdx] ? "rotate-180" : ""
-                      }`}
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M9 6l6 6-6 6" />
-                    </svg>
-                  </button>
-                  {/* Thumbnails */}
-                  <div
-                    className={`overflow-y-auto mx-auto mt-20 transition-opacity  ${
-                      menuOpens[projIdx]
-                        ? "opacity-100 delay-100 duration-300"
-                        : "opacity-0 duration-100"
-                    }`}
-                  >
-                    {project.images?.map((img: ProjectImage, imgIdx: number) => (
-                      <button
-                        key={img.src + "-" + imgIdx} 
-                        className={`block w-28 h-20 m-3 rounded overflow-hidden border-2 ${
-                          activeIdxs[projIdx] === imgIdx
-                            ? "border-accent"
-                            : "border-transparent"
-                        }`}
-                        onClick={() => handleThumbClick(projIdx, imgIdx)}
-                        aria-label={`Show ${img.alt}`}
-                      >
-                        <Image
-                          src={img.src}
-                          alt={img.alt}
-                          width={112}
-                          height={80}
-                          className="object-cover w-full h-full"
-                        />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {/* Main image */}
-              {(project.images?.length ?? 0) > 0 && (
-                <Image
-                  src={project.images![activeIdxs[projIdx]].src}
-                  alt={project.images![activeIdxs[projIdx]].alt}
-                  fill
-                  className="object-cover transition-all duration-500"
-                  priority
-                />
-              )}
-            </div>
-          ))}
-        </div>
+                activeIdx={activeIdxs[projIdx]}
+                menuOpen={menuOpens[projIdx]}
+                handleThumbClick={handleThumbClick}
+                handleMenuToggle={handleMenuToggle}
+                scrollToProject={scrollToProject}
+                projectsLength={projects.length}
+                formatDate={formatDate}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );
