@@ -80,8 +80,7 @@ export default function Projects() {
   const scrollToProject = (idx: number) => {
     const el = projectRefs.current[idx];
     if (el) {
-      const offset = window.innerWidth < 1024 ? 0 : 80;
-      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      const y = el.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };
