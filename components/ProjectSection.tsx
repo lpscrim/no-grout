@@ -25,7 +25,6 @@ interface ProjectSectionProps {
   formatDate: (dateString: string) => string;
 }
 
-
 export default function ProjectSection({
   project,
   projIdx,
@@ -72,23 +71,39 @@ export default function ProjectSection({
       >
         ↓
       </button>
-      <div
-        className={`${
-          fixedIdx === projIdx
-            ? "fixed top-15 lg:top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full"
-            : "sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full"
-        } transition-all`}
-        style={{ height: "60px" }}
-      >
-        <div className="px-8 py-4 text-center inline-block">
-          <h6 className="text-2xl font-semibold text-background">
-            {project.title}
-          </h6>
-          <h6 className="text-md text-right text-background/95">
-            {formatDate(project.date)}
-          </h6>
+      {/* Fixed header */}
+      {fixedIdx === projIdx && (
+        <div
+          className="fixed top-15 lg:top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full transition-all"
+          style={{ height: "60px" }}
+        >
+          <div className="px-8 py-4 text-center inline-block">
+            <h6 className="text-2xl font-semibold text-background">
+              {project.title}
+            </h6>
+            <h6 className="text-md text-right text-background/95">
+              {formatDate(project.date)}
+            </h6>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Sticky header (only if NOT fixed) */}
+      {fixedIdx !== projIdx && (
+        <div
+          className="sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full transition-all"
+          style={{ height: "60px" }}
+        >
+          <div className="px-8 py-4 text-center inline-block">
+            <h6 className="text-2xl font-semibold text-background">
+              {project.title}
+            </h6>
+            <h6 className="text-md text-right text-background/95">
+              {formatDate(project.date)}
+            </h6>
+          </div>
+        </div>
+      )}
       {/* Side menu */}
       <div
         className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
