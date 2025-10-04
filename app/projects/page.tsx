@@ -45,6 +45,19 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
+  // Scroll to hash on initial load
+  if (window.location.hash) {
+    const id = window.location.hash.replace("#", "");
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100); // Delay to ensure DOM is ready
+  }
+}, []);
+
+  useEffect(() => {
     const triggers: ScrollTrigger[] = [];
     projectRefs.current.forEach((ref, idx) => {
       if (!ref) return;

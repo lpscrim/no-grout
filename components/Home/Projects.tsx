@@ -122,7 +122,7 @@ export default function Projects() {
               )}
               <Link
                 id={`project-${idx}`}
-                href={project.img}
+                href={`/projects/#${project.title.replace(/\s+/g, "-").toLowerCase()}`}
                 className={`overflow-hidden flex flex-col group h-100 rounded-xs`}
               >
                 <div className="relative w-full h-[80%]">
