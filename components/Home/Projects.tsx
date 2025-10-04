@@ -2,50 +2,48 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { client } from "@/sanity/lib/client"; // Adjust path as needed
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    title: "Elegant Cashmere Kitchen",
-    category: "kitchen design",
-    year: "2023",
-    href: "/kitchen.jpg",
-    img: "/kitchen.jpg",
-    alt: "Elegant Cashmere Kitchen",
-  },
-  {
-    title: "Classic White Kitchen",
-    category: "kitchen design",
-    year: "2023",
-    href: "/hall.jpg",
-    img: "/hall.jpg",
-    alt: "Classic White Kitchen",
-  },
-  {
-    title: "Modern Kitchen",
-    category: "kitchen design",
-    year: "2022",
-    href: "/kitchen.jpg",
-    img: "/kitchen.jpg",
-    alt: "Modern Kitchen",
-  },
-  {
-    title: "Modern Kitchen2",
-    category: "kitchen design2",
-    year: "2022",
-    href: "/hall.jpg",
-    img: "/hall.jpg",
-    alt: "Modern Kitchen2",
-  },
-  
-];
-
 export default function Projects() {
+  type Project = {
+    title: string;
+    category: string;
+    date: string;
+    img: string;
+    alt?: string;
+  };
+
+  
+  function formatDateM(dateString: string) {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-US", { month: "long"});
+  }
+  function formatDateY(dateString: string) {
+    const date = new Date(dateString);
+    return date.toLocaleString("en-US", { year: "numeric" });
+  }
+
+  const [projects, setProjects] = useState<Project[]>([]);
   const lineRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "post"] | order(date desc)[0...4]{
+          title,
+          category,
+          date,
+          "img": imageGallery[0].asset->url,
+          "alt": imageGallery[0].alt
+        }`
+      )
+      .then((data) => setProjects(data));
+  }, []);
 
   useEffect(() => {
     lineRefs.current.forEach((line) => {
@@ -67,9 +65,7 @@ export default function Projects() {
         );
       }
     });
-  }, []);
-
-  
+  }, [projects]);
 
   return (
     <section
@@ -96,48 +92,46 @@ export default function Projects() {
           <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[60%] line-animate-vertical"></div>
           <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[5%] line-animate-vertical"></div>
 
-          {projects.map((project, idx) => {
-            return (
-              <div
-                key={project.title}
-                className="relative w-[90%] sm:w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
+          {projects.map((project, idx) => (
+            <div
+              key={project.title + idx}
+              className="relative w-[90%] sm:w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
+            >
+              {idx !== 0 && (
+                <div
+                  ref={(el) => {
+                    lineRefs.current[idx] = el;
+                  }}
+                  className="block lg:hidden absolute bg-accent -top-10 h-[1px] w-[70%] -translate-x-1/2 left-1/2 opacity-0 line-animate-horizontal"
+                ></div>
+              )}
+              <Link
+                id={`project-${idx}`}
+                href={project.img}
+                className={`overflow-hidden flex flex-col group h-100 rounded-xs`}
               >
-                {idx !== 0 && (
-                  <div
-                    ref={(el) => {
-                      lineRefs.current[idx] = el;
-                    }}
-                    className="block lg:hidden absolute bg-accent -top-10 h-[1px] w-[70%] -translate-x-1/2 left-1/2 opacity-0 line-animate-horizontal"
-                  ></div>
-                )}
-                <Link
-                  id={`project-${idx}`}
-                  href={project.href}
-                  className={`overflow-hidden flex flex-col group h-100 rounded-xs`}
-                >
-                  <div className="relative w-full h-[80%]">
-                    <Image
-                      src={project.img}
-                      alt={project.alt}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
-                    />
-                  </div>
-                  <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}>
-                    <div>
-                      <div className="flex mb-1 justify-between gap-4">
-                        <span className="text-xs uppercase">
-                          {project.category}
-                        </span>
-                        <span className="text-xs">{project.year}</span>
-                      </div>
-                      <h3 className="text-lg font-semibold">{project.title}</h3>
+                <div className="relative w-full h-[80%]">
+                  <Image
+                    src={project.img}
+                    alt={project.alt || project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
+                  />
+                </div>
+                <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}>
+                  <div>
+                    <div className="flex mb-1 justify-between gap-4">
+                      <span className="text-xs uppercase">
+                        {formatDateM(project.date)}
+                      </span>
+                      <span className="text-sm">{formatDateY(project.date)}</span>
                     </div>
+                    <h3 className="text-lg font-semibold">{project.title}</h3>
                   </div>
-                </Link>
-              </div>
-            );
-          })}
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
         <div className="flex justify-center mt-12">
           <Link

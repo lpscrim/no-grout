@@ -25,6 +25,7 @@ interface ProjectSectionProps {
   formatDate: (dateString: string) => string;
 }
 
+
 export default function ProjectSection({
   project,
   projIdx,
