@@ -42,7 +42,7 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative w-full h-[100svh] xl:h-[90svh] xl:rounded-md overflow-hidden flex "
+      className="relative w-full h-[100lvh] xl:h-[90svh] xl:rounded-md overflow-hidden flex "
     >
       {/* Navigation buttons */}
       <button
