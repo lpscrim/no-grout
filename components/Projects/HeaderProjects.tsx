@@ -134,7 +134,7 @@ export default function Header() {
             <div className="absolute bottom-8 left-10 cursor-pointer">
               <Link href="mailto:example@example.com">
                 <EnvelopeIcon
-                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-foreground hover:text-secondary`}
+                  className={`h-6 w-6 transition-all duration-300 hover:scale-125 text-background hover:text-secondary`}
                 />
                 <span className="sr-only">Email</span>
               </Link>
