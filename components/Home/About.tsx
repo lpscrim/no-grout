@@ -11,7 +11,7 @@ export default function About() {
       <div className="absolute inset-0">
         <ParallaxBanner
           layers={[{ image: "/hall.jpg", speed: -50 }]}
-          className="min-h-[200lvh] w-full"
+          className="min-h-[200dvh] w-full"
         />
       </div>
       <div>
