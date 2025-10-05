@@ -64,7 +64,7 @@ export default function Services() {
             {services.map((service, idx) => (
               <li
                 key={service.title}
-                className="bg-background/50 hover:bg-background/70 p-4 md:p-5  rounded-xs cursor-pointer transition-all duration-200 "
+                className={`bg-background/50 p-4 md:p-5 rounded-xs cursor-pointer transition-all duration-200 ${hoveredIdx === idx ? " bg-background/70" : "bg-background/50"}`}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
               >
