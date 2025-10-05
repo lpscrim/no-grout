@@ -71,7 +71,11 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
   const scrollToProject = (idx: number) => {
     const el = projectRefs.current[idx];
     if (el) {
-      const y = el.getBoundingClientRect().top + window.scrollY;
+      let offset = 0;
+      if (window.innerWidth >= 1280) { 
+        offset = 70;
+      }
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   };

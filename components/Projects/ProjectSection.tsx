@@ -47,7 +47,7 @@ export default function ProjectSection({
     >
       {/* Navigation buttons */}
       <button
-        className="fixed xl:hidden top-[43lvh] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+        className="fixed top-[43lvh] right-4 xl:right-2 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
         onClick={() => {
           if (fixedIdx !== null && fixedIdx > 0) {
             const prevIdx = fixedIdx - 1;
@@ -59,7 +59,7 @@ export default function ProjectSection({
         <ArrowUpIcon className="w-6 h-6" />
       </button>
       <button
-        className="fixed xl:hidden top-[56lvh] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+        className="fixed top-[56lvh] right-4 xl:right-2  z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
         onClick={() => {
           if (fixedIdx === null) {
             scrollToProject(0);
