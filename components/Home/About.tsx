@@ -6,12 +6,12 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-[115svh] flex justify-end items-start overflow-hidden section-light bg-accent"
+      className="relative min-h-[115dvh] flex justify-end items-start overflow-hidden section-light bg-accent"
     >
       <div className="absolute inset-0">
         <ParallaxBanner
           layers={[{ image: "/hall.jpg", speed: -50 }]}
-          className="h-[200svh] w-full"
+          className="h-[200dvh] w-full"
         />
       </div>
       <div>
