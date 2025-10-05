@@ -72,7 +72,8 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
       >
         <Link
           href="#"
-          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible hover:text-${hoverClass} transition-colors`}
+          className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible transition-colors
+            ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
         >
           No Grout About It
         </Link>
