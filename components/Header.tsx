@@ -44,7 +44,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
       const isLight = section.classList.contains("section-light");
       ScrollTrigger.create({
         trigger: section,
-        start: "top top",
+        start: "top 20%",
         end: "bottom top",
         onEnter: () => setHeaderMode(isLight ? "light" : "dark"),
         onEnterBack: () => setHeaderMode(isLight ? "light" : "dark"),

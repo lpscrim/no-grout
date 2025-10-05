@@ -8,6 +8,7 @@ export default function NavIcon( { open, color, hoverColor } : { open: boolean, 
 
   const currentColor = isHovered && hoverColor ? hoverColor : color;
 
+
   return (
     <div
       id="nav-icon"
