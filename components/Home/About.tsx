@@ -1,6 +1,6 @@
 "use client";
 import { ParallaxBanner } from "react-scroll-parallax";
-import AnimatedOnView from "@/components/AnimatedOnView";
+import AnimatedOnView from "@/components/Functions/AnimatedOnView";
 
 export default function About() {
   return (

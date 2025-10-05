@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ProjectSection from "@/components/ProjectSection";
+import ProjectSection from "@/components/Projects/ProjectSection";
 
 gsap.registerPlugin(ScrollTrigger);
 

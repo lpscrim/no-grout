@@ -4,7 +4,7 @@ import Contact from "@/components/Home/Contact";
 import Hero from "@/components/Home/Hero";
 import Projects from "@/components/Home/Projects";
 import Services from "@/components/Home/Services";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
+import ScrollToTopButton from "@/components/Functions/ScrollToTopButton";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
