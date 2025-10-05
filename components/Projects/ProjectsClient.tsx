@@ -83,7 +83,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
 
   return (
     <main className="bg-accent section-dark min-h-[100svh]">
-      <div className="mx-auto lg:py-20 xl:px-10 "> {/* Adjusted padding - py-18 md:py-24 */}
+      <div className="mx-auto lg:py-17 xl:px-10 "> {/* Adjusted padding - py-18 md:py-24 */}
         {/*<h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Projects
         </h2>

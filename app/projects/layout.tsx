@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import HeaderProjects from "@/components/Projects/HeaderProjects";
 import Footer from "@/components/Footer";
 
 export default function ProjectsLayout({
@@ -6,7 +6,7 @@ export default function ProjectsLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Header forceMode="dark" />
+      <HeaderProjects />
       
       {children}
       <Footer mode="dark"/>
