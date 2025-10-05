@@ -6,10 +6,10 @@ export default function ProjectsLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Header forceMode="light" />
+      <Header forceMode="dark" />
       
       {children}
-      <Footer mode="light"/>
+      <Footer mode="dark"/>
     </>
   );
 }
