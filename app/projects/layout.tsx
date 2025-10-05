@@ -7,6 +7,7 @@ export default function ProjectsLayout({
   return (
     <>
       <Header forceMode="light" />
+      
       {children}
       <Footer mode="light"/>
     </>

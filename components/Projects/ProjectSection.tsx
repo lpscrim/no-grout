@@ -42,11 +42,11 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative w-full h-[100lvh] xl:h-[90svh] xl:rounded-md overflow-hidden flex "
+      className="relative w-full h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
     >
       {/* Navigation buttons */}
       <button
-        className="fixed xl:hidden top-[45%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl  cursor-pointer"
+        className="fixed xl:hidden top-[400] sm:top-[45%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl  cursor-pointer"
         onClick={() => {
           if (fixedIdx !== null && fixedIdx > 0) {
             const prevIdx = fixedIdx - 1;
@@ -58,7 +58,7 @@ export default function ProjectSection({
         ↑
       </button>
       <button
-        className="fixed xl:hidden top-[55%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl cursor-pointer"
+        className="fixed xl:hidden top-[500] sm:top-[55%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl cursor-pointer"
         onClick={() => {
           if (fixedIdx === null) {
             scrollToProject(0);
