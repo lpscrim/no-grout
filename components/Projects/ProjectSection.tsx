@@ -108,7 +108,7 @@ export default function ProjectSection({
       {/* Side menu */}
       <div
         className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
-          menuOpen ? "w-35 sm:w-40" : "w-2 sm:w-7 lg:w-10"
+          menuOpen ? "w-35 sm:w-40" : "w-2 sm:w-5 lg:w-7"
         }`}
       >
         <div
