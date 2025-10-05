@@ -9,7 +9,7 @@ export default function ProjectsLayout({
       <HeaderProjects />
       
       {children}
-      <Footer mode="dark"/>
+      <Footer mode="light"/>
     </>
   );
 }
