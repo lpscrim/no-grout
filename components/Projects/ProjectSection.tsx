@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/solid";
 
 interface ProjectImage {
   src: string;
@@ -55,10 +56,10 @@ export default function ProjectSection({
         }}
         aria-label="Previous project"
       >
-        ↑
+        <ArrowUpIcon className="w-6 h-6" />
       </button>
       <button
-        className="fixed xl:hidden top-[55lvh] sm:top-[55%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+        className="fixed xl:hidden top-[56lvh] sm:top-[55%] right-4 z-50 text-background hover:text-accent transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
         onClick={() => {
           if (fixedIdx === null) {
             scrollToProject(0);
@@ -69,7 +70,7 @@ export default function ProjectSection({
         }}
         aria-label="Next project"
       >
-        ↓
+        <ArrowDownIcon className="w-6 h-6" />
       </button>
       {/* Fixed header */}
       {fixedIdx === projIdx && (
