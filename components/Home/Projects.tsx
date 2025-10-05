@@ -150,7 +150,7 @@ export default function Projects() {
         </div> )}
         <div className="flex justify-center mt-12">
           <Link
-            href="/#"
+            href="/projects"
             className="bg-secondary text-foreground px-6 py-4 rounded-full text-sm font-semibold flex items-center gap-2 hover:brightness-110 transition-brightness duration-500"
           >
             <h3>All projects</h3>
