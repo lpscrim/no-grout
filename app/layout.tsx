@@ -23,8 +23,8 @@ const karla = Karla({
 });
 
 export const metadata: Metadata = {
-  title: "No grout about it",
-  description: "Bespoke tiling solutions",
+  title: "No Grout About It",
+  description: "Family Tiling Business in Scotland",
 };
 
 export default function RootLayout({
