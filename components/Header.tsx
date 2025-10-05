@@ -68,7 +68,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
     >
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-6 lg:px-8 z-999"
+        className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-5 lg:px-8 z-999"
       >
         <Link
           href="#"
