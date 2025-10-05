@@ -113,7 +113,7 @@ export default function ProjectSection({
       >
         <div
           className={`flex flex-col h-full transition-all shadow-lg ${
-            menuOpen ? "bg-primary/80" : "bg-primary/60"
+            menuOpen ? "bg-primary/80" : "bg-primary/50"
           }`}
         >
           <button
