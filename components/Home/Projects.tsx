@@ -151,14 +151,14 @@ export default function Projects() {
         <div className="flex justify-center mt-12">
           <Link
             href="/projects"
-            className="bg-secondary text-foreground px-6 py-4 rounded-full text-sm font-semibold flex items-center gap-2 hover:brightness-110 transition-brightness duration-500"
+            className="bg-secondary text-foreground px-5 py-2.5 rounded-3xl text-sm font-semibold flex items-center gap-2 hover:brightness-110 transition-brightness duration-500"
           >
             <h3>All projects</h3>
             <svg
               width="20"
               height="20"
               fill="currentColor"
-              className="inline-block mb-2"
+              className="inline-block mb-1"
             >
               <path d="M16.01 11H4v2h12.01v3L20 12l-3.99-4v3z" />
             </svg>
