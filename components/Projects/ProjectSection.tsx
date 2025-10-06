@@ -139,7 +139,7 @@ export default function ProjectSection({
       {/* Side menu */}
       <div
         className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
-          menuOpen ? "w-27 lg:w-40" : "w-2 sm:w-5 lg:w-7"
+          menuOpen ? "w-27 " : "w-2 sm:w-5 lg:w-7"
         }`}
       >
         <div
@@ -177,7 +177,7 @@ export default function ProjectSection({
           </button>
           {/* Thumbnails */}
           <div
-            className={`overflow-y-auto mx-auto mt-20 transition-opacity  ${
+            className={`overflow-y-auto mx-auto mt-10 transition-opacity  ${
               menuOpen
                 ? "opacity-100 delay-100 duration-300"
                 : "opacity-0 duration-100"
@@ -186,7 +186,7 @@ export default function ProjectSection({
             {project.images?.map((img: ProjectImage, imgIdx: number) => (
               <button
                 key={img.src + "-" + imgIdx}
-                className={`block w-21 h-15 lg:w-28 lg:h-20 m-3 rounded overflow-hidden border-2 ${
+                className={`block w-21 h-15 m-3 rounded overflow-hidden border-2 ${
                   activeIdx === imgIdx ? "border-accent" : "border-transparent"
                 }`}
                 onClick={() => {
@@ -220,10 +220,7 @@ export default function ProjectSection({
               <XMarkIcon className="w-6 h-6" />
             </button>
             <div className="px-8 pt-10 pb-18">
-              <h3 className="text-xl font-bold mb-1">{project.title}</h3>
-              <h4 className="text-md italic mb-4">
-                {formatDate(project.date)}
-              </h4>
+                <h3 className="text-base font-bold mb-1">{project.title}</h3>
               <div className="text-base whitespace-pre-line">
                 {project.body ? (
                   <PortableText value={project.body} />
