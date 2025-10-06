@@ -108,7 +108,7 @@ export default function ProjectSection({
       {/* Side menu */}
       <div
         className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
-          menuOpen ? "w-35 sm:w-40" : "w-2 sm:w-5 lg:w-7"
+          menuOpen ? "w-27 lg:w-40" : "w-2 sm:w-5 lg:w-7"
         }`}
       >
         <div
@@ -152,7 +152,7 @@ export default function ProjectSection({
             {project.images?.map((img: ProjectImage, imgIdx: number) => (
               <button
                 key={img.src + "-" + imgIdx}
-                className={`block w-28 h-20 m-3 rounded overflow-hidden border-2 ${
+                className={`block w-21 h-15 lg:w-28 lg:h-20 m-3 rounded overflow-hidden border-2 ${
                   activeIdx === imgIdx ? "border-accent" : "border-transparent"
                 }`}
                 onClick={() => {
