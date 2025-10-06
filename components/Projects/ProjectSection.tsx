@@ -195,7 +195,7 @@ export default function ProjectSection({
         </div>
       </div>
       {/* Info Overlay */}
-      {infoOpen && (
+      {infoOpen && fixedIdx === projIdx && (
         <div className="mx-auto z-20 flex items-center justify-center ">
           <div className="relative bg-background/90 rounded-sm max-w-lg w-full mx-14 shadow-2xl text-foreground">
             <button
