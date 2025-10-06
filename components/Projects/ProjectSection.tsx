@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowDownIcon, ArrowUpIcon } from "@heroicons/react/24/solid";
+import { ArrowDownIcon, ArrowUpIcon, InformationCircleIcon, XMarkIcon  } from "@heroicons/react/24/solid";
 
 interface ProjectImage {
   src: string;
@@ -9,6 +9,7 @@ interface ProjectImage {
 interface Project {
   title: string;
   date: string;
+  body?: string;
   images?: ProjectImage[];
 }
 
@@ -19,8 +20,10 @@ interface ProjectSectionProps {
   projectRef: (el: HTMLDivElement | null) => void;
   activeIdx: number;
   menuOpen: boolean;
+  infoOpen: boolean;
   handleThumbClick: (projIdx: number, imgIdx: number) => void;
   handleMenuToggle: (projIdx: number) => void;
+  handleInfoOpen: (open: boolean) => void;
   scrollToProject: (idx: number) => void;
   projectsLength: number;
   formatDate: (dateString: string) => string;
@@ -38,7 +41,12 @@ export default function ProjectSection({
   scrollToProject,
   projectsLength,
   formatDate,
+  infoOpen,
+  handleInfoOpen,
 }: ProjectSectionProps) {
+
+
+
   return (
     <div
       ref={projectRef}
@@ -85,7 +93,19 @@ export default function ProjectSection({
             <h6 className="text-md text-right text-background/95">
               {formatDate(project.date)}
             </h6>
+            {/* Info button*/}
+            <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
+              <button
+                type="button"
+                className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
+                onClick={() => handleInfoOpen(true)}
+                aria-label="Show project info"
+              >
+                <InformationCircleIcon className="w-5 h-5 text-background" />
+              </button>
+            </div>
           </div>
+          
         </div>
       )}
 
@@ -117,7 +137,7 @@ export default function ProjectSection({
           }`}
         >
           <button
-            className="absolute top-1/2 left-full -translate-y-1/2 bg-accent/90 rounded-r-full py-2 shadow cursor-pointer"
+            className="absolute top-1/2 -translate-y-1/2 left-full  bg-accent/90 rounded-r-full py-2 shadow cursor-pointer"
             onClick={() => handleMenuToggle(projIdx)}
             aria-label="Toggle menu"
           >
@@ -135,7 +155,7 @@ export default function ProjectSection({
               <path d="M9 6l6 6-6 6" />
             </svg>
             <span
-              className="text-xs font-semibold rotate-180"
+              className="text-xs font-semibold rotate-180  text-foreground"
               style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
             >
               see more
@@ -174,6 +194,27 @@ export default function ProjectSection({
           </div>
         </div>
       </div>
+      {/* Info Overlay */}
+      {infoOpen && (
+        <div className="absolute top-0 left-0 right-0 bottom-0 px-20 z-[999] flex items-center justify-center ">
+          <div className="relative bg-background/90 rounded-sm px-8 py-20 max-w-lg w-full mx-4 shadow-2xl text-foreground">
+            <button
+              className="absolute top-3 right-3 text-secondary hover:text-accent cursor-pointer"
+              onClick={() => handleInfoOpen(!infoOpen)}
+              aria-label="Close info"
+            >
+              <XMarkIcon className="w-6 h-6" />
+            </button>
+            <h3 className="text-xl font-bold mb-1">{project.title} Info</h3>
+            <h4 className="text-md italic mb-4">
+              {formatDate(project.date)}
+            </h4>
+            <div className="text-base whitespace-pre-line">
+              {project.body ? project.body : "No additional information."}
+            </div>
+          </div>
+        </div>
+      )}
       {/* Main image */}
       {(project.images?.length ?? 0) > 0 && (
         <Image

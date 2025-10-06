@@ -22,6 +22,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIdxs, setActiveIdxs] = useState<number[]>(projects.map(() => 0));
   const [menuOpens, setMenuOpens] = useState<boolean[]>(projects.map(() => false));
+  const [infoOpen, setInfoOpen] = useState(false);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -68,6 +69,10 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
     );
   };
 
+  const handleInfoOpen = (open: boolean) => {
+    setInfoOpen(open);
+  }
+
   const scrollToProject = (idx: number) => {
     const el = projectRefs.current[idx];
     if (el) {
@@ -108,6 +113,8 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
               }}
               activeIdx={activeIdxs[projIdx]}
               menuOpen={menuOpens[projIdx]}
+              handleInfoOpen={handleInfoOpen}
+              infoOpen={infoOpen}
               handleThumbClick={handleThumbClick}
               handleMenuToggle={handleMenuToggle}
               scrollToProject={scrollToProject}

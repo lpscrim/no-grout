@@ -6,6 +6,7 @@ export default async function ProjectsPage() {
     `*[_type == "post"] | order(date desc){
       title,
       date,
+      body,
       "images": imageGallery[]{..., "src": asset->url, "alt": alt}
     }`
   );
