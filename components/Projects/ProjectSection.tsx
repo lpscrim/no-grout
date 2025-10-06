@@ -117,23 +117,29 @@ export default function ProjectSection({
           }`}
         >
           <button
-            className="absolute top-1/2 left-full -translate-y-1/2 bg-accent/90 rounded-r-full p-2 shadow cursor-pointer"
+            className="absolute top-1/2 left-full -translate-y-1/2 bg-accent/90 rounded-r-full py-2 shadow cursor-pointer"
             onClick={() => handleMenuToggle(projIdx)}
             aria-label="Toggle menu"
           >
             <svg
-              width="24"
-              height="24"
+              width="22"
+              height="22"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               className={`transition-transform duration-300 ${
                 menuOpen ? "rotate-180" : ""
               }`}
-              viewBox="0 0 24 24"
+              viewBox="0 0 26 26"
             >
               <path d="M9 6l6 6-6 6" />
             </svg>
+            <span
+              className="text-xs font-semibold rotate-180"
+              style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
+            >
+              see more
+            </span>
           </button>
           {/* Thumbnails */}
           <div
