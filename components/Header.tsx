@@ -56,7 +56,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
   }, [forceMode]);
 
   const textClass = headerMode === "light" ? "foreground" : "background";
-  const hoverClass = headerMode === "light" ? "background" : "foreground";
+  const hoverClass = headerMode === "light" ? "background" : "secondary";
   const menuBack = headerMode === "light" ? "bg-accent/25" : "bg-black/25";
 
   return (
