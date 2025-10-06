@@ -57,6 +57,27 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
     };
   }, [projects]);
 
+   {/* useEffect(() => {
+    const timers: NodeJS.Timeout[] = [];
+    projects.forEach((project, projIdx) => {
+      if (!menuOpens[projIdx] && project.images && project.images.length > 1) {
+        timers[projIdx] = setInterval(() => {
+          setActiveIdxs((prev) =>
+            prev.map((val, idx) =>
+              idx === projIdx
+                ? (val + 1) % project.images!.length
+                : val
+            )
+          );
+        }, 10000);
+      }
+    });
+    return () => {
+      timers.forEach((timer) => timer && clearInterval(timer));
+    };
+  }, [projects, menuOpens]);
+  */}
+
   const handleThumbClick = (projIdx: number, imgIdx: number) => {
     setActiveIdxs((prev) =>
       prev.map((val, idx) => (idx === projIdx ? imgIdx : val))
