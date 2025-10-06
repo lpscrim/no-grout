@@ -89,7 +89,7 @@ export default function ProjectSection({
         </div>
       )}
       {/* Info button*/}
-      {project.body && (
+
         <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
           <button
             type="button"
@@ -103,7 +103,7 @@ export default function ProjectSection({
             <InformationCircleIcon className="w-5 h-5 text-background" />
           </button>
         </div>
-      )}
+
       {/* Navigation buttons */}
       <button
         className="fixed top-[43lvh] right-4 xl:right-2 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
