@@ -137,7 +137,7 @@ export default function ProjectSection({
           }`}
         >
           <button
-            className="absolute top-1/2 -translate-y-1/2 left-full  bg-accent/90 rounded-r-full py-2 shadow cursor-pointer"
+            className="absolute top-1/2 -translate-y-1/2 left-full z-999 bg-accent/90 rounded-r-full py-2 shadow cursor-pointer pointer-events-auto"
             onClick={() => handleMenuToggle(projIdx)}
             aria-label="Toggle menu"
           >
@@ -196,8 +196,8 @@ export default function ProjectSection({
       </div>
       {/* Info Overlay */}
       {infoOpen && (
-        <div className="absolute top-0 left-0 right-0 bottom-0 px-20 z-[999] flex items-center justify-center ">
-          <div className="relative bg-background/90 rounded-sm px-8 py-20 max-w-lg w-full mx-4 shadow-2xl text-foreground">
+        <div className="mx-auto z-20 flex items-center justify-center ">
+          <div className="relative bg-background/90 rounded-sm max-w-lg w-full mx-14 shadow-2xl text-foreground">
             <button
               className="absolute top-3 right-3 text-secondary hover:text-accent cursor-pointer"
               onClick={() => handleInfoOpen(!infoOpen)}
@@ -205,13 +205,16 @@ export default function ProjectSection({
             >
               <XMarkIcon className="w-6 h-6" />
             </button>
-            <h3 className="text-xl font-bold mb-1">{project.title} Info</h3>
-            <h4 className="text-md italic mb-4">
-              {formatDate(project.date)}
-            </h4>
-            <div className="text-base whitespace-pre-line">
-              {project.body ? project.body : "No additional information."}
-            </div>
+            <div className="px-8 pt-10 pb-18">
+              <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+              <h4 className="text-md italic mb-4">
+                {formatDate(project.date)}
+              </h4>
+              <div className="text-base whitespace-pre-line">
+                {project.body ? project.body : "No additional information."}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id error tempora. Eligendi quibusdam, et iusto aperiam temporibus sequi laborum est in numquam, possimus labore tenetur quasi! Unde, animi beatae.
+              </div>
+              </div>
           </div>
         </div>
       )}
