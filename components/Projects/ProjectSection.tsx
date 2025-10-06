@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { PortableText } from "@portabletext/react";
+import { PortableTextBlock } from "@portabletext/types";
+
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -14,7 +17,7 @@ interface ProjectImage {
 interface Project {
   title: string;
   date: string;
-  body?: string;
+  body?: PortableTextBlock[];
   images?: ProjectImage[];
 }
 
@@ -88,8 +91,9 @@ export default function ProjectSection({
           </div>
         </div>
       )}
-      {/* Info button*/}
 
+      {/* Info button*/}
+      {fixedIdx === projIdx && project.body && (
         <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
           <button
             type="button"
@@ -103,6 +107,7 @@ export default function ProjectSection({
             <InformationCircleIcon className="w-5 h-5 text-background" />
           </button>
         </div>
+      )}
 
       {/* Navigation buttons */}
       <button
@@ -193,7 +198,7 @@ export default function ProjectSection({
               >
                 <Image
                   src={img.src}
-                  alt={img.alt}
+                  alt={img.alt || `Project image ${imgIdx + 1}`}
                   width={112}
                   height={80}
                   className="object-cover w-full h-full"
@@ -220,7 +225,11 @@ export default function ProjectSection({
                 {formatDate(project.date)}
               </h4>
               <div className="text-base whitespace-pre-line">
-                {project.body ? project.body : "No additional information."}
+                {project.body ? (
+                  <PortableText value={project.body} />
+                ) : (
+                  "No additional information."
+                )}
               </div>
             </div>
           </div>
@@ -230,7 +239,9 @@ export default function ProjectSection({
       {(project.images?.length ?? 0) > 0 && (
         <Image
           src={project.images![activeIdx].src}
-          alt={project.images![activeIdx].alt}
+          alt={
+            project.images![activeIdx].alt || `Project image ${activeIdx + 1}`
+          }
           fill
           className="object-cover transition-all duration-500"
           priority

@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ProjectSection from "@/components/Projects/ProjectSection";
+import { PortableTextBlock } from "@portabletext/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +14,7 @@ interface ProjectImage {
 
 interface Project {
   title: string;
-  body?: string;
+  body?: PortableTextBlock[];
   date: string;
   images?: ProjectImage[];
 }
