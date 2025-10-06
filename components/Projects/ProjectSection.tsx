@@ -98,7 +98,12 @@ export default function ProjectSection({
               <button
                 type="button"
                 className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
-                onClick={() => handleInfoOpen(true)}
+                onClick={
+                  () => {
+                    handleInfoOpen(true);
+                    if (menuOpen) handleMenuToggle(projIdx);
+                  }
+                }
                 aria-label="Show project info"
               >
                 <InformationCircleIcon className="w-5 h-5 text-background" />
@@ -138,7 +143,12 @@ export default function ProjectSection({
         >
           <button
             className="absolute top-1/2 -translate-y-1/2 left-full z-999 bg-accent/90 rounded-r-full py-2 shadow cursor-pointer pointer-events-auto"
-            onClick={() => handleMenuToggle(projIdx)}
+            onClick={
+              () => {
+                handleMenuToggle(projIdx);
+                handleInfoOpen(false);
+              }
+            }
             aria-label="Toggle menu"
           >
             <svg
