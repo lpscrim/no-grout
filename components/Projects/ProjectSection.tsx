@@ -212,7 +212,6 @@ export default function ProjectSection({
               </h4>
               <div className="text-base whitespace-pre-line">
                 {project.body ? project.body : "No additional information."}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae id error tempora. Eligendi quibusdam, et iusto aperiam temporibus sequi laborum est in numquam, possimus labore tenetur quasi! Unde, animi beatae.
               </div>
               </div>
           </div>
