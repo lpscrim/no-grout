@@ -1,5 +1,10 @@
 import Image from "next/image";
-import { ArrowDownIcon, ArrowUpIcon, InformationCircleIcon, XMarkIcon  } from "@heroicons/react/24/solid";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  InformationCircleIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 
 interface ProjectImage {
   src: string;
@@ -44,16 +49,12 @@ export default function ProjectSection({
   infoOpen,
   handleInfoOpen,
 }: ProjectSectionProps) {
-
-
-
   return (
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
       className="relative w-full h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
     >
-    
       {/* Fixed header */}
       {fixedIdx === projIdx && (
         <div
@@ -67,9 +68,7 @@ export default function ProjectSection({
             <h6 className="text-md text-right text-background/95">
               {formatDate(project.date)}
             </h6>
-            
           </div>
-          
         </div>
       )}
 
@@ -90,24 +89,22 @@ export default function ProjectSection({
         </div>
       )}
       {/* Info button*/}
-      { project.body != null && (
-            <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
-              <button
-                type="button"
-                className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
-                onClick={
-                  () => {
-                    handleInfoOpen(!infoOpen);
-                    if (menuOpen) handleMenuToggle(projIdx);
-                  }
-                }
-                aria-label="Show project info"
-              >
-                <InformationCircleIcon className="w-5 h-5 text-background" />
-              </button>
-            </div>
-        )}
-        {/* Navigation buttons */}
+      {project.body != null && (
+        <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
+          <button
+            type="button"
+            className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
+            onClick={() => {
+              handleInfoOpen(!infoOpen);
+              if (menuOpen) handleMenuToggle(projIdx);
+            }}
+            aria-label="Show project info"
+          >
+            <InformationCircleIcon className="w-5 h-5 text-background" />
+          </button>
+        </div>
+      )}
+      {/* Navigation buttons */}
       <button
         className="fixed top-[43lvh] right-4 xl:right-2 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
         onClick={() => {
@@ -147,12 +144,10 @@ export default function ProjectSection({
         >
           <button
             className="absolute top-1/2 -translate-y-1/2 left-full z-999 bg-accent/90 rounded-r-full py-2 shadow cursor-pointer pointer-events-auto"
-            onClick={
-              () => {
-                handleMenuToggle(projIdx);
-                handleInfoOpen(false);
-              }
-            }
+            onClick={() => {
+              handleMenuToggle(projIdx);
+              handleInfoOpen(false);
+            }}
             aria-label="Toggle menu"
           >
             <svg
@@ -227,7 +222,7 @@ export default function ProjectSection({
               <div className="text-base whitespace-pre-line">
                 {project.body ? project.body : "No additional information."}
               </div>
-              </div>
+            </div>
           </div>
         </div>
       )}
