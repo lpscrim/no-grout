@@ -94,7 +94,7 @@ export default function ProjectSection({
 
       {/* Info button*/}
       {fixedIdx === projIdx && project.body && (
-        <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
+        <div className="flex justify-end fixed top-[49lvh] right-4.5 xl:right-2.5 z-50 pointer-events-auto">
           <button
             type="button"
             className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
@@ -169,7 +169,7 @@ export default function ProjectSection({
               <path d="M9 6l6 6-6 6" />
             </svg>
             <span
-              className="text-xs font-semibold rotate-180  text-foreground"
+              className="text-xs lg:text-base font-semibold rotate-180  text-foreground"
               style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
             >
               see more
@@ -210,8 +210,8 @@ export default function ProjectSection({
       </div>
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
-        <div className="mx-auto z-20 flex items-center justify-center ">
-          <div className="relative bg-background/90 rounded-sm max-w-lg w-full mx-14 shadow-2xl text-foreground">
+        <div className="mx-auto z-20 flex items-center justify-center slide-in-right">
+          <div className="relative bg-accent/90 rounded-sm max-w-lg w-full mx-14 shadow-2xl text-foreground">
             <button
               className="absolute top-3 right-3 text-secondary hover:text-accent cursor-pointer"
               onClick={() => handleInfoOpen(false)}
@@ -219,9 +219,9 @@ export default function ProjectSection({
             >
               <XMarkIcon className="w-6 h-6" />
             </button>
-            <div className="px-8 pt-10 pb-18">
-                <h3 className="text-base font-bold mb-1">{project.title}</h3>
-              <div className="text-base whitespace-pre-line">
+            <div className="px-8 pt-10 pb-18 text-base xl:text-xl">
+                <h3 className=" font-bold mb-1">{project.title}</h3>
+              <div className=" whitespace-pre-line">
                 {project.body ? (
                   <PortableText value={project.body} />
                 ) : (
