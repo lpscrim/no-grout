@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { EnvelopeIcon } from "@heroicons/react/16/solid";
@@ -66,6 +67,13 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
         headerMode === "light" ? "lg:bg-accent" : "lg:bg-primary"
       }`}
     >
+      <Image
+        src="/favicon.png"
+        alt="No Grout About It"
+        width={50}
+        height={50}
+        className="hidden"
+      />
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-5 lg:px-8 z-999"
