@@ -19,10 +19,10 @@ interface Project {
 
 export default function ProjectsClient({ projects }: { projects: Project[] }) {
   const [fixedIdx, setFixedIdx] = useState<number | null>(null);
+  const [infoOpenIdx, setInfoOpenIdx] = useState<number | null>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIdxs, setActiveIdxs] = useState<number[]>(projects.map(() => 0));
   const [menuOpens, setMenuOpens] = useState<boolean[]>(projects.map(() => false));
-  const [infoOpen, setInfoOpen] = useState(false);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -38,6 +38,8 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
 
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
+    const infoTriggers: ScrollTrigger[] = [];
+
     projectRefs.current.forEach((ref, idx) => {
       if (!ref) return;
       triggers.push(
@@ -51,8 +53,22 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
           onLeaveBack: () => setFixedIdx(idx === 0 ? null : idx - 1),
         })
       );
-    });
+      infoTriggers.push(
+      ScrollTrigger.create({
+        trigger: ref,
+        start: "top top+=10%",
+        end: "top% bottom-=10%",
+        onLeave: () => {
+          setInfoOpenIdx(current => current === idx ? null : current);
+        },
+        onLeaveBack: () => {
+          setInfoOpenIdx(current => current === idx ? null : current);
+        },
+      })
+    );
+  });
     return () => {
+      infoTriggers.forEach((trigger) => trigger.kill());
       triggers.forEach((trigger) => trigger.kill());
     };
   }, [projects]);
@@ -90,8 +106,8 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
     );
   };
 
-  const handleInfoOpen = (open: boolean) => {
-    setInfoOpen(open);
+  const handleInfoOpen = (open: boolean, projIdx: number) => {
+    setInfoOpenIdx(open ? projIdx : null);
   }
 
   const scrollToProject = (idx: number) => {
@@ -134,8 +150,8 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
               }}
               activeIdx={activeIdxs[projIdx]}
               menuOpen={menuOpens[projIdx]}
-              handleInfoOpen={handleInfoOpen}
-              infoOpen={infoOpen}
+              handleInfoOpen={(open: boolean) => handleInfoOpen(open, projIdx)}
+              infoOpen={infoOpenIdx === projIdx}
               handleThumbClick={handleThumbClick}
               handleMenuToggle={handleMenuToggle}
               scrollToProject={scrollToProject}

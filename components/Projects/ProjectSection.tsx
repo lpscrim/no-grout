@@ -53,7 +53,61 @@ export default function ProjectSection({
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
       className="relative w-full h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
     >
-      {/* Navigation buttons */}
+    
+      {/* Fixed header */}
+      {fixedIdx === projIdx && (
+        <div
+          className="fixed top-15 lg:top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full transition-all"
+          style={{ height: "60px" }}
+        >
+          <div className="px-8 py-4 text-center inline-block">
+            <h6 className="text-2xl font-semibold text-background">
+              {project.title}
+            </h6>
+            <h6 className="text-md text-right text-background/95">
+              {formatDate(project.date)}
+            </h6>
+            
+          </div>
+          
+        </div>
+      )}
+
+      {/* Sticky header*/}
+      {fixedIdx !== projIdx && (
+        <div
+          className="sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full transition-all"
+          style={{ height: "60px" }}
+        >
+          <div className="px-8 py-4 text-center inline-block">
+            <h6 className="text-2xl font-semibold text-background">
+              {project.title}
+            </h6>
+            <h6 className="text-md text-right text-background/95">
+              {formatDate(project.date)}
+            </h6>
+          </div>
+        </div>
+      )}
+      {/* Info button*/}
+      { project.body != null && (
+            <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
+              <button
+                type="button"
+                className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
+                onClick={
+                  () => {
+                    handleInfoOpen(!infoOpen);
+                    if (menuOpen) handleMenuToggle(projIdx);
+                  }
+                }
+                aria-label="Show project info"
+              >
+                <InformationCircleIcon className="w-5 h-5 text-background" />
+              </button>
+            </div>
+        )}
+        {/* Navigation buttons */}
       <button
         className="fixed top-[43lvh] right-4 xl:right-2 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
         onClick={() => {
@@ -80,56 +134,6 @@ export default function ProjectSection({
       >
         <ArrowDownIcon className="w-6 h-6" />
       </button>
-      {/* Fixed header */}
-      {fixedIdx === projIdx && (
-        <div
-          className="fixed top-15 lg:top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full transition-all"
-          style={{ height: "60px" }}
-        >
-          <div className="px-8 py-4 text-center inline-block">
-            <h6 className="text-2xl font-semibold text-background">
-              {project.title}
-            </h6>
-            <h6 className="text-md text-right text-background/95">
-              {formatDate(project.date)}
-            </h6>
-            {/* Info button*/}
-            <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
-              <button
-                type="button"
-                className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
-                onClick={
-                  () => {
-                    handleInfoOpen(true);
-                    if (menuOpen) handleMenuToggle(projIdx);
-                  }
-                }
-                aria-label="Show project info"
-              >
-                <InformationCircleIcon className="w-5 h-5 text-background" />
-              </button>
-            </div>
-          </div>
-          
-        </div>
-      )}
-
-      {/* Sticky header*/}
-      {fixedIdx !== projIdx && (
-        <div
-          className="sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full transition-all"
-          style={{ height: "60px" }}
-        >
-          <div className="px-8 py-4 text-center inline-block">
-            <h6 className="text-2xl font-semibold text-background">
-              {project.title}
-            </h6>
-            <h6 className="text-md text-right text-background/95">
-              {formatDate(project.date)}
-            </h6>
-          </div>
-        </div>
-      )}
       {/* Side menu */}
       <div
         className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
@@ -210,7 +214,7 @@ export default function ProjectSection({
           <div className="relative bg-background/90 rounded-sm max-w-lg w-full mx-14 shadow-2xl text-foreground">
             <button
               className="absolute top-3 right-3 text-secondary hover:text-accent cursor-pointer"
-              onClick={() => handleInfoOpen(!infoOpen)}
+              onClick={() => handleInfoOpen(false)}
               aria-label="Close info"
             >
               <XMarkIcon className="w-6 h-6" />
