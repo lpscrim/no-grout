@@ -13,6 +13,7 @@ interface ProjectImage {
 
 interface Project {
   title: string;
+  body?: string;
   date: string;
   images?: ProjectImage[];
 }
