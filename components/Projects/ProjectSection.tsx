@@ -89,7 +89,7 @@ export default function ProjectSection({
         </div>
       )}
       {/* Info button*/}
-      {project.body != null && (
+      {project.body && (
         <div className="flex justify-end fixed top-[48.5lvh] right-4.5 xl:right-2 z-50 pointer-events-auto">
           <button
             type="button"
