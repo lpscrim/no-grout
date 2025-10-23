@@ -31,7 +31,7 @@ export default function AnimatedOnView({
   return (
     <div
       ref={ref}
-      className={`${className} ${visible ? animationClass : ""}`}
+      className={`${className} ${visible ? animationClass : "opacity-0"}`}
     >
       {children}
     </div>
