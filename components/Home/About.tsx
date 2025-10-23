@@ -21,14 +21,17 @@ export default function About() {
               About Us
             </h2>
             <p className="text-lg text-foreground">
-              We are a passionate tiling company dedicated to quality
-              craftsmanship and beautiful results. Let us transform your space!
-              <br /> <br />
-              lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              <br /> <br />
-              lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              My name is Andrew, and I run No Grout About It, a family tiling
+              company. I have experience with all types of projects, including
+              bathrooms, kitchens, conservatories, hallways, and repair work.
+              <br />
+              <br />
+              I am committed to delivering the highest standards on every job
+              and don`t consider the work finished until both the customer and I
+              are completely satisfied. Quality and customer satisfaction are
+              always my top priorities. Every Job is welcome!
+              <br />
+              <br />
             </p>
           </div>
         </AnimatedOnView>
