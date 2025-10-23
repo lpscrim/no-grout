@@ -46,10 +46,10 @@ export default function Services() {
         <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
           Our Services
         </h2>
-        {/* <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
+         <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
           Each project is custom tailored, based on each client needs. We are
           ready to take on any kind of projects, be that small or complex
-        </p>*/}
+        </p>
         <div className="grid md:grid-cols-2 gap-20 items-center">
           <div className="flex justify-center items-center h-[300px] md:h-[700px]">
             <Image

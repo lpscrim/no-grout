@@ -148,7 +148,7 @@ export default function ProjectSection({
           }`}
         >
           <button
-            className="absolute top-1/2 -translate-y-1/2 left-full z-999 bg-accent/90 rounded-r-full py-2 shadow cursor-pointer pointer-events-auto"
+            className="group absolute top-1/2 -translate-y-1/2 left-full z-999 bg-accent/90 hover:bg-secondary transition-all rounded-r-full py-2 shadow cursor-pointer pointer-events-auto"
             onClick={() => {
               handleMenuToggle(projIdx);
               handleInfoOpen(false);
@@ -161,7 +161,7 @@ export default function ProjectSection({
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
-              className={`transition-transform duration-300 ${
+              className={`transition-all duration-300 text-foreground group-hover:text-background ${
                 menuOpen ? "rotate-180" : ""
               }`}
               viewBox="0 0 26 26"
@@ -169,7 +169,7 @@ export default function ProjectSection({
               <path d="M9 6l6 6-6 6" />
             </svg>
             <span
-              className="text-xs lg:text-base font-semibold rotate-180  text-foreground"
+              className="text-sm lg:text-base font-bold rotate-180 duration-300 text-foreground group-hover:text-background transition-all"
               style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
             >
               see more
