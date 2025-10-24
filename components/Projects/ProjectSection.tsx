@@ -94,24 +94,24 @@ export default function ProjectSection({
 
       {/* Info button*/}
       {fixedIdx === projIdx && project.body && (
-        <div className="flex justify-end fixed top-[49lvh] right-4.5 xl:right-2.5 z-50 pointer-events-auto">
+        <div className="flex animate-pulse justify-end fixed top-[49lvh] right-4 xl:right-8 z-50 pointer-events-auto">
           <button
             type="button"
-            className="mt-2 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
+            className="mt-1 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
             onClick={() => {
               handleInfoOpen(!infoOpen);
               if (menuOpen) handleMenuToggle(projIdx);
             }}
             aria-label="Show project info"
           >
-            <InformationCircleIcon className="w-5 h-5 text-background" />
+            <InformationCircleIcon className="w-6 h-6 text-background" />
           </button>
         </div>
       )}
 
       {/* Navigation buttons */}
       <button
-        className="fixed top-[43lvh] right-4 xl:right-2 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+        className="fixed top-[43lvh] right-4 xl:right-8 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
         onClick={() => {
           if (fixedIdx !== null && fixedIdx > 0) {
             const prevIdx = fixedIdx - 1;
@@ -123,7 +123,7 @@ export default function ProjectSection({
         <ArrowUpIcon className="w-6 h-6" />
       </button>
       <button
-        className="fixed top-[56lvh] right-4 xl:right-2  z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+        className="fixed top-[56lvh] right-4 xl:right-8  z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
         onClick={() => {
           if (fixedIdx === null) {
             scrollToProject(0);
