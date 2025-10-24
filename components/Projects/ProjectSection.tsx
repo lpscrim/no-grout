@@ -56,12 +56,12 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative w-full h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
+      className="relative w-full max-w-[1200px] h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
     >
       {/* Fixed header */}
       {fixedIdx === projIdx && (
         <div
-          className="fixed top-15 lg:top-20 right-0 xl:right-10 z-50 flex justify-end pointer-events-none w-full transition-all"
+          className="fixed w-full 2xl:w-30 top-15 lg:top-20 right-0 xl:right-22 2xl:right-8 3xl:right-15 z-50 flex justify-end pointer-events-none transition-all"
           style={{ height: "60px" }}
         >
           <div className="px-8 py-4 text-center inline-block">
