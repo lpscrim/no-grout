@@ -235,7 +235,7 @@ export default function Testimonials() {
                   {column.map((testimonial) => (
                     <figure
                       key={testimonial.author.date}
-                      className="rounded-sm bg-background p-6 shadow-lg ring-1 ring-accent/20"
+                      className="rounded-sm bg-secondary/30 p-6 shadow-lg ring-1 ring-accent/20"
                     >
                       <blockquote className="text-foreground">
                         <p>{`“${testimonial.body}”`}</p>
@@ -310,7 +310,7 @@ export default function Testimonials() {
           {visibleTestimonials.map((testimonial) => (
             <figure
               key={testimonial.author.date}
-              className="rounded-sm bg-background p-6 shadow-sm ring-1 ring-accent/20 w-full"
+              className="rounded-sm bg-secondary/30 p-6 shadow-sm ring-1 ring-accent/20 w-full"
             >
               <blockquote className="text-foreground">
                 <p>{`“${testimonial.body}”`}</p>
