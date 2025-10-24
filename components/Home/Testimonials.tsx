@@ -31,7 +31,6 @@ const testimonials = [
           name: "Customer",
           job: "New / replacement tiles - New tiling: 15 - 30m² - Tiles purchased, lay only **Customer description** Looking to get a bathroom tiled- 8m2 floor tiles- tiles are 60cmX60cm Floor to be tiled into tile over shower tray 8m2 wall tiles- Straight stack tiles around shower 5cmX20cm tiles. Shower pocket, tiled with 30cmx60cm tiles All materials are on site inc. adhesive, tiles and trims. Looking to get done asap. Thanks.",
           date: "17 Feb 2023",
-          
         },
       },
       {
@@ -40,7 +39,6 @@ const testimonials = [
           name: "Customer",
           job: "New / replacement tiles - New tiling: 15 - 30m² - Tiles purchased, lay only **Customer description** Metro tiles 100 x 300. Large floor and wall tiles 300 x 600. total of roughly 18 sqm. a few cuts to accomadate shower thermostat and pan.",
           date: "4 May 2022",
-          
         },
       },
     ],
@@ -121,8 +119,8 @@ const testimonials = [
 interface Author {
   name: string;
   date?: string;
+  job?: string;
   location?: string;
-  
 }
 
 interface Testimonial {
@@ -196,7 +194,7 @@ export default function Testimonials() {
             <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground sm:p-12 sm:text-xl">
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
-            <figcaption className="flex flex-wrap items-center gap-x-4 gap-y-4 px-6 py-4 sm:flex-nowrap">
+            <figcaption className="flex flex-col items-left gap-x-4 gap-y-4 px-6 py-4 sm:flex-nowrap">
               <div className="flex flex-row w-full items-center justify-between">
                 <div className="font-semibold text-background">
                   {featuredTestimonial.author.name}
@@ -209,6 +207,10 @@ export default function Testimonials() {
                   <StarIcon aria-hidden="true" className="size-3 flex-none" />
                 </div>
               </div>
+              <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
+                          <div>{featuredTestimonial.author.location}</div>
+                          <div>{featuredTestimonial.author.date}</div>
+                        </div>
             </figcaption>
           </figure>
           {/* Other testimonials in columns */}
@@ -266,8 +268,8 @@ export default function Testimonials() {
                           </div>
                         </div>
                         <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
-                          <div>Edinburgh</div>
-                          <div>18 Apr 2025</div>
+                          <div>{testimonial.author.location}</div>
+                          <div>{testimonial.author.date}</div>
                         </div>
                       </figcaption>
                     </figure>
@@ -284,7 +286,7 @@ export default function Testimonials() {
             <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground">
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
-            <figcaption className="flex flex-wrap items-center gap-x-4 gap-y-4  px-6 py-4">
+            <figcaption className="flex flex-col items-left gap-x-4 gap-y-4  px-6 py-4">
               <div className="flex flex-row w-full items-center justify-between">
                 <div className="font-semibold text-background">
                   {featuredTestimonial.author.name}
@@ -297,6 +299,10 @@ export default function Testimonials() {
                   <StarIcon aria-hidden="true" className="size-3 flex-none" />
                 </div>
               </div>
+              <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
+                <div>{featuredTestimonial.author.location}</div>
+                <div>{featuredTestimonial.author.date}</div>
+              </div>
             </figcaption>
           </figure>
           {/* Other testimonials */}
@@ -308,7 +314,7 @@ export default function Testimonials() {
               <blockquote className="text-foreground">
                 <p>{`“${testimonial.body}”`}</p>
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-x-4">
+              <figcaption className="mt-6 flex flex-col items-left gap-x-4">
                 <div className="flex flex-row w-full items-center justify-between">
                   <div className="font-semibold text-primary">
                     {testimonial.author.name}
@@ -320,6 +326,10 @@ export default function Testimonials() {
                     <StarIcon aria-hidden="true" className="size-3 flex-none" />
                     <StarIcon aria-hidden="true" className="size-3 flex-none" />
                   </div>
+                </div>
+                <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
+                  <div>{testimonial.author.location}</div>
+                  <div>{testimonial.author.date}</div>
                 </div>
               </figcaption>
             </figure>
