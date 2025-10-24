@@ -94,7 +94,10 @@ export default function ProjectSection({
 
       {/* Info button*/}
       {fixedIdx === projIdx && project.body && (
-        <div className="flex animate-pulse justify-end fixed top-[49lvh] right-4 xl:right-8 z-50 pointer-events-auto">
+        <div className="flex group animate-pulse justify-end fixed top-[49lvh] right-4 xl:right-8 z-50 pointer-events-auto">
+          <span className="ml-3 px-3 py-1 rounded text-accent/90 text-sm font-semibold transition-opacity duration-1600 delay-300 opacity-0 group-hover:opacity-100">
+            more info {'->'}
+          </span>
           <button
             type="button"
             className="mt-1 flex items-center justify-center rounded-full bg-secondary hover:bg-foreground transition-colors shadow cursor-pointer"
@@ -106,6 +109,7 @@ export default function ProjectSection({
           >
             <InformationCircleIcon className="w-6 h-6 text-background" />
           </button>
+          {/* Fade-in textbox */}
         </div>
       )}
 
@@ -220,7 +224,7 @@ export default function ProjectSection({
               <XMarkIcon className="w-6 h-6" />
             </button>
             <div className="px-8 pt-10 pb-18 text-base xl:text-xl">
-                <h3 className=" font-bold mb-1">{project.title}</h3>
+              <h3 className=" font-bold mb-1">{project.title}</h3>
               <div className=" whitespace-pre-line">
                 {project.body ? (
                   <PortableText value={project.body} />
