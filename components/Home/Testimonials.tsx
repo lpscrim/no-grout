@@ -4,14 +4,12 @@ import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 
 const featuredTestimonial = {
-  body: "Integer id nunc sit semper purus. Bibendum at lacus ut arcu blandit montes vitae auctor libero. Hac condimentum dignissim nibh vulputate ut nunc. Amet nibh orci mi venenatis blandit vel et proin. Non hendrerit in vel ac diam.",
+  body: "Excellent job and excellent, responsive customer service Highly recommended!",
   author: {
-    name: "Brenna Goyette",
-    handle: "brennagoyette",
-    imageUrl:
-      "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80",
-    logoUrl:
-      "https://tailwindcss.com/plus-assets/img/logos/savvycal-logo-gray-900.svg",
+    name: "Gill MacAskill",
+    job: "Retile shower tray , add splash back tiles in kitchen",
+    date: "18 Apr 2025",
+    location: "Edinburgh",
   },
 };
 
@@ -19,50 +17,50 @@ const testimonials = [
   [
     [
       {
-        body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+        body: "Andrew was great, did a good job, dealt with some unforeseen problems and was reliable",
         author: {
-          name: "Leslie Alexander",
-          handle: "lesliealexander",
-          imageUrl:
-            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "Sarah",
+          job: "Retile around bathroom",
+          date: "8 Jul 2024",
+          location: "Edinburgh",
         },
       },
       {
-        body: "Quia dolorem qui et. Atque quo aliquid sit eos officia. Dolores similique laboriosam quaerat cupiditate.",
+        body: "Andrew done a great job of tiling our bathroom floor and shower area. Tricky cuts on the tile over tray but he made light work of it and it looks great. There when he said and good communication 👍",
         author: {
-          name: "Michael Foster",
-          handle: "michaelfoster",
-          imageUrl:
-            "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "Customer",
+          job: "New / replacement tiles - New tiling: 15 - 30m² - Tiles purchased, lay only **Customer description** Looking to get a bathroom tiled- 8m2 floor tiles- tiles are 60cmX60cm Floor to be tiled into tile over shower tray 8m2 wall tiles- Straight stack tiles around shower 5cmX20cm tiles. Shower pocket, tiled with 30cmx60cm tiles All materials are on site inc. adhesive, tiles and trims. Looking to get done asap. Thanks.",
+          date: "17 Feb 2023",
+          
         },
       },
       {
-        body: "Consequatur ut atque. Itaque nostrum molestiae id veniam eos cumque. Ut quia eum fugit laborum autem inventore ut voluptate.",
+        body: "Great guy. very professional and reliable. Came back to sort problomatic tiles and left my self and the client very happy. many thanks",
         author: {
-          name: "Dries Vincent",
-          handle: "driesvincent",
-          imageUrl:
-            "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "Customer",
+          job: "New / replacement tiles - New tiling: 15 - 30m² - Tiles purchased, lay only **Customer description** Metro tiles 100 x 300. Large floor and wall tiles 300 x 600. total of roughly 18 sqm. a few cuts to accomadate shower thermostat and pan.",
+          date: "4 May 2022",
+          
         },
       },
     ],
     [
       {
-        body: "Aut reprehenderit voluptatem eum asperiores beatae id. Iure molestiae ipsam ut officia rem nulla blanditiis.",
+        body: "Really great job by Andrew who communicated well, turned up exactly when he said he would and did a great job. No hesitation in recommending him!",
         author: {
-          name: "Lindsay Walton",
-          handle: "lindsaywalton",
-          imageUrl:
-            "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "abrookes_71",
+          job: "Kitchen tiling",
+          date: "11 Apr 2022",
+          location: "Edinburgh",
         },
       },
       {
-        body: "Nam nesciunt dolorem dolor asperiores cum. Incidunt molestiae quis deleniti vitae ut in earum delectus iusto.",
+        body: "Andrew was quick to arrange to meet at the site and follow on with a quote which I have accepted.",
         author: {
-          name: "Courtney Henry",
-          handle: "courtneyhenry",
-          imageUrl:
-            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "ronald1968",
+          job: "Tiling area around shop window",
+          date: "27 Feb 2022",
+          location: "Edinburgh",
         },
       },
     ],
@@ -70,62 +68,78 @@ const testimonials = [
   [
     [
       {
-        body: "Voluptas quos itaque ipsam in voluptatem est. Iste eos blanditiis repudiandae. Earum deserunt enim molestiae ipsum perferendis recusandae saepe corrupti.",
+        body: "Andrew did an outstanding job tiling our front hallway. Andrew’s high standards and attention to the smallest details, plus flexibility over timing of the job due to supplier issues with the tiles meant that the work was completed both beautifully and hassle-free for us. I would highly recommend him.",
         author: {
-          name: "Tom Cook",
-          handle: "tomcook",
-          imageUrl:
-            "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "vanessa79700",
+          job: "Front porch and stairwell",
+          date: "27 Jan 2022",
+          location: "Edinburgh",
         },
       },
       {
-        body: "Aliquid dolore praesentium ratione. Cumque ea officia repellendus laboriosam. Vitae quod id explicabo non sunt.",
+        body: "Did a very good job. Would totally recommend.",
         author: {
-          name: "Whitney Francis",
-          handle: "whitneyfrancis",
-          imageUrl:
-            "https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "elaine_726",
+          job: "Retile bathroom floor",
+          date: "29 Nov 2021",
+          location: "Edinburgh",
         },
       },
     ],
     [
       {
-        body: "Molestias ea earum quos nostrum doloremque sed. Quaerat quasi aut velit incidunt excepturi rerum voluptatem minus harum.",
+        body: "Andrew tiled our bathroom and en-suite floors brilliantly we couldn`t be happier with his level of workmanship, very professional and tidy and didn`t stop grafting at all , thanks again.",
         author: {
-          name: "Leonard Krasner",
-          handle: "leonardkrasner",
-          imageUrl:
-            "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "barry17694",
+          job: "En-suite and Bathroom floor tiling",
+          date: "9 Aug 2021",
+          location: "Perth",
         },
       },
       {
-        body: "Architecto libero natus est. Est quam debitis officia enim atque et ut non. Sunt reiciendis quasi eaque. Itaque error ut et.",
+        body: "Very friendly and efficient...job was just as I ask for...will be getting Andrew back to do another job soon",
         author: {
-          name: "Floyd Miles",
-          handle: "floydmiles",
-          imageUrl:
-            "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "karen53908",
+          job: "Floor tiler",
+          date: "2 Jun 2021",
+          location: "Lanark",
         },
       },
       {
-        body: "Temporibus ea molestiae impedit adipisci perspiciatis illo aliquid. Quis ut ratione et voluptatem et. Nostrum explicabo iste unde beatae.",
+        body: "Excellent work, would definitely use again.",
         author: {
-          name: "Emily Selman",
-          handle: "emilyselman",
-          imageUrl:
-            "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+          name: "francesca78302",
+          job: "Tile a kitchen",
+          date: "25 May 2021",
+          location: "Livingston",
         },
       },
     ],
   ],
 ];
 
-function classNames(...classes) {
+interface Author {
+  name: string;
+  date?: string;
+  location?: string;
+  
+}
+
+interface Testimonial {
+  body: string;
+  author: Author;
+}
+
+type Testimonials = Testimonial[][][];
+
+function classNames(
+  ...classes: Array<string | false | null | undefined>
+): string {
   return classes.filter(Boolean).join(" ");
 }
 
 // Flatten testimonials for mobile logic
-function flattenTestimonials(testimonials) {
+function flattenTestimonials(testimonials: Testimonials): Testimonial[] {
   return testimonials.flat(2);
 }
 
@@ -170,9 +184,11 @@ export default function Testimonials() {
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-primary">Reviews</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-primary">
+            Reviews
+          </h2>
         </div>
-        
+
         {/* Desktop grid */}
         <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {/* Featured testimonial */}
@@ -181,7 +197,7 @@ export default function Testimonials() {
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
             <figcaption className="flex flex-wrap items-center gap-x-4 gap-y-4 px-6 py-4 sm:flex-nowrap">
-               <div className="flex flex-row w-full items-center justify-between">
+              <div className="flex flex-row w-full items-center justify-between">
                 <div className="font-semibold text-background">
                   {featuredTestimonial.author.name}
                 </div>
@@ -215,25 +231,44 @@ export default function Testimonials() {
                 >
                   {column.map((testimonial) => (
                     <figure
-                      key={testimonial.author.handle}
+                      key={testimonial.author.date}
                       className="rounded-sm bg-background p-6 shadow-lg ring-1 ring-accent/20"
                     >
                       <blockquote className="text-foreground">
                         <p>{`“${testimonial.body}”`}</p>
                       </blockquote>
-                      <figcaption className="mt-6 flex items-center gap-x-4">
-                         <div className="flex flex-row w-full items-center justify-between">
-                <div className="font-semibold text-primary">
-                  {featuredTestimonial.author.name}
-                </div>
-                <div className="flex gap-x-1 text-yellow-400">
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                </div>
-              </div>
+                      <figcaption className="flex flex-col mt-6 items-left gap-x-4">
+                        <div className="flex flex-row w-full items-center justify-between">
+                          <div className="font-semibold text-primary">
+                            {testimonial.author.name}
+                          </div>
+                          <div className="flex gap-x-1 text-yellow-400">
+                            <StarIcon
+                              aria-hidden="true"
+                              className="size-3 flex-none"
+                            />
+                            <StarIcon
+                              aria-hidden="true"
+                              className="size-3 flex-none"
+                            />
+                            <StarIcon
+                              aria-hidden="true"
+                              className="size-3 flex-none"
+                            />
+                            <StarIcon
+                              aria-hidden="true"
+                              className="size-3 flex-none"
+                            />
+                            <StarIcon
+                              aria-hidden="true"
+                              className="size-3 flex-none"
+                            />
+                          </div>
+                        </div>
+                        <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
+                          <div>Edinburgh</div>
+                          <div>18 Apr 2025</div>
+                        </div>
                       </figcaption>
                     </figure>
                   ))}
@@ -267,25 +302,25 @@ export default function Testimonials() {
           {/* Other testimonials */}
           {visibleTestimonials.map((testimonial) => (
             <figure
-              key={testimonial.author.handle}
+              key={testimonial.author.date}
               className="rounded-sm bg-background p-6 shadow-sm ring-1 ring-accent/20 w-full"
             >
               <blockquote className="text-foreground">
                 <p>{`“${testimonial.body}”`}</p>
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-x-4">
-               <div className="flex flex-row w-full items-center justify-between">
-                <div className="font-semibold text-primary">
-                  {featuredTestimonial.author.name}
+                <div className="flex flex-row w-full items-center justify-between">
+                  <div className="font-semibold text-primary">
+                    {testimonial.author.name}
+                  </div>
+                  <div className="flex gap-x-1 text-yellow-400">
+                    <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                    <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                    <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                    <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                    <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                  </div>
                 </div>
-                <div className="flex gap-x-1 text-yellow-400">
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                </div>
-              </div>
               </figcaption>
             </figure>
           ))}
