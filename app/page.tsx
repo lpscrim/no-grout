@@ -7,6 +7,7 @@ import Services from "@/components/Home/Services";
 import ScrollToTopButton from "@/components/Functions/ScrollToTopButton";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Testimonials from "@/components/Home/Testimonials";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <About />
       <Projects />
       <Services />
+      <Testimonials />
       <Contact />
       <ScrollToTopButton />
       <Footer mode="dark" />
