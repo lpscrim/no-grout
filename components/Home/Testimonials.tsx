@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 
 const featuredTestimonial = {
   body: "Excellent job and excellent, responsive customer service Highly recommended!",
@@ -344,6 +345,9 @@ export default function Testimonials() {
           )}
         </div>
       </div>
+      <Link href="/testimonials" className="absolute bottom-4 right-4 text-sm text-accent hover:underline">
+        See more at MyBuilder.com
+      </Link>
     </section>
   );
 }
