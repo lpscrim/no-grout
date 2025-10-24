@@ -208,9 +208,9 @@ export default function Testimonials() {
                 </div>
               </div>
               <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
-                          <div>{featuredTestimonial.author.location}</div>
-                          <div>{featuredTestimonial.author.date}</div>
-                        </div>
+                <div>{featuredTestimonial.author.location}</div>
+                <div>{featuredTestimonial.author.date}</div>
+              </div>
             </figcaption>
           </figure>
           {/* Other testimonials in columns */}
