@@ -84,11 +84,10 @@ export default function Projects() {
             </span>
           </h2>
           <p className="text-lg max-w-2xl text-background font-light text-left ">
-            Each project is custom tailored, based on each client needs. We are
-            ready to take on any kind of projects, be that small or complex.
+            Here are some of our most recent projects from clients around the country.
             <br />
-            lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Take a look through our gallery to see the different styles and
+            solutions available. No project is too big or small!
           </p>
         </div>
         { loading ? (

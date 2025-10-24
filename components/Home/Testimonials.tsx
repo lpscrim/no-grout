@@ -67,7 +67,7 @@ const testimonials = [
   [
     [
       {
-        body: "Andrew did an outstanding job tiling our front hallway. Andrew’s high standards and attention to the smallest details, plus flexibility over timing of the job due to supplier issues with the tiles meant that the work was completed both beautifully and hassle-free for us. I would highly recommend him.",
+        body: "Andrew did an outstanding job tiling our front hallway. Andrew`s high standards and attention to the smallest details, plus flexibility over timing of the job due to supplier issues with the tiles meant that the work was completed both beautifully and hassle-free for us. I would highly recommend him.",
         author: {
           name: "vanessa79700",
           job: "Front porch and stairwell",
@@ -154,7 +154,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative isolate bg-background py-18 md:py-24 lg:py-32 section-dark"
+      className="relative isolate bg-background py-18 md:py-24 lg:py-32 section-light md:section-dark"
     >
       {/* Decorative backgrounds */}
       <div
