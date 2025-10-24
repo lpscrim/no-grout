@@ -134,7 +134,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
         className="lg:hidden z-50"
       >
         <DialogPanel
-          className={`fixed top-0 inset-y-0 right-0 z-50 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-md p-6 lg:max-w-[280px]`}
+          className={`fixed top-0 inset-y-0 right-0 z-500 w-full ${menuBack} h-screen overflow-y-auto backdrop-blur-md p-6 lg:max-w-[280px]`}
         >
           <div className="flex items-center justify-end">
             <button
