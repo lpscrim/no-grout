@@ -183,19 +183,19 @@ export default function Testimonials() {
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-primary">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-16 mt-10 text-center text-primary">
             Reviews
           </h2>
         </div>
 
         {/* Desktop grid */}
-        <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+        <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-18 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {/* Featured testimonial */}
           <figure className="rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 sm:col-span-2 xl:col-start-2 xl:row-end-1">
-            <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground sm:p-12 sm:text-xl">
+            <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground sm:px-12 sm:text-xl">
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
-            <figcaption className="flex flex-col items-left gap-x-4 gap-y-4 px-6 py-4 sm:flex-nowrap">
+            <figcaption className="flex flex-col items-left gap-x-4 gap-y-4 p-4 sm:flex-nowrap">
               <div className="flex flex-row w-full items-center justify-between">
                 <div className="font-semibold text-background">
                   {featuredTestimonial.author.name}
@@ -235,7 +235,7 @@ export default function Testimonials() {
                   {column.map((testimonial) => (
                     <figure
                       key={testimonial.author.date}
-                      className="rounded-sm bg-secondary/30 p-6 shadow-lg ring-1 ring-accent/20"
+                      className="rounded-sm bg-secondary/30 p-4 shadow-lg ring-1 ring-accent/20"
                     >
                       <blockquote className="text-foreground">
                         <p>{`“${testimonial.body}”`}</p>
