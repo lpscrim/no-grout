@@ -154,7 +154,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative isolate bg-accent/50 py-18 md:py-24 lg:py-32 section-light md:section-dark"
+      className="relative isolate bg-accent/30 py-18 md:py-24 lg:py-32 section-light md:section-dark"
     >
       {/* Decorative backgrounds */}
       <div
