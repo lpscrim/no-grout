@@ -36,7 +36,7 @@ export default function Header() {
         className="mx-auto flex max-w-7xl items-center justify-between py-4 px-4 lg:py-5 lg:px-8 z-999"
       >
         <Link
-          href="#"
+          href="/"
           className={`-m-1.5 p-1.5 text-xl font-bold invisible lg:visible hover:text-secondary transition-colors`}
         >
           No Grout About It
@@ -64,7 +64,9 @@ export default function Header() {
       hover:text-secondary`}
               onClick={(e) => {
                 setMobileMenuOpen(false);
-
+                if (item.href.startsWith("/#") && window.location.pathname !== "/") {
+                  return;
+                }
                 const sectionId = item.href.replace("/#", "");
                 const section = document.getElementById(sectionId);
                 if (section) {
@@ -113,7 +115,6 @@ export default function Header() {
                     }}
                     onClick={(e) => {
                       setMobileMenuOpen(false);
-
                       const sectionId = item.href.replace("/#", "");
                       const section = document.getElementById(sectionId);
                       if (section) {

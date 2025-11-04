@@ -35,13 +35,13 @@ const services = [
     image: "/hall.jpg",
   },
   {
-    title: "Floor Heating",
-    description: "Comprehensive heating for floor areas.",
+    title: "Floor stuff",
+    description: "Comprehensive stuff for floor areas.",
     image: "/hall.jpg",
   },
   {
-    title: "Floor Heating",
-    description: "Comprehensive heating for floor areas.",
+    title: "Floor things",
+    description: "Comprehensive things for floor areas.",
     image: "/hall.jpg",
   },
 ];
