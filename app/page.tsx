@@ -11,7 +11,7 @@ import Testimonials from "@/components/Home/Testimonials";
 
 export default function Home() {
   return (
-    <main className="bg-primary">
+    <main className="bg-background">
       <Header />
       <Hero />
       <About />

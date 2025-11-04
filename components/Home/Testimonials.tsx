@@ -154,7 +154,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative isolate bg-background py-18 md:py-24 lg:py-32 section-light md:section-dark"
+      className="relative isolate bg-accent/50 py-18 md:py-24 lg:py-32 section-light md:section-dark"
     >
       {/* Decorative backgrounds */}
       <div
@@ -345,7 +345,7 @@ export default function Testimonials() {
           )}
         </div>
       </div>
-      <Link href="/testimonials" className="absolute bottom-4 right-4 text-sm text-accent hover:underline">
+      <Link href="/testimonials" className="absolute bottom-4 right-4 text-sm text-secondary hover:underline hover:text-foreground transition-all">
         See more at MyBuilder.com
       </Link>
     </section>
