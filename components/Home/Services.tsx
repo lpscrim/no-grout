@@ -70,7 +70,7 @@ export default function Services() {
               className="w-full max-w-xl h-[350px] rounded-xs lg:h-[550px] object-cover transition-all duration-300"
             />
           </div>
-          <ul className="grid grid-cols-2 lg:grid-cols-2 gap-2 lg:gap-4 xl:gap-2.5 max-w-xl mx-auto">
+          <ul className="grid grid-cols-2 lg:grid-cols-2 gap-2 xl:gap-2.5 max-w-xl mx-auto">
             {services.map((service, idx) => (
               <li
                 key={service.title}
@@ -78,7 +78,7 @@ export default function Services() {
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
               >
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
                 <p className="text-foreground">{service.description}</p>
               </li>
             ))}
