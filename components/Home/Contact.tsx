@@ -4,7 +4,7 @@ export default function Contact() {
       id="contact"
       className="relative bg-primary section-dark"
     >
-      <div className="px-6 py-18 md:py-24 lg:py-32 lg:px-8 min-h-[110svh]">
+      <div className="px-6 py-17 lg:px-8 min-h-[110svh]">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-4xl font-bold my-10 tracking-tight text-balance text-accent sm:text-5xl ">
             Contact us

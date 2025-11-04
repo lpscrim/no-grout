@@ -108,21 +108,7 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
               href={item.href}
               className={`text-lg/6 font-semibold transition-colors 
       ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
-              onClick={(e) => {
-                setMobileMenuOpen(false);
-
-                const sectionId = item.href.replace("/#", "");
-                const section = document.getElementById(sectionId);
-                if (section) {
-                  e.preventDefault();
-                  const yOffset = 60;
-                  const y =
-                    section.getBoundingClientRect().top +
-                    window.pageYOffset +
-                    yOffset;
-                  window.scrollTo({ top: y, behavior: "smooth" });
-                }
-              }}
+              
             >
               <h6>{item.name}</h6>
             </Link>
@@ -157,20 +143,9 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
-                    onClick={(e) => {
+                    onClick={() => {
                       setMobileMenuOpen(false);
 
-                      const sectionId = item.href.replace("/#", "");
-                      const section = document.getElementById(sectionId);
-                      if (section) {
-                        e.preventDefault();
-                        const yOffset = 60;
-                        const y =
-                          section.getBoundingClientRect().top +
-                          window.pageYOffset +
-                          yOffset;
-                        window.scrollTo({ top: y, behavior: "smooth" });
-                      }
                     }}
                   >
                     <h6>{item.name}</h6>

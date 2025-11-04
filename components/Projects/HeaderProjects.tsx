@@ -64,21 +64,7 @@ export default function Header() {
               href={item.href}
               className={`text-lg/6 font-semibold transition-colors 
       hover:text-secondary`}
-              onClick={(e) => {
-                setMobileMenuOpen(false);
-
-                const sectionId = item.href.replace("/#", "");
-                const section = document.getElementById(sectionId);
-                if (section) {
-                  e.preventDefault();
-                  const yOffset = 60;
-                  const y =
-                    section.getBoundingClientRect().top +
-                    window.pageYOffset +
-                    yOffset;
-                  window.scrollTo({ top: y, behavior: "smooth" });
-                }
-              }}
+              
             >
               <h6>{item.name}</h6>
             </Link>
@@ -113,19 +99,9 @@ export default function Header() {
                     style={{
                       animationDelay: `${idx * 0.12}s`,
                     }}
-                    onClick={(e) => {
+                    onClick={() => {
                       setMobileMenuOpen(false);
-                      const sectionId = item.href.replace("/#", "");
-                      const section = document.getElementById(sectionId);
-                      if (section) {
-                        e.preventDefault();
-                        const yOffset = 60;
-                        const y =
-                          section.getBoundingClientRect().top +
-                          window.pageYOffset +
-                          yOffset;
-                        window.scrollTo({ top: y, behavior: "smooth" });
-                      }
+                     
                     }}
                   >
                     <h6>{item.name}</h6>
