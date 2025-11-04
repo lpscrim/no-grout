@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
+import { useEffect, useRef } from "react";
 
 import {
   ArrowDownIcon,
@@ -52,12 +53,74 @@ export default function ProjectSection({
   infoOpen,
   handleInfoOpen,
 }: ProjectSectionProps) {
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const restartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const currentActiveIdxRef = useRef(activeIdx);
+
+  // Update ref when activeIdx changes
+  useEffect(() => {
+    currentActiveIdxRef.current = activeIdx;
+  }, [activeIdx]);
+
+  // Auto-cycle through images when this project is active/fixed
+  useEffect(() => {
+    if (fixedIdx === projIdx && project.images && project.images.length > 1) {
+      intervalRef.current = setInterval(() => {
+        const nextIdx =
+          (currentActiveIdxRef.current + 1) % project.images!.length;
+        handleThumbClick(projIdx, nextIdx);
+      }, 7000);
+    }
+
+    // Cleanup interval when project is no longer active or component unmounts
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      if (restartTimeoutRef.current) {
+        clearTimeout(restartTimeoutRef.current);
+        restartTimeoutRef.current = null;
+      }
+    };
+  }, [fixedIdx, projIdx, project.images, handleThumbClick]);
+
+  // Stop cycling when user manually selects an image
+  const handleManualThumbClick = (imgIdx: number) => {
+    // Clear existing interval
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    
+    // Clear any pending restart timeout
+    if (restartTimeoutRef.current) {
+      clearTimeout(restartTimeoutRef.current);
+      restartTimeoutRef.current = null;
+    }
+    
+    handleThumbClick(projIdx, imgIdx);
+
+    // Restart cycling after 5 seconds
+    restartTimeoutRef.current = setTimeout(() => {
+      if (fixedIdx === projIdx && project.images && project.images.length > 1) {
+        intervalRef.current = setInterval(() => {
+          const nextIdx =
+            (currentActiveIdxRef.current + 1) % project.images!.length;
+          handleThumbClick(projIdx, nextIdx);
+        }, 7000);
+      }
+      restartTimeoutRef.current = null; // Clear the ref since timeout completed
+    }, 10000);
+  };
+
   return (
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
       className="relative w-full xl:max-w-[1200px] h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
     >
+      {/* ...existing code... */}
       {/* Fixed header */}
       {fixedIdx === projIdx && (
         <div
@@ -96,7 +159,6 @@ export default function ProjectSection({
       {/* Info button*/}
       {fixedIdx === projIdx && project.body && (
         <div className="flex group animate-pulse justify-end fixed top-[49lvh] right-4 xl:right-8 z-50 pointer-events-auto">
-
           <button
             type="button"
             className="mt-1 md:mt-2 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-foreground transition-colors shadow cursor-pointer"
@@ -108,7 +170,6 @@ export default function ProjectSection({
           >
             <InformationCircleIcon className="w-6 h-6 md:w-7 md:h-7 text-background" />
           </button>
-          {/* Fade-in textbox */}
         </div>
       )}
 
@@ -139,6 +200,7 @@ export default function ProjectSection({
       >
         <ArrowDownIcon className="w-6 h-6 md:w-8 md:h-8" />
       </button>
+
       {/* Side menu */}
       <div
         className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
@@ -175,9 +237,10 @@ export default function ProjectSection({
               className="text-base font-bold rotate-180 duration-300 text-foreground group-hover:text-background transition-all"
               style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
             >
-              { menuOpen ? `close` : `more pics`}
+              {menuOpen ? `close` : `more pics`}
             </span>
           </button>
+
           {/* Thumbnails */}
           <div
             className={`overflow-y-auto mx-auto mt-10 transition-opacity  ${
@@ -194,7 +257,7 @@ export default function ProjectSection({
                 }`}
                 onClick={() => {
                   if (menuOpen) {
-                    handleThumbClick(projIdx, imgIdx);
+                    handleManualThumbClick(imgIdx);
                   }
                 }}
                 aria-label={`Show ${img.alt}`}
@@ -211,6 +274,7 @@ export default function ProjectSection({
           </div>
         </div>
       </div>
+
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
         <div className="mx-auto z-20 flex items-center justify-center slide-in-right">
@@ -235,6 +299,7 @@ export default function ProjectSection({
           </div>
         </div>
       )}
+
       {/* Main image */}
       {(project.images?.length ?? 0) > 0 && (
         <Image
