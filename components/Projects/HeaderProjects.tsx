@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 const navigation = [
   { name: "Home", href: "/#home" },
   { name: "Projects", href: "/projects" },
-    { name: "Services", href: "/#services" },
+  { name: "Services", href: "/#services" },
   { name: "Reviews", href: "/#testimonials" },
   { name: "Contact", href: "/#contact" },
 ];
@@ -26,6 +26,7 @@ export default function Header() {
     setMobileMenuOpen((prev) => !prev);
   };
 
+  
 
   return (
     <header
@@ -114,7 +115,6 @@ export default function Header() {
                     }}
                     onClick={(e) => {
                       setMobileMenuOpen(false);
-
                       const sectionId = item.href.replace("/#", "");
                       const section = document.getElementById(sectionId);
                       if (section) {
