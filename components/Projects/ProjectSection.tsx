@@ -69,7 +69,7 @@ export default function ProjectSection({
         const nextIdx =
           (currentActiveIdxRef.current + 1) % project.images!.length;
         handleThumbClick(projIdx, nextIdx);
-      }, 7000);
+      }, 10000);
     }
 
     // Cleanup interval when project is no longer active or component unmounts
@@ -101,14 +101,13 @@ export default function ProjectSection({
     
     handleThumbClick(projIdx, imgIdx);
 
-    // Restart cycling after 5 seconds
     restartTimeoutRef.current = setTimeout(() => {
       if (fixedIdx === projIdx && project.images && project.images.length > 1) {
         intervalRef.current = setInterval(() => {
           const nextIdx =
             (currentActiveIdxRef.current + 1) % project.images!.length;
           handleThumbClick(projIdx, nextIdx);
-        }, 7000);
+        }, 10000);
       }
       restartTimeoutRef.current = null; // Clear the ref since timeout completed
     }, 10000);
@@ -120,7 +119,6 @@ export default function ProjectSection({
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
       className="relative w-full xl:max-w-[1200px] h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
     >
-      {/* ...existing code... */}
       {/* Fixed header */}
       {fixedIdx === projIdx && (
         <div
