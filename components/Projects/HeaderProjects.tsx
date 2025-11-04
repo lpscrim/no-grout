@@ -13,6 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 const navigation = [
   { name: "Home", href: "/#home" },
   { name: "Projects", href: "/projects" },
+  { name: "Services", href: "/#services" },
   { name: "Reviews", href: "/#testimonials" },
   { name: "Contact", href: "/#contact" },
 ];
@@ -24,7 +25,6 @@ export default function Header() {
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
   };
-
 
   return (
     <header
@@ -146,4 +146,3 @@ export default function Header() {
     </header>
   );
 }
-
