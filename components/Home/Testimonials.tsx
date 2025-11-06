@@ -191,7 +191,7 @@ export default function Testimonials() {
         {/* Desktop grid */}
         <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-18 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {/* Featured testimonial */}
-          <figure className="rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 sm:col-span-2 xl:col-start-2 xl:row-end-1">
+          <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 sm:col-span-2 xl:col-start-2 xl:row-end-1">
             <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground sm:px-12 sm:text-xl">
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
@@ -215,75 +215,86 @@ export default function Testimonials() {
             </figcaption>
           </figure>
           {/* Other testimonials in columns */}
-          {testimonials.map((columnGroup, columnGroupIdx) => (
-            <div
-              key={columnGroupIdx}
-              className="space-y-8 xl:contents xl:space-y-0"
-            >
-              {columnGroup.map((column, columnIdx) => (
-                <div
-                  key={columnIdx}
-                  className={classNames(
-                    (columnGroupIdx === 0 && columnIdx === 0) ||
-                      (columnGroupIdx === testimonials.length - 1 &&
-                        columnIdx === columnGroup.length - 1)
-                      ? "xl:row-span-2"
-                      : "xl:row-start-1",
-                    "space-y-8"
-                  )}
-                >
-                  {column.map((testimonial) => (
-                    <figure
-                      key={testimonial.author.date}
-                      className="rounded-sm bg-secondary/30 p-4 shadow-lg ring-1 ring-accent/20"
-                    >
-                      <blockquote className="text-foreground">
-                        <p>{`“${testimonial.body}”`}</p>
-                      </blockquote>
-                      <figcaption className="flex flex-col mt-6 items-left gap-x-4">
-                        <div className="flex flex-row w-full items-center justify-between">
-                          <div className="font-semibold text-primary">
-                            {testimonial.author.name}
-                          </div>
-                          <div className="flex gap-x-1 text-yellow-400">
-                            <StarIcon
-                              aria-hidden="true"
-                              className="size-3 flex-none"
-                            />
-                            <StarIcon
-                              aria-hidden="true"
-                              className="size-3 flex-none"
-                            />
-                            <StarIcon
-                              aria-hidden="true"
-                              className="size-3 flex-none"
-                            />
-                            <StarIcon
-                              aria-hidden="true"
-                              className="size-3 flex-none"
-                            />
-                            <StarIcon
-                              aria-hidden="true"
-                              className="size-3 flex-none"
-                            />
-                          </div>
-                        </div>
-                        <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
-                          <div>{testimonial.author.location}</div>
-                          <div>{testimonial.author.date}</div>
-                        </div>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ))}
-            </div>
-          ))}
+          {(() => {
+            let testimonialIndex = 0; // Running counter for all testimonials
+
+            return testimonials.map((columnGroup, columnGroupIdx) => (
+              <div
+                key={columnGroupIdx}
+                className="space-y-8 xl:contents xl:space-y-0"
+              >
+                {columnGroup.map((column, columnIdx) => (
+                  <div
+                    key={columnIdx}
+                    className={classNames(
+                      (columnGroupIdx === 0 && columnIdx === 0) ||
+                        (columnGroupIdx === testimonials.length - 1 &&
+                          columnIdx === columnGroup.length - 1)
+                        ? "xl:row-span-2"
+                        : "xl:row-start-1",
+                      "space-y-8"
+                    )}
+                  >
+                    {column.map((testimonial) => {
+                      const currentIndex = testimonialIndex++; // Get current index and increment
+
+                      return (
+                        <figure
+                          key={testimonial.author.date}
+                          className="opacity-0 drop-in rounded-sm bg-secondary/30 p-4 shadow-lg ring-1 ring-accent/20"
+                          style={{
+                            animationDelay: `${(currentIndex + 1) * 100}ms`,
+                          }}
+                        >
+                          <blockquote className="text-foreground">
+                            <p>{`"${testimonial.body}"`}</p>
+                          </blockquote>
+                          <figcaption className="flex flex-col mt-6 items-left gap-x-4">
+                            <div className="flex flex-row w-full items-center justify-between">
+                              <div className="font-semibold text-primary">
+                                {testimonial.author.name}
+                              </div>
+                              <div className="flex gap-x-1 text-yellow-400">
+                                <StarIcon
+                                  aria-hidden="true"
+                                  className="size-3 flex-none"
+                                />
+                                <StarIcon
+                                  aria-hidden="true"
+                                  className="size-3 flex-none"
+                                />
+                                <StarIcon
+                                  aria-hidden="true"
+                                  className="size-3 flex-none"
+                                />
+                                <StarIcon
+                                  aria-hidden="true"
+                                  className="size-3 flex-none"
+                                />
+                                <StarIcon
+                                  aria-hidden="true"
+                                  className="size-3 flex-none"
+                                />
+                              </div>
+                            </div>
+                            <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
+                              <div>{testimonial.author.location}</div>
+                              <div>{testimonial.author.date}</div>
+                            </div>
+                          </figcaption>
+                        </figure>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            ));
+          })()}
         </div>
         {/* Mobile: show only featured + first 3, expandable */}
         <div className="sm:hidden mt-12 flex flex-col items-center gap-8">
           {/* Featured testimonial */}
-          <figure className="rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 w-full">
+          <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 w-full">
             <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground">
               <p>{`“${featuredTestimonial.body}”`}</p>
             </blockquote>
@@ -307,10 +318,13 @@ export default function Testimonials() {
             </figcaption>
           </figure>
           {/* Other testimonials */}
-          {visibleTestimonials.map((testimonial) => (
+          {visibleTestimonials.map((testimonial, index) => (
             <figure
               key={testimonial.author.date}
-              className="rounded-sm bg-secondary/30 p-6 shadow-sm ring-1 ring-accent/20 w-full"
+              className="opacity-0 drop-in rounded-sm bg-secondary/30 p-6 shadow-sm ring-1 ring-accent/20 w-full"
+              style={{
+                animationDelay: `${(index + 1) * 100}ms`,
+              }}
             >
               <blockquote className="text-foreground">
                 <p>{`“${testimonial.body}”`}</p>
@@ -345,7 +359,10 @@ export default function Testimonials() {
           )}
         </div>
       </div>
-      <Link href="/testimonials" className="absolute bottom-4 right-4 text-sm text-secondary hover:underline hover:text-foreground transition-all">
+      <Link
+        href="/testimonials"
+        className="absolute bottom-4 right-4 text-sm text-secondary hover:underline hover:text-foreground transition-all"
+      >
         See more at MyBuilder.com
       </Link>
     </section>

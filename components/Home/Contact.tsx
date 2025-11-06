@@ -18,7 +18,7 @@ export default function Contact() {
           method="POST"
           className="mx-auto mt-14 max-w-xl"
         >
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-2 sm:gap-y-6 sm:grid-cols-2">
             <div>
               <label
                 htmlFor="first-name"
