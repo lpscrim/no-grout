@@ -218,8 +218,7 @@ export default function Testimonials() {
           </figure>
           {/* Other testimonials in columns */}
           {(() => {
-            let testimonialIndex = 0; // Running counter for all testimonials
-
+            let testimonialIndex = 0; 
             return testimonials.map((columnGroup, columnGroupIdx) => (
               <div
                 key={columnGroupIdx}
@@ -238,7 +237,7 @@ export default function Testimonials() {
                     )}
                   >
                     {column.map((testimonial) => {
-                      const currentIndex = testimonialIndex++; // Get current index and increment
+                      const currentIndex = testimonialIndex++; 
 
                       return (
                         <figure
@@ -293,48 +292,19 @@ export default function Testimonials() {
             ));
           })()}
         </div>
+        </AnimatedOnView>
         {/* Mobile: show only featured + first 3, expandable */}
-        <div className="sm:hidden mt-12 flex flex-col items-center gap-8">
-          {/* Featured testimonial */}
-          <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 w-full">
-            <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground">
-              <p>{`“${featuredTestimonial.body}”`}</p>
-            </blockquote>
-            <figcaption className="flex flex-col items-left gap-x-4 gap-y-4  px-6 py-4">
-              <div className="flex flex-row w-full items-center justify-between">
-                <div className="font-semibold text-background">
-                  {featuredTestimonial.author.name}
-                </div>
-                <div className="flex gap-x-1 text-yellow-400">
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                  <StarIcon aria-hidden="true" className="size-3 flex-none" />
-                </div>
-              </div>
-              <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
-                <div>{featuredTestimonial.author.location}</div>
-                <div>{featuredTestimonial.author.date}</div>
-              </div>
-            </figcaption>
-          </figure>
-          {/* Other testimonials */}
-          {visibleTestimonials.map((testimonial, index) => (
-            <figure
-              key={testimonial.author.date}
-              className="opacity-0 drop-in rounded-sm bg-secondary/30 p-6 shadow-sm ring-1 ring-accent/20 w-full"
-              style={{
-                animationDelay: `${(index + 1) * 100}ms`,
-              }}
-            >
-              <blockquote className="text-foreground">
-                <p>{`“${testimonial.body}”`}</p>
+        <AnimatedOnView className="w-full" animationClass="none">
+          <div className="sm:hidden mt-12 flex flex-col items-center gap-8">
+            {/* Featured testimonial */}
+            <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 w-full">
+              <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground">
+                <p>{`“${featuredTestimonial.body}”`}</p>
               </blockquote>
-              <figcaption className="mt-6 flex flex-col items-left gap-x-4">
+              <figcaption className="flex flex-col items-left gap-x-4 gap-y-4  px-6 py-4">
                 <div className="flex flex-row w-full items-center justify-between">
-                  <div className="font-semibold text-primary">
-                    {testimonial.author.name}
+                  <div className="font-semibold text-background">
+                    {featuredTestimonial.author.name}
                   </div>
                   <div className="flex gap-x-1 text-yellow-400">
                     <StarIcon aria-hidden="true" className="size-3 flex-none" />
@@ -345,21 +315,52 @@ export default function Testimonials() {
                   </div>
                 </div>
                 <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
-                  <div>{testimonial.author.location}</div>
-                  <div>{testimonial.author.date}</div>
+                  <div>{featuredTestimonial.author.location}</div>
+                  <div>{featuredTestimonial.author.date}</div>
                 </div>
               </figcaption>
             </figure>
-          ))}
-          {flatTestimonials.length > 3 && (
-            <button
-              className="mt-2 px-6 py-2 rounded bg-primary text-background font-semibold cursor-pointer shadow hover:bg-secondary transition"
-              onClick={() => setShowAll((prev) => !prev)}
-            >
-              {showAll ? "See less reviews" : "See more reviews"}
-            </button>
-          )}
-        </div>
+            {/* Other testimonials */}
+            {visibleTestimonials.map((testimonial, index) => (
+              <figure
+                key={testimonial.author.date}
+                className="opacity-0 drop-in rounded-sm bg-secondary/30 p-6 shadow-sm ring-1 ring-accent/20 w-full"
+                style={{
+                  animationDelay: `${(index + 1) * 100}ms`,
+                }}
+              >
+                <blockquote className="text-foreground">
+                  <p>{`“${testimonial.body}”`}</p>
+                </blockquote>
+                <figcaption className="mt-6 flex flex-col items-left gap-x-4">
+                  <div className="flex flex-row w-full items-center justify-between">
+                    <div className="font-semibold text-primary">
+                      {testimonial.author.name}
+                    </div>
+                    <div className="flex gap-x-1 text-yellow-400">
+                      <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                      <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                      <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                      <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                      <StarIcon aria-hidden="true" className="size-3 flex-none" />
+                    </div>
+                  </div>
+                  <div className="font-semibold flex flex-row justify-between text-xs text-foreground/70">
+                    <div>{testimonial.author.location}</div>
+                    <div>{testimonial.author.date}</div>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+            {flatTestimonials.length > 3 && (
+              <button
+                className="mt-2 px-6 py-2 rounded bg-primary text-background font-semibold cursor-pointer shadow hover:bg-secondary transition"
+                onClick={() => setShowAll((prev) => !prev)}
+              >
+                {showAll ? "See less reviews" : "See more reviews"}
+              </button>
+            )}
+          </div>
         </AnimatedOnView>
       </div>
       <Link

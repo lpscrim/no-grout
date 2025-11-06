@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { client } from "@/sanity/lib/client"; // Adjust path as needed
+import { client } from "@/sanity/lib/client"; 
+import AnimatedOnView from "../Functions/AnimatedOnView";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,10 +19,9 @@ export default function Projects() {
     alt?: string;
   };
 
-  
   function formatDateM(dateString: string) {
     const date = new Date(dateString);
-    return date.toLocaleString("en-US", { month: "long"});
+    return date.toLocaleString("en-US", { month: "long" });
   }
   function formatDateY(dateString: string) {
     const date = new Date(dateString);
@@ -77,76 +77,111 @@ export default function Projects() {
       className="section-dark bg-primary relative overflow-hidden"
     >
       <div className="px-6 sm:px-8 lg:px-20 max-w-screen-xl mx-auto py-18">
+        
         <div className="mb-16 flex flex-col items-center">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6">
+          <h2 
+            className="opacity-0 delay-200 drop-in text-4xl sm:text-5xl lg:text-6xl font-bold text-left w-full max-w-3xl mb-6"
+
+          >
             <span className="inline-block text-accent my-10">
               Our Latest Work
             </span>
           </h2>
-          <p className="text-lg max-w-2xl text-background font-light text-left ">
-            Here are some of our most recent projects from clients around the country.
+          <p className="slide-in-right text-lg max-w-2xl text-background font-light text-left ">
+            Here are some of our most recent projects from clients around the
+            country.
             <br />
             Take a look through our gallery to see the different styles and
             solutions available. No project is too big or small!
           </p>
         </div>
-        { loading ? (
+        {loading ? (
           <div className="flex flex-col justify-center items-center h-96">
             <span className="text-xl text-secondary animate-pulse">
               Loading projects...
             </span>
-            <svg className="animate-spin mx-auto mt-5 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            <svg
+              className="animate-spin mx-auto mt-5 h-5 w-5 text-white"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
             </svg>
           </div>
         ) : (
-        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-y-25 my-20">
-          <div className="lg:block hidden absolute inset-0 bg-accent top-[50%] h-[1px] w-[70%] mx-auto line-animate-horizontal"></div>
-          <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[60%] line-animate-vertical"></div>
-          <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[5%] line-animate-vertical"></div>
 
-          {projects.map((project, idx) => (
-            <div
-              key={project.title + idx}
-              className="relative w-[90%] sm:w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
-            >
-              {idx !== 0 && (
-                <div
-                  ref={(el) => {
-                    lineRefs.current[idx] = el;
-                  }}
-                  className="block lg:hidden absolute bg-accent -top-10 h-[1px] w-[70%] -translate-x-1/2 left-1/2 opacity-0 line-animate-horizontal"
-                ></div>
-              )}
-              <Link
-                id={`project-${idx}`}
-                href={`/projects/#${project.title.replace(/\s+/g, "-").toLowerCase()}`}
-                className={`overflow-hidden flex flex-col group h-60 sm:h-100 rounded-xs`}
+          <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-y-25 my-20">
+            <div className="lg:block hidden absolute inset-0 bg-accent top-[50%] h-[1px] w-[70%] mx-auto line-animate-horizontal"></div>
+            <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[60%] line-animate-vertical"></div>
+            <div className="lg:block hidden absolute inset-0 bg-accent left-[50%] w-[1px] h-[40%] top-[5%] line-animate-vertical"></div>
+            {projects.map((project, idx) => (
+              
+              <div
+                key={project.title + idx}
+                className="opacity-0 drop-in relative w-[90%] sm:w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
+                style={{
+                  animationDelay: `${(idx + 1) * 150}ms`,
+                }}
               >
-                <div className="relative w-full h-[72%] sm:h-[80%]">
-                  <Image
-                    src={project.img}
-                    alt={project.alt || project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
-                  />
-                </div>
-                <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-3 sm:py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}>
-                  <div>
-                    <div className="flex mb-1 justify-between gap-2 sm:gap-4">
-                      <span className="text-xs uppercase">
-                        {formatDateM(project.date)}
-                      </span>
-                      <span className="text-sm">{formatDateY(project.date)}</span>
-                    </div>
-                    <h3 className="sm:text-lg font-semibold">{project.title}</h3>
+                {idx !== 0 && (
+                  <div
+                    ref={(el) => {
+                      lineRefs.current[idx] = el;
+                    }}
+                    className="block lg:hidden absolute bg-accent -top-10 h-[1px] w-[70%] -translate-x-1/2 left-1/2 opacity-0 line-animate-horizontal"
+                  ></div>
+                )}
+                <Link
+                  id={`project-${idx}`}
+                  href={`/projects/#${project.title.replace(/\s+/g, "-").toLowerCase()}`}
+                  className={`overflow-hidden flex flex-col group h-60 sm:h-100 rounded-xs`}
+                >
+                  <div className="relative w-full h-[72%] sm:h-[80%]">
+                    <Image
+                      src={project.img}
+                      alt={project.alt || project.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
+                    />
                   </div>
-                </div>
-              </Link>
-            </div>
-          ))}
-        </div> )}
+                  <div
+                    className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-3 sm:py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}
+                  >
+                    <div>
+                      <div className="flex mb-1 justify-between gap-2 sm:gap-4">
+                        <span className="text-xs uppercase">
+                          {formatDateM(project.date)}
+                        </span>
+                        <span className="text-sm">
+                          {formatDateY(project.date)}
+                        </span>
+                      </div>
+                      <h3 className="sm:text-lg font-semibold">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+
+            ))}
+            
+          </div>
+          
+        )}
         <div className="flex justify-center mt-12">
           <Link
             href="/projects"
@@ -165,5 +200,6 @@ export default function Projects() {
         </div>
       </div>
     </section>
+    
   );
 }
