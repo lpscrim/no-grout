@@ -127,7 +127,7 @@ export default function ProjectSection({
           style={{ height: "60px" }}
         >
           <div className="px-8 py-4 text-center inline-block">
-            <h6 className="text-2xl 2xl:text-3xl font-semibold text-background">
+            <h6 className="text-xl sm:text-2xl 2xl:text-3xl font-semibold text-background">
               {project.title}
             </h6>
             <h6 className="text-md 2xl:text-lg text-right text-background/95">
@@ -162,7 +162,7 @@ export default function ProjectSection({
           </div>
           <button
             type="button"
-            className="mt-1 md:mt-2 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-foreground transition-colors shadow cursor-pointer"
+            className="mt-1 md:mt-2 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-secondary transition-colors shadow cursor-pointer"
             onClick={() => {
               handleInfoOpen(!infoOpen);
               if (menuOpen) handleMenuToggle(projIdx);
