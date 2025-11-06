@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import AnimatedOnView from "../Functions/AnimatedOnView";
 
 const featuredTestimonial = {
   body: "Excellent job and excellent, responsive customer service Highly recommended!",
@@ -189,6 +190,7 @@ export default function Testimonials() {
         </div>
 
         {/* Desktop grid */}
+        <AnimatedOnView className="w-full" animationClass="none">
         <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-18 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {/* Featured testimonial */}
           <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 sm:col-span-2 xl:col-start-2 xl:row-end-1">
@@ -358,6 +360,7 @@ export default function Testimonials() {
             </button>
           )}
         </div>
+        </AnimatedOnView>
       </div>
       <Link
         href="/testimonials"
