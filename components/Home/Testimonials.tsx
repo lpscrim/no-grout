@@ -189,7 +189,6 @@ export default function Testimonials() {
         </div>
 
         {/* Desktop grid */}
-        <AnimatedOnView className="w-full" animationClass="none">
         <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-18 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {/* Featured */}
           <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 sm:col-span-2 xl:col-start-2 xl:row-end-1">
@@ -291,9 +290,7 @@ export default function Testimonials() {
             ));
           })()}
         </div>
-        </AnimatedOnView>
         {/* Mobile*/}
-        <AnimatedOnView className="w-full" animationClass="none">
           <div className="sm:hidden mt-12 flex flex-col items-center gap-8">
             {/* Featured testimonial */}
             <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 w-full">
@@ -360,7 +357,6 @@ export default function Testimonials() {
               </button>
             )}
           </div>
-        </AnimatedOnView>
       </div>
       <Link
         href="/testimonials"
