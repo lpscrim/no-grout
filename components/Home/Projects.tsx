@@ -122,9 +122,9 @@ export default function Projects() {
               <Link
                 id={`project-${idx}`}
                 href={`/projects/#${project.title.replace(/\s+/g, "-").toLowerCase()}`}
-                className={`overflow-hidden flex flex-col group h-100 rounded-xs`}
+                className={`overflow-hidden flex flex-col group h-60 sm:h-100 rounded-xs`}
               >
-                <div className="relative w-full h-[80%]">
+                <div className="relative w-full h-[72%] sm:h-[80%]">
                   <Image
                     src={project.img}
                     alt={project.alt || project.title}
@@ -132,15 +132,15 @@ export default function Projects() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105 group-hover:blur-[1px]"
                   />
                 </div>
-                <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}>
+                <div className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-3 sm:py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}>
                   <div>
-                    <div className="flex mb-1 justify-between gap-4">
+                    <div className="flex mb-1 justify-between gap-2 sm:gap-4">
                       <span className="text-xs uppercase">
                         {formatDateM(project.date)}
                       </span>
                       <span className="text-sm">{formatDateY(project.date)}</span>
                     </div>
-                    <h3 className="text-lg font-semibold">{project.title}</h3>
+                    <h3 className="sm:text-lg font-semibold">{project.title}</h3>
                   </div>
                 </div>
               </Link>
