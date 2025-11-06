@@ -157,7 +157,7 @@ export default function ProjectSection({
       {/* Info button*/}
       {fixedIdx === projIdx && project.body && (
         <div className="flex group w-50 py-20 justify-end fixed top-[40lvh] right-4 xl:right-8 z-50 pointer-events-auto">
-          <div className="hidden group-hover:flex  fixed top-[50.5lvh] right-12 animate-pulse text-xs text-background/90 pointer-events-none flex-col items-end tracking-[5]">
+          <div className="hidden group-hover:flex flex-row mr-1 mb-1.5 animate-pulse text-xs text-background/90 pointer-events-none flex-col items-end tracking-[5]">
             <p>about-&gt;</p>
           </div>
           <button
