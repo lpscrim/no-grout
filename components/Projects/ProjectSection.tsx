@@ -92,13 +92,13 @@ export default function ProjectSection({
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    
+
     // Clear any pending restart timeout
     if (restartTimeoutRef.current) {
       clearTimeout(restartTimeoutRef.current);
       restartTimeoutRef.current = null;
     }
-    
+
     handleThumbClick(projIdx, imgIdx);
 
     restartTimeoutRef.current = setTimeout(() => {
@@ -156,7 +156,10 @@ export default function ProjectSection({
 
       {/* Info button*/}
       {fixedIdx === projIdx && project.body && (
-        <div className="flex group animate-pulse justify-end fixed top-[49lvh] right-4 xl:right-8 z-50 pointer-events-auto">
+        <div className="flex group w-50 py-20 justify-end fixed top-[40lvh] right-4 xl:right-8 z-50 pointer-events-auto">
+          <div className="hidden group-hover:flex  fixed top-[50.5lvh] right-12 animate-pulse text-xs text-background/90 pointer-events-none flex-col items-end tracking-[5]">
+            <p>about-&gt;</p>
+          </div>
           <button
             type="button"
             className="mt-1 md:mt-2 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-foreground transition-colors shadow cursor-pointer"
