@@ -53,33 +53,33 @@ export default function Services() {
   return (
     <section id="services" className=" bg-accent section-light">
       <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-14 mt-10 text-center text-secondary">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-10 sm:mb-14 mt-10 text-center text-secondary">
           Our Services
         </h2>
-         <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
+         <p className="text-base sm:text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
           Each project is custom tailored, based on each client needs. We are
           ready to take on any kind of projects, be that small or complex
         </p>
         <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="flex justify-center items-center h-[300px] lg:h-[550px]">
+          <div className="flex justify-center items-center h-[200px] sm:h-[300px] lg:h-[550px]">
             <Image
               src={imageSrc}
               width={500}
               height={800}
               alt="Service Example"
-              className="w-full max-w-xl h-[350px] rounded-xs lg:h-[550px] object-cover transition-all duration-300"
+              className="w-full max-w-xl h-[250px] sm:h-[350px] rounded-xs lg:h-[550px] object-cover transition-all duration-300"
             />
           </div>
           <ul className="grid grid-cols-2 lg:grid-cols-2 gap-2 xl:gap-2.5 max-w-xl mx-auto">
             {services.map((service, idx) => (
               <li
                 key={service.title}
-                className={`bg-background/50 p-4 lg:p-5 rounded-xs cursor-pointer transition-all duration-200 ${hoveredIdx === idx ? " bg-background/70" : "bg-background/50"}`}
+                className={`bg-background/50 p-2 sm:p-4 lg:p-5 rounded-xs cursor-pointer transition-all duration-200 ${hoveredIdx === idx ? " bg-background/70" : "bg-background/50"}`}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onClick={() => setHoveredIdx(idx)}
               >
-                <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                <p className="text-foreground">{service.description}</p>
+                <h3 className="sm:text-lg font-semibold mb-2">{service.title}</h3>
+                <p className="text-sm sm:text-base text-foreground">{service.description}</p>
               </li>
             ))}
           </ul>
