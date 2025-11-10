@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Josefin_Sans, Karla } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "../components/Functions/providers";
+import ColorPicker from "@/components/functions/ColorPicker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${josefinSans.variable} ${karla.variable} antialiased scroll-smooth`}
       >
-        
+          <ColorPicker />
           <Providers>{children}</Providers>
         
       </body>

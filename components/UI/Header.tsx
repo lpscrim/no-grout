@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { EnvelopeIcon } from "@heroicons/react/16/solid";
-import NavIcon from "../NavIcon/NavIcon";
+import NavIcon from "./NavIcon/NavIcon";
 import "@/styles/globals.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
