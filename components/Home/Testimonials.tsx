@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
-import AnimatedOnView from "../Functions/AnimatedOnView";
+import Button from "../UI/Button";
 
 const featuredTestimonial = {
   body: "Excellent job and excellent, responsive customer service Highly recommended!",
@@ -349,12 +349,12 @@ export default function Testimonials() {
               </figure>
             ))}
             {flatTestimonials.length > 3 && (
-              <button
-                className="mt-2 px-6 py-2 rounded bg-primary text-background font-semibold cursor-pointer shadow hover:bg-secondary transition"
+              <Button
                 onClick={() => setShowAll((prev) => !prev)}
+                mode="dark"
               >
                 {showAll ? "See less reviews" : "See more reviews"}
-              </button>
+              </Button>
             )}
           </div>
       </div>
