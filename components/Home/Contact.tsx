@@ -1,3 +1,5 @@
+import Button from "../UI/Button";
+
 export default function Contact() {
   return (
     <section
@@ -117,20 +119,20 @@ export default function Contact() {
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
+                  rows={3}
                   className="block w-full rounded-md bg-background/90 px-3.5 py-2 text-base text-foreground outline-1 -outline-offset-1 outline-background/80 placeholder:text-accent focus:outline-2 focus:-outline-offset-2 focus:outline-accent  "
                   defaultValue={""}
                 />
               </div>
             </div>
           </div>
-          <div className="mt-10">
-            <button
+          <div className="mt-10 w-full flex justify-center">
+            <Button
               type="submit"
-              className="block w-full rounded-md bg-secondary px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary cursor-pointer"
+              mode="light"
             >
               Send
-            </button>
+            </Button>
           </div>
         </form>
       </div>
