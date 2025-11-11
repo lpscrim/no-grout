@@ -140,7 +140,7 @@ export default function Header({
             </button>
           </div>
           <div className="flow-root h-full">
-            <div className="h-full flex flex-col justify-center">
+            <div className="h-full flex flex-col mt-[10svh] justify-start">
               <div className="space-y-12 py-6 flex flex-col items-center ">
                 {navigation.map((item, idx) => (
                   <Link
