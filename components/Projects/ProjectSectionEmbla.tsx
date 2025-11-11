@@ -387,9 +387,9 @@ export default function ProjectSection({
             project.images &&
             project.images.length > 1 && (
               <div>
-                <div className="embla__controls fixed proj-dots pl-10 top-1/2 transform -translate-x-1/2 z-40">
+                <div className="embla__controls fixed proj-dots pl-5 top-[52svh] -translate-y-1/2 transform z-40 ">
                   {/* Dots */}
-                  <div className="embla__dots flex flex-col justify-center gap-2 mb-4">
+                  <div className="embla__dots flex flex-col justify-center gap-5">
                     {scrollSnaps.map((_, index) => (
                       <DotButton
                         key={index}

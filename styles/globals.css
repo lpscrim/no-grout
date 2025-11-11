@@ -280,11 +280,6 @@ H1, H2, H6 {
   gap: 1rem;
 }
 
-.embla__dots {
-  display: flex;
-  gap: 0.5rem;
-}
-
 .embla__dot {
   border: none;
   cursor: pointer;
