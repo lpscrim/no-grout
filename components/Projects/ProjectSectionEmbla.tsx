@@ -289,7 +289,6 @@ export default function ProjectSection({
             className="mt-3 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors shadow cursor-pointer"
             onClick={() => {
               handleInfoOpen(!infoOpen);
-              if (menuOpen) handleMenuToggle(projIdx);
             }}
             aria-label="Show project info"
           >
