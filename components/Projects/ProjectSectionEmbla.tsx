@@ -241,7 +241,7 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative bg-accent w-full xl:max-w-[1230px] h-[100svh] xl:h-[90svh] xl:rounded-sm overflow-hidden flex"
+      className="relative bg-accent w-full xl:max-w-[1230px] h-[100lvh] xl:h-[90svh] xl:rounded-sm overflow-hidden flex"
     >
       {/* Fixed header */}
       {fixedIdx === projIdx && (
@@ -399,7 +399,7 @@ export default function ProjectSection({
                   </div>
                 </div>
 
-                <div className="embla__buttons fixed flex justify-around flex-row z-40 gap-10 left-1/2 bottom-15 transform -translate-x-1/2 w-full px-2">
+                <div className="embla__buttons fixed flex justify-around flex-row z-40 gap-10 left-1/2 bottom-[8svh] transform -translate-x-1/2 w-full px-2">
                   <PrevButton
                     onClick={onPrevButtonClick}
                     disabled={prevBtnDisabled}
