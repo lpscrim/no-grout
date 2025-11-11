@@ -4,6 +4,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ProjectSectionEmbla from "@/components/Projects/ProjectSectionEmbla";
 import { PortableTextBlock } from "@portabletext/types";
+import { ScrollSnapping } from "@/components/Functions/ScrollSnapping";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +25,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
   const [infoOpenIdx, setInfoOpenIdx] = useState<number | null>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeIdxs, setActiveIdxs] = useState<number[]>(projects.map(() => 0));
+  const scrollSnapping = useRef<ScrollSnapping | null>(null);
 
   useEffect(() => {
     if (window.location.hash) {
@@ -40,6 +42,21 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
     const infoTriggers: ScrollTrigger[] = [];
+
+    const validPanels = projectRefs.current.filter(
+      (ref) => ref !== null
+    ) as HTMLElement[];
+
+    if (validPanels.length > 0) {
+      const offset = window.innerWidth >= 1280 ? 70 : 0;
+
+      scrollSnapping.current = new ScrollSnapping({
+        panels: validPanels,
+        duration: 0.5,
+        offset: offset,
+      });
+      scrollSnapping.current.init();
+    }
 
     projectRefs.current.forEach((ref, idx) => {
       if (!ref) return;
@@ -104,16 +121,6 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
   return (
     <main className="bg-accent section-dark min-h-[100svh]">
       <div className="mx-auto lg:py-17 xl:px-10 ">
-        {" "}
-        {/* Adjusted padding - py-18 md:py-24 */}
-        {/*<h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-20 mt-10 text-center text-secondary">
-          Our Projects
-        </h2>
-        <p className="text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
-          A showcase of our recent tiling projects, demonstrating our expertise
-          and attention to detail. Each project is custom tailored to meet our
-          clients&#39; needs and preferences.
-        </p>*/}
         <div className="flex flex-col items-center gap-15 md:gap-20">
           {projects.map((project, projIdx) => (
             <ProjectSectionEmbla
