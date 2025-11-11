@@ -162,7 +162,7 @@ export default function ProjectSection({
           </div>
           <button
             type="button"
-            className="mt-1 md:mt-2 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-secondary transition-colors shadow cursor-pointer"
+            className="mt-1 md:mt-2 xl:mt-4 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-secondary transition-colors shadow cursor-pointer"
             onClick={() => {
               handleInfoOpen(!infoOpen);
               if (menuOpen) handleMenuToggle(projIdx);
