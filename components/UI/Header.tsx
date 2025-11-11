@@ -19,7 +19,11 @@ const navigation = [
   { name: "Contact", href: "/#contact" },
 ];
 
-export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) {
+export default function Header({
+  forceMode,
+}: {
+  forceMode?: "light" | "dark";
+}) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [headerMode, setHeaderMode] = useState<"light" | "dark">("dark");
   const headerRef = useRef<HTMLElement>(null);
@@ -29,17 +33,19 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
   };
 
   useEffect(() => {
-
     if (forceMode) {
       setHeaderMode(forceMode);
       return;
     }
 
-    if (typeof window !== "undefined" && window.location.pathname === "/#home") {
+    if (
+      typeof window !== "undefined" &&
+      window.location.pathname === "/#home"
+    ) {
       setHeaderMode("dark");
       return;
-    }   
-    
+    }
+
     const sections = Array.from(
       document.querySelectorAll(".section-light, .section-dark")
     );
@@ -101,20 +107,21 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
             />
           </button>
         </div>
+        {/* Desktop menu */}
         <div className="hidden lg:flex lg:gap-x-12">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={`text-lg/6 font-semibold transition-colors 
-      ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
-              
+              ${headerMode === "light" ? "hover:text-secondary" : "hover:text-accent"}`}
             >
               <h6>{item.name}</h6>
             </Link>
           ))}
         </div>
       </nav>
+      {/* Mobile menu */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
@@ -132,9 +139,9 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
               <span className="sr-only">Close menu</span>
             </button>
           </div>
-          <div className="flow-root mt-[20vh] ">
-            <div className="-my-6 divide-y divide-background-500 ">
-              <div className="space-y-12 py-6 text-center ">
+          <div className="flow-root h-full">
+            <div className="h-full flex flex-col justify-center">
+              <div className="space-y-12 py-6 flex flex-col items-center ">
                 {navigation.map((item, idx) => (
                   <Link
                     key={item.name}
@@ -145,7 +152,6 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
                     }}
                     onClick={() => {
                       setMobileMenuOpen(false);
-
                     }}
                   >
                     <h6>{item.name}</h6>
@@ -168,4 +174,6 @@ export default function Header({ forceMode }: { forceMode?: "light" | "dark" }) 
   );
 }
 
-{"hover:text-background hover:text-foreground text-background text-foreground"}
+{
+  ("hover:text-background hover:text-foreground text-background text-foreground");
+}
