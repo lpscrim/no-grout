@@ -247,7 +247,7 @@ export default function ProjectSection({
       {fixedIdx === projIdx && (
         <div
           id="fixedHeader"
-          className="fixed w-full top-15 lg:top-20 right-0 z-50 flex justify-end pointer-events-none transition-all bg-black/20 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none pb-18"
+          className="fixed w-full top-18 lg:top-20 right-0 z-50 flex justify-end pointer-events-none transition-all bg-black/20 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none pb-18"
           style={{ height: "60px" }}
         >
           <div className="px-8 py-4 text-center inline-block sm:bg-black/10 sm:backdrop-blur-sm sm:rounded-xs h-20">
@@ -378,7 +378,7 @@ export default function ProjectSection({
             </div>
           </div>
 
-          {/* Embla Controls - Only show when project is active */}
+          {/* Embla Controls */}
           {fixedIdx === projIdx &&
             project.images &&
             project.images.length > 1 && (
