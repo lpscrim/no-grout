@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Josefin_Sans, Karla } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "../components/Functions/providers";
-import ColorPicker from "@/components/functions/ColorPicker";
+import ColorPicker from "@/components/Functions/ColorPicker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
