@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ProjectSectionEmbla from "@/components/Projects/ProjectSection";
+import ProjectSectionEmbla from "@/components/Projects/ProjectSectionEmbla";
 import { PortableTextBlock } from "@portabletext/types";
 
 gsap.registerPlugin(ScrollTrigger);
