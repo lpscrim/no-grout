@@ -323,28 +323,24 @@ export default function ProjectSection({
         </div>
       )}
 
-      {/* Embla Carousel Container */}
+      {/* Embla Carousel Container - Fixed with viewport wrapper */}
       {(project.images?.length ?? 0) > 0 && (
-        <div 
-          className="embla w-full h-full absolute inset-0 cursor-grab active:cursor-grabbing" 
-          ref={emblaRef}
-        >
-          <div className="embla__container h-full">
-            {project.images!.map((img, index) => (
-              <div 
-                key={img.src + "-" + index} 
-                className="embla__slide flex-[0_0_100%] min-w-0 relative"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt || `Project image ${index + 1}`}
-                  fill
-                  className="object-cover pointer-events-none select-none"
-                  priority={index === 0}
-                  draggable={false}
-                />
-              </div>
-            ))}
+        <div className="embla absolute inset-0">
+          <div className="embla__viewport cursor-grab active:cursor-grabbing" ref={emblaRef}>
+            <div className="embla__container">
+              {project.images!.map((img, index) => (
+                <div key={img.src + "-" + index} className="embla__slide">
+                  <Image
+                    src={img.src}
+                    alt={img.alt || `Project image ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}

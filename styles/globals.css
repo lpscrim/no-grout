@@ -184,28 +184,35 @@ H1, H2, H6 {
 }
 
 
-/* Embla Carousel Styles */
+/* Embla Carousel Styles - Correct structure with viewport */
 .embla {
   overflow: hidden;
-  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .embla__container {
-  backface-visibility: hidden;
   display: flex;
   touch-action: pan-y pinch-zoom;
-  margin-left: calc(var(--slide-spacing, 1rem) * -1);
+  margin-left: 0;
+  height: 100%;
 }
 
 .embla__slide {
-  transform: translate3d(0, 0, 0);
   flex: 0 0 100%;
   min-width: 0;
-  padding-left: var(--slide-spacing, 1rem);
+  position: relative;
+  height: 100%;
 }
 
-/* Ensure images don't interfere with dragging */
-.embla img {
+/* Prevent image dragging and selection */
+.embla__slide img {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
