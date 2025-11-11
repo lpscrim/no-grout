@@ -1,7 +1,17 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
-import { useEffect, useRef } from "react";
+import { useEffect, useCallback } from "react";
+import { EmblaOptionsType } from 'embla-carousel'
+import useEmblaCarousel from 'embla-carousel-react'
+import Autoplay from 'embla-carousel-autoplay'
+import {
+  NextButton,
+  PrevButton,
+  usePrevNextButtons
+} from '../UI/Embla/EmblaCarouselArrowButtons'
+import { DotButton, useDotButton } from '../UI/Embla/EmblaCarouselDotButton'
+
 
 import {
   ArrowDownIcon,
@@ -53,65 +63,74 @@ export default function ProjectSection({
   infoOpen,
   handleInfoOpen,
 }: ProjectSectionProps) {
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const restartTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const currentActiveIdxRef = useRef(activeIdx);
 
-  // Update ref when activeIdx changes
+  const options: EmblaOptionsType = {
+    loop: true,
+    skipSnaps: false,
+    duration: 20,
+    dragFree: false,
+    containScroll: 'trimSnaps',
+  }
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay({ playOnInit: false, delay: 10000, stopOnInteraction: true })
+  ])
+
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi)
+
+
+
+
+  // Handle slide selection
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    const selectedIndex = emblaApi.selectedScrollSnap()
+    handleThumbClick(projIdx, selectedIndex)
+  }, [emblaApi, projIdx, handleThumbClick])
+
+  // Set up Embla event listeners
   useEffect(() => {
-    currentActiveIdxRef.current = activeIdx;
-  }, [activeIdx]);
-
-  // Auto-cycle through images when this project is active/fixed
-  useEffect(() => {
-    if (fixedIdx === projIdx && project.images && project.images.length > 1) {
-      intervalRef.current = setInterval(() => {
-        const nextIdx =
-          (currentActiveIdxRef.current + 1) % project.images!.length;
-        handleThumbClick(projIdx, nextIdx);
-      }, 10000);
-    }
-
-    // Cleanup interval when project is no longer active or component unmounts
+    if (!emblaApi) return
+    
+    emblaApi.on('select', onSelect)
+    onSelect()
+    
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-      if (restartTimeoutRef.current) {
-        clearTimeout(restartTimeoutRef.current);
-        restartTimeoutRef.current = null;
-      }
-    };
-  }, [fixedIdx, projIdx, project.images, handleThumbClick]);
-
-  // Stop cycling when user manually selects an image
-  const handleManualThumbClick = (imgIdx: number) => {
-    // Clear existing interval
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
+      emblaApi.off('select', onSelect)
     }
+  }, [emblaApi, onSelect])
 
-    // Clear any pending restart timeout
-    if (restartTimeoutRef.current) {
-      clearTimeout(restartTimeoutRef.current);
-      restartTimeoutRef.current = null;
-    }
+  // Control autoplay based on fixedIdx
+  useEffect(() => {
+    if (!emblaApi) return
 
-    handleThumbClick(projIdx, imgIdx);
+    const autoplayPlugin = emblaApi.plugins().autoplay
+    if (!autoplayPlugin) return
 
-    restartTimeoutRef.current = setTimeout(() => {
-      if (fixedIdx === projIdx && project.images && project.images.length > 1) {
-        intervalRef.current = setInterval(() => {
-          const nextIdx =
-            (currentActiveIdxRef.current + 1) % project.images!.length;
-          handleThumbClick(projIdx, nextIdx);
-        }, 10000);
+    if (fixedIdx === projIdx && project.images && project.images.length > 1) {
+      if (!autoplayPlugin.isPlaying()) {
+        autoplayPlugin.play()
       }
-      restartTimeoutRef.current = null; // Clear the ref since timeout completed
-    }, 10000);
-  };
+    } else {
+      autoplayPlugin.stop()
+      autoplayPlugin.reset()
+    }
+  }, [emblaApi, fixedIdx, projIdx, project.images])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    
+    const currentIndex = emblaApi.selectedScrollSnap()
+    if (currentIndex !== activeIdx) {
+      emblaApi.scrollTo(activeIdx, false)
+    }
+  }, [emblaApi, activeIdx])
+
 
   return (
     <div
@@ -228,17 +247,46 @@ export default function ProjectSection({
         </div>
       )}
 
-      {/* Main image */}
+      {/* Embla Carousel */}
       {(project.images?.length ?? 0) > 0 && (
-        <Image
-          src={project.images![activeIdx].src}
-          alt={
-            project.images![activeIdx].alt || `Project image ${activeIdx + 1}`
-          }
-          fill
-          className="object-cover transition-all duration-500"
-          priority
-        />
+        <div className="embla absolute inset-0">
+          <div className="embla__viewport cursor-grab active:cursor-grabbing" ref={emblaRef}>
+            <div className="embla__container">
+              {project.images!.map((img, index) => (
+                <div key={img.src + "-" + index} className="embla__slide">
+                  <Image
+                    src={img.src}
+                    alt={img.alt || `Project image ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                    draggable={false}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Embla Controls - Only show when project is active */}
+          {fixedIdx === projIdx && project.images && project.images.length > 1 && (
+            <div className="embla__controls absolute bottom-4 left-1/2 transform -translate-x-1/2 z-40 flex items-center gap-4">
+              {/* Navigation Buttons */}
+              <div className="embla__buttons flex gap-2">
+                <PrevButton
+                  onClick={() => onAutoplayButtonClick(onPrevButtonClick)}
+                  disabled={prevBtnDisabled}
+                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <NextButton
+                  onClick={() => onAutoplayButtonClick(onNextButtonClick)}
+                  disabled={nextBtnDisabled}
+                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+              </div>        
+             
+            </div>
+          )}
+        </div>
       )}
     </div>
   );
