@@ -55,12 +55,12 @@ export default function ProjectSection({
   infoOpen,
   handleInfoOpen,
 }: ProjectSectionProps) {
-  // Configure Embla with autoplay
+
   const autoplayOptions = {
     delay: 10000,
     stopOnInteraction: true,
     stopOnMouseEnter: false,
-    playOnInit: false, // We'll control when to start
+    playOnInit: false,
   }
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
@@ -68,6 +68,8 @@ export default function ProjectSection({
       loop: true,
       skipSnaps: false,
       duration: 20,
+      dragFree: false,
+      containScroll: 'trimSnaps',
     },
     [Autoplay(autoplayOptions)]
   )
@@ -323,16 +325,23 @@ export default function ProjectSection({
 
       {/* Embla Carousel Container */}
       {(project.images?.length ?? 0) > 0 && (
-        <div className="embla absolute inset-0" ref={emblaRef}>
-          <div className="embla__container flex">
+        <div 
+          className="embla w-full h-full absolute inset-0 cursor-grab active:cursor-grabbing" 
+          ref={emblaRef}
+        >
+          <div className="embla__container h-full">
             {project.images!.map((img, index) => (
-              <div key={img.src + "-" + index} className="embla__slide relative w-full h-full flex-none">
+              <div 
+                key={img.src + "-" + index} 
+                className="embla__slide flex-[0_0_100%] min-w-0 relative"
+              >
                 <Image
                   src={img.src}
                   alt={img.alt || `Project image ${index + 1}`}
                   fill
-                  className="object-cover"
+                  className="object-cover pointer-events-none select-none"
                   priority={index === 0}
+                  draggable={false}
                 />
               </div>
             ))}
