@@ -182,3 +182,20 @@ H1, H2, H6 {
   mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.1));
   -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.1));
 }
+
+
+/* Embla Carousel Styles */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}

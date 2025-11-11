@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ProjectSection from "@/components/Projects/ProjectSection";
+import ProjectSectionEmbla from "@/components/Projects/ProjectSection";
 import { PortableTextBlock } from "@portabletext/types";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -148,7 +148,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
         </p>*/}
         <div className="flex flex-col items-center gap-15 md:gap-20">
           {projects.map((project, projIdx) => (
-            <ProjectSection
+            <ProjectSectionEmbla
               key={project.title}
               project={project}
               projIdx={projIdx}
