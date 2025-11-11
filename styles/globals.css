@@ -187,15 +187,29 @@ H1, H2, H6 {
 /* Embla Carousel Styles */
 .embla {
   overflow: hidden;
+  position: relative;
 }
 
 .embla__container {
   backface-visibility: hidden;
   display: flex;
   touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing, 1rem) * -1);
 }
 
 .embla__slide {
+  transform: translate3d(0, 0, 0);
   flex: 0 0 100%;
   min-width: 0;
+  padding-left: var(--slide-spacing, 1rem);
+}
+
+/* Ensure images don't interfere with dragging */
+.embla img {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
 }
