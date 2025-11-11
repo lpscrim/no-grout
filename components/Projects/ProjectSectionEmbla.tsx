@@ -245,7 +245,7 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative bg-accent w-full xl:max-w-[1230px] h-[100lvh] xl:h-[90lvh] xl:rounded-sm overflow-hidden flex "
+      className="relative bg-accent w-full xl:max-w-[1230px] h-[100svh] xl:h-[90svh] xl:rounded-sm overflow-hidden flex "
     >
       {/* Fixed header */}
       {fixedIdx === projIdx && (
@@ -291,21 +291,21 @@ export default function ProjectSection({
             </div>
             <button
               type="button"
-              className="mt-1 md:mt-2 xl:mt-4 md:mr-0.5 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors shadow cursor-pointer"
+              className="mt-3 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors shadow cursor-pointer"
               onClick={() => {
                 handleInfoOpen(!infoOpen);
                 if (menuOpen) handleMenuToggle(projIdx);
               }}
               aria-label="Show project info"
             >
-              <InformationCircleIcon className="w-6 h-6 md:w-7 md:h-7 text-background" />
+              <InformationCircleIcon className="w-6 h-6  text-background" />
             </button>
           </div>
         )}
 
         {/* Navigation buttons */}
         <button
-          className="fixed top-[46%] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+          className="fixed top-[46%] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
           onClick={() => {
             if (fixedIdx !== null && fixedIdx > 0) {
               const prevIdx = fixedIdx - 1;
@@ -314,10 +314,10 @@ export default function ProjectSection({
           }}
           aria-label="Previous project"
         >
-          <ArrowUpIcon className="w-6 h-6 md:w-8 md:h-8" />
+          <ArrowUpIcon className="w-6 h-6 " />
         </button>
         <button
-          className="fixed top-[57%] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+          className="fixed top-[57%] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
           onClick={() => {
             if (fixedIdx === null) {
               scrollToProject(0);
@@ -328,7 +328,7 @@ export default function ProjectSection({
           }}
           aria-label="Next project"
         >
-          <ArrowDownIcon className="w-6 h-6 md:w-8 md:h-8" />
+          <ArrowDownIcon className="w-6 h-6 " />
         </button>
       </div>
 
