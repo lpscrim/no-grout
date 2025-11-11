@@ -139,36 +139,78 @@ H1, H2, H6 {
   #fixedHeader {
     right: 50px;
   }
+  .proj-nav {
+    right: 50px;
+  }
+  .proj-dots {
+    left: 50px;
+  }
 }
 
 @media (min-width: 1360px) {
   #fixedHeader {
     right: 100px;
   }
+  .proj-nav {
+    right: 100px;
+  }
+  .proj-dots {
+    left: 100px;
+  }
 }
 @media (min-width: 1436px) {
   #fixedHeader {
     right: 150px;
+  }
+  .proj-nav {
+    right: 150px;
+  }
+  .proj-dots {
+    left: 150px;
   }
 }
 @media (min-width: 1536px) {
   #fixedHeader {
     right: 200px;
   }
+  .proj-nav {
+    right: 200px;
+  }
+  .proj-dots {
+    left: 200px;
+  }
 }
 @media (min-width: 1650px) {
   #fixedHeader {
     right: 250px;
+  }
+  .proj-nav {
+    right: 250px;
+  }
+  .proj-dots {
+    left: 250px;
   }
 }
 @media (min-width: 1750px) {
   #fixedHeader {
     right: 300px;
   }
+  .proj-nav {
+    right: 300px;
+  }
+  .proj-dots {
+    left: 300px;
+  }
 }
 @media (min-width: 1850px) {
   #fixedHeader {
     right: 350px;
+  }
+  .proj-nav {
+    right: 350px;
+  }
+  .proj-dots {
+    left: 350px;
   }
 }
 

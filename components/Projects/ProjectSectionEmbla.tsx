@@ -285,13 +285,13 @@ export default function ProjectSection({
       <div className="w-full border h-[100svh] flex items-center justify-center">
         {/* Info button*/}
         {fixedIdx === projIdx && project.body && (
-          <div className="flex group w-50 justify-end fixed top-1/2 right-4 xl:right-8 z-50 pointer-events-auto">
+          <div className="flex group w-50 justify-end fixed top-1/2 right-4 proj-nav z-50 pointer-events-auto">
             <div className="hidden group-hover:flex flex-row mr-1 mb-1.5 animate-pulse text-xs text-background/90 pointer-events-none items-end tracking-[5]">
               <p>about-&gt;</p>
             </div>
             <button
               type="button"
-              className="mt-1 md:mt-2 xl:mt-4 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-secondary transition-colors shadow cursor-pointer"
+              className="mt-1 md:mt-2 xl:mt-4 md:mr-0.5 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors shadow cursor-pointer"
               onClick={() => {
                 handleInfoOpen(!infoOpen);
                 if (menuOpen) handleMenuToggle(projIdx);
@@ -305,7 +305,7 @@ export default function ProjectSection({
 
         {/* Navigation buttons */}
         <button
-          className="fixed top-[46%] right-4 xl:right-8 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+          className="fixed top-[46%] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
           onClick={() => {
             if (fixedIdx !== null && fixedIdx > 0) {
               const prevIdx = fixedIdx - 1;
@@ -317,7 +317,7 @@ export default function ProjectSection({
           <ArrowUpIcon className="w-6 h-6 md:w-8 md:h-8" />
         </button>
         <button
-          className="fixed top-[57%] right-4 xl:right-8  z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+          className="fixed top-[57%] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
           onClick={() => {
             if (fixedIdx === null) {
               scrollToProject(0);
@@ -389,9 +389,9 @@ export default function ProjectSection({
             project.images &&
             project.images.length > 1 && (
               <div>
-                <div className="embla__controls absolute bottom-4 left-1/2 transform -translate-x-1/2 z-40">
+                <div className="embla__controls fixed proj-dots pl-10 top-1/2 transform -translate-x-1/2 z-40">
                   {/* Dots */}
-                  <div className="embla__dots flex justify-center gap-2 mb-4">
+                  <div className="embla__dots flex flex-col justify-center gap-2 mb-4">
                     {scrollSnaps.map((_, index) => (
                       <DotButton
                         key={index}
@@ -406,16 +406,16 @@ export default function ProjectSection({
                   </div>
                 </div>
 
-                <div className="embla__buttons absolute flex justify-start flex-col gap-2 top-1/2 transform -translate-y-1/2 w-10 px-2">
+                <div className="embla__buttons fixed flex justify-around flex-row z-40 gap-10 left-1/2 bottom-15 transform -translate-x-1/2 w-full px-2">
                   <PrevButton
                     onClick={onPrevButtonClick}
                     disabled={prevBtnDisabled}
-                    className="bg-white/50 hover:bg-white/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-4 cursor-pointer  rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                   <NextButton
                     onClick={onNextButtonClick}
                     disabled={nextBtnDisabled}
-                    className="bg-white/50 hover:bg-white/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-4 cursor-pointer  rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   />
                 </div>
               </div>

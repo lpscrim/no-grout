@@ -117,7 +117,7 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative bg-accent w-full xl:max-w-[1230px] h-[100lvh] xl:h-[90lvh] xl:rounded-sm overflow-hidden flex "
+      className="relative bg-accent w-full xl:max-w-[1230px] h-[100svh] xl:h-[90svh] xl:rounded-sm overflow-hidden flex "
     >
       {/* Fixed header */}
       {fixedIdx === projIdx && (
