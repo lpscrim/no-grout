@@ -245,7 +245,7 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative bg-accent w-full xl:max-w-[1230px] h-[100svh] xl:h-[90svh] xl:rounded-sm overflow-hidden flex "
+      className="relative bg-accent w-full xl:max-w-[1230px] h-[100svh] xl:h-[90svh] xl:rounded-sm overflow-hidden flex"
     >
       {/* Fixed header */}
       {fixedIdx === projIdx && (
@@ -282,7 +282,6 @@ export default function ProjectSection({
         </div>
       )}
 
-      <div className="w-full border h-[100svh] flex items-center justify-center">
         {/* Info button*/}
         {fixedIdx === projIdx && project.body && (
           <div className="flex group w-50 justify-end fixed top-1/2 right-4 proj-nav z-50 pointer-events-auto">
@@ -330,7 +329,6 @@ export default function ProjectSection({
         >
           <ArrowDownIcon className="w-6 h-6 " />
         </button>
-      </div>
 
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
