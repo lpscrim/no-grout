@@ -282,53 +282,55 @@ export default function ProjectSection({
         </div>
       )}
 
-      {/* Info button*/}
-      {fixedIdx === projIdx && project.body && (
-        <div className="flex group w-50 py-20 justify-end fixed top-[39.2lvh] right-4 xl:right-8 z-50 pointer-events-auto">
-          <div className="hidden group-hover:flex flex-row mr-1 mb-1.5 animate-pulse text-xs text-background/90 pointer-events-none items-end tracking-[5]">
-            <p>about-&gt;</p>
+      <div className="w-full border h-[100svh] flex items-center justify-center">
+        {/* Info button*/}
+        {fixedIdx === projIdx && project.body && (
+          <div className="flex group w-50 justify-end fixed top-1/2 right-4 xl:right-8 z-50 pointer-events-auto">
+            <div className="hidden group-hover:flex flex-row mr-1 mb-1.5 animate-pulse text-xs text-background/90 pointer-events-none items-end tracking-[5]">
+              <p>about-&gt;</p>
+            </div>
+            <button
+              type="button"
+              className="mt-1 md:mt-2 xl:mt-4 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-secondary transition-colors shadow cursor-pointer"
+              onClick={() => {
+                handleInfoOpen(!infoOpen);
+                if (menuOpen) handleMenuToggle(projIdx);
+              }}
+              aria-label="Show project info"
+            >
+              <InformationCircleIcon className="w-6 h-6 md:w-7 md:h-7 text-background" />
+            </button>
           </div>
-          <button
-            type="button"
-            className="mt-1 md:mt-2 xl:mt-4 md:mr-0.5 flex items-center justify-center rounded-full bg-primary hover:bg-secondary transition-colors shadow cursor-pointer"
-            onClick={() => {
-              handleInfoOpen(!infoOpen);
-              if (menuOpen) handleMenuToggle(projIdx);
-            }}
-            aria-label="Show project info"
-          >
-            <InformationCircleIcon className="w-6 h-6 md:w-7 md:h-7 text-background" />
-          </button>
-        </div>
-      )}
+        )}
 
-      {/* Navigation buttons */}
-      <button
-        className="fixed top-[43lvh] right-4 xl:right-8 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
-        onClick={() => {
-          if (fixedIdx !== null && fixedIdx > 0) {
-            const prevIdx = fixedIdx - 1;
-            scrollToProject(prevIdx);
-          }
-        }}
-        aria-label="Previous project"
-      >
-        <ArrowUpIcon className="w-6 h-6 md:w-8 md:h-8" />
-      </button>
-      <button
-        className="fixed top-[56lvh] right-4 xl:right-8  z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
-        onClick={() => {
-          if (fixedIdx === null) {
-            scrollToProject(0);
-          } else if (fixedIdx < projectsLength - 1) {
-            const nextIdx = fixedIdx + 1;
-            scrollToProject(nextIdx);
-          }
-        }}
-        aria-label="Next project"
-      >
-        <ArrowDownIcon className="w-6 h-6 md:w-8 md:h-8" />
-      </button>
+        {/* Navigation buttons */}
+        <button
+          className="fixed top-[46%] right-4 xl:right-8 z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+          onClick={() => {
+            if (fixedIdx !== null && fixedIdx > 0) {
+              const prevIdx = fixedIdx - 1;
+              scrollToProject(prevIdx);
+            }
+          }}
+          aria-label="Previous project"
+        >
+          <ArrowUpIcon className="w-6 h-6 md:w-8 md:h-8" />
+        </button>
+        <button
+          className="fixed top-[57%] right-4 xl:right-8  z-50 text-background hover:text-secondary transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+          onClick={() => {
+            if (fixedIdx === null) {
+              scrollToProject(0);
+            } else if (fixedIdx < projectsLength - 1) {
+              const nextIdx = fixedIdx + 1;
+              scrollToProject(nextIdx);
+            }
+          }}
+          aria-label="Next project"
+        >
+          <ArrowDownIcon className="w-6 h-6 md:w-8 md:h-8" />
+        </button>
+      </div>
 
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
