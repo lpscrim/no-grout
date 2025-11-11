@@ -184,7 +184,7 @@ H1, H2, H6 {
 }
 
 
-/* Embla Carousel Styles - Correct structure with viewport */
+/* Embla Carousel Styles - Complete with controls */
 .embla {
   overflow: hidden;
   width: 100%;
@@ -209,6 +209,42 @@ H1, H2, H6 {
   min-width: 0;
   position: relative;
   height: 100%;
+}
+
+.embla__controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.embla__buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.embla__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.embla__progress {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+}
+
+.embla__progress--hidden {
+  opacity: 0.5;
+}
+
+.embla__progress__bar {
+  height: 100%;
+  border-radius: 9999px;
+  transition: transform 0.1s ease-out;
 }
 
 /* Prevent image dragging and selection */

@@ -1,9 +1,17 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
+import { EmblaOptionsType } from 'embla-carousel'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
+import { useAutoplay } from './EmblaCarouselAutoplay'
+import { useAutoplayProgress } from './EmblaCarouselAutoplayProgress'
+import {
+  NextButton,
+  PrevButton,
+  usePrevNextButtons
+} from './EmblaCarouselArrowButtons'
 
 import {
   ArrowDownIcon,
@@ -55,42 +63,52 @@ export default function ProjectSection({
   infoOpen,
   handleInfoOpen,
 }: ProjectSectionProps) {
+  const progressNode = useRef<HTMLDivElement>(null)
 
-  const autoplayOptions = {
-    delay: 10000,
-    stopOnInteraction: true,
-    stopOnMouseEnter: false,
-    playOnInit: false,
+  const options: EmblaOptionsType = {
+    loop: true,
+    skipSnaps: false,
+    duration: 20,
+    dragFree: false,
+    containScroll: 'trimSnaps',
   }
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: true,
-      skipSnaps: false,
-      duration: 20,
-      dragFree: false,
-      containScroll: 'trimSnaps',
-    },
-    [Autoplay(autoplayOptions)]
-  )
+  const [emblaRef, emblaApi] = useEmblaCarousel(options, [
+    Autoplay({ playOnInit: false, delay: 10000, stopOnInteraction: true })
+  ])
 
+  const {
+    prevBtnDisabled,
+    nextBtnDisabled,
+    onPrevButtonClick,
+    onNextButtonClick
+  } = usePrevNextButtons(emblaApi)
+
+  const { autoplayIsPlaying, toggleAutoplay, onAutoplayButtonClick } =
+    useAutoplay(emblaApi)
+
+  const { showAutoplayProgress } = useAutoplayProgress(emblaApi, progressNode)
+
+  // Handle slide selection
   const onSelect = useCallback(() => {
     if (!emblaApi) return
     const selectedIndex = emblaApi.selectedScrollSnap()
     handleThumbClick(projIdx, selectedIndex)
   }, [emblaApi, projIdx, handleThumbClick])
 
+  // Set up Embla event listeners
   useEffect(() => {
     if (!emblaApi) return
     
     emblaApi.on('select', onSelect)
-    onSelect() 
+    onSelect()
     
     return () => {
       emblaApi.off('select', onSelect)
     }
   }, [emblaApi, onSelect])
 
+  // Control autoplay based on fixedIdx
   useEffect(() => {
     if (!emblaApi) return
 
@@ -98,19 +116,22 @@ export default function ProjectSection({
     if (!autoplayPlugin) return
 
     if (fixedIdx === projIdx && project.images && project.images.length > 1) {
-      autoplayPlugin.play()
+      if (!autoplayPlugin.isPlaying()) {
+        autoplayPlugin.play()
+      }
     } else {
       autoplayPlugin.stop()
       autoplayPlugin.reset()
     }
   }, [emblaApi, fixedIdx, projIdx, project.images])
 
+  // Sync external activeIdx changes with Embla
   useEffect(() => {
     if (!emblaApi) return
     
     const currentIndex = emblaApi.selectedScrollSnap()
     if (currentIndex !== activeIdx) {
-      emblaApi.scrollTo(activeIdx, false) // false = no smooth scroll for external updates
+      emblaApi.scrollTo(activeIdx, false)
     }
   }, [emblaApi, activeIdx])
 
@@ -118,22 +139,10 @@ export default function ProjectSection({
   const handleManualThumbClick = useCallback((imgIdx: number) => {
     if (!emblaApi) return
     
-    // Stop autoplay temporarily
-    const autoplayPlugin = emblaApi.plugins().autoplay
-    if (autoplayPlugin) {
-      autoplayPlugin.stop()
-    }
-    
-    // Navigate to selected image
-    emblaApi.scrollTo(imgIdx)
-    
-    // Restart autoplay after delay if this project is still active
-    setTimeout(() => {
-      if (fixedIdx === projIdx && project.images && project.images.length > 1 && autoplayPlugin) {
-        autoplayPlugin.play()
-      }
-    }, 10000)
-  }, [emblaApi, fixedIdx, projIdx, project.images])
+    onAutoplayButtonClick(() => {
+      emblaApi.scrollTo(imgIdx)
+    })
+  }, [emblaApi, onAutoplayButtonClick])
 
   return (
     <div
@@ -323,7 +332,7 @@ export default function ProjectSection({
         </div>
       )}
 
-      {/* Embla Carousel Container - Fixed with viewport wrapper */}
+      {/* Embla Carousel */}
       {(project.images?.length ?? 0) > 0 && (
         <div className="embla absolute inset-0">
           <div className="embla__viewport cursor-grab active:cursor-grabbing" ref={emblaRef}>
@@ -342,6 +351,46 @@ export default function ProjectSection({
               ))}
             </div>
           </div>
+
+          {/* Embla Controls - Only show when project is active */}
+          {fixedIdx === projIdx && project.images && project.images.length > 1 && (
+            <div className="embla__controls absolute bottom-4 left-1/2 transform -translate-x-1/2 z-40 flex items-center gap-4">
+              {/* Navigation Buttons */}
+              <div className="embla__buttons flex gap-2">
+                <PrevButton
+                  onClick={() => onAutoplayButtonClick(onPrevButtonClick)}
+                  disabled={prevBtnDisabled}
+                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <NextButton
+                  onClick={() => onAutoplayButtonClick(onNextButtonClick)}
+                  disabled={nextBtnDisabled}
+                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+              </div>
+
+              {/* Progress Bar */}
+              <div
+                className={`embla__progress w-24 h-1 bg-white/30 rounded-full overflow-hidden ${
+                  showAutoplayProgress ? '' : 'opacity-50'
+                }`}
+              >
+                <div 
+                  className="embla__progress__bar h-full bg-white rounded-full transform -translate-x-full transition-transform" 
+                  ref={progressNode} 
+                />
+              </div>
+
+              {/* Play/Pause Button */}
+              <button 
+                className="embla__play bg-black/50 hover:bg-black/70 text-white px-3 py-2 rounded-full text-sm transition-all" 
+                onClick={toggleAutoplay} 
+                type="button"
+              >
+                {autoplayIsPlaying ? 'Pause' : 'Play'}
+              </button>
+            </div>
+          )}
         </div>
       )}
     </div>
