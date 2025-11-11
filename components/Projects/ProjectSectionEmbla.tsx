@@ -125,7 +125,6 @@ export default function ProjectSection({
     }
   }, [emblaApi, fixedIdx, projIdx, project.images])
 
-  // Sync external activeIdx changes with Embla
   useEffect(() => {
     if (!emblaApi) return
     
@@ -135,14 +134,6 @@ export default function ProjectSection({
     }
   }, [emblaApi, activeIdx])
 
-  // Handle manual thumbnail clicks
-  const handleManualThumbClick = useCallback((imgIdx: number) => {
-    if (!emblaApi) return
-    
-    onAutoplayButtonClick(() => {
-      emblaApi.scrollTo(imgIdx)
-    })
-  }, [emblaApi, onAutoplayButtonClick])
 
   return (
     <div
@@ -233,79 +224,6 @@ export default function ProjectSection({
         <ArrowDownIcon className="w-6 h-6 md:w-8 md:h-8" />
       </button>
 
-      {/* Side menu */}
-      <div
-        className={`absolute left-0 top-0 h-full transition-all z-60 duration-300 ${
-          menuOpen ? "w-27 " : "w-2 sm:w-5 lg:w-7"
-        }`}
-      >
-        <div
-          className={`flex flex-col h-full transition-all shadow-lg ${
-            menuOpen ? "bg-primary/80" : "bg-primary/50"
-          }`}
-        >
-          <button
-            className="group absolute top-1/2 -translate-y-1/2 left-full z-999 bg-accent/90 hover:bg-secondary transition-all rounded-r-full py-3 shadow cursor-pointer pointer-events-auto"
-            onClick={() => {
-              handleMenuToggle(projIdx);
-              handleInfoOpen(false);
-            }}
-            aria-label="Toggle menu"
-          >
-            <svg
-              width="22"
-              height="22"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className={`transition-all duration-300  text-foreground group-hover:text-background ${
-                menuOpen ? "rotate-180" : ""
-              }`}
-              viewBox="0 0 26 26"
-            >
-              <path d="M9 6l6 6-6 6" />
-            </svg>
-            <span
-              className="text-base font-bold rotate-180 duration-300 text-foreground group-hover:text-background transition-all"
-              style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
-            >
-              {menuOpen ? `close` : `more pics`}
-            </span>
-          </button>
-
-          {/* Thumbnails */}
-          <div
-            className={`overflow-y-auto mx-auto mt-10 transition-opacity  ${
-              menuOpen
-                ? "opacity-100 delay-100 duration-300"
-                : "opacity-0 duration-100"
-            }`}
-          >
-            {project.images?.map((img: ProjectImage, imgIdx: number) => (
-              <button
-                key={img.src + "-" + imgIdx}
-                className={`block w-21 h-15 m-3 rounded overflow-hidden border-2 ${
-                  activeIdx === imgIdx ? "border-accent" : "border-transparent"
-                }`}
-                onClick={() => {
-                  if (menuOpen) {
-                    handleManualThumbClick(imgIdx);
-                  }
-                }}
-                aria-label={`Show ${img.alt}`}
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt || `Project image ${imgIdx + 1}`}
-                  width={112}
-                  height={80}
-                  className="object-cover w-full h-full"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
