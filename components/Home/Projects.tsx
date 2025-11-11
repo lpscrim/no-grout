@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { client } from "@/sanity/lib/client"; 
-import AnimatedOnView from "../Functions/AnimatedOnView";
 import Button from "../UI/Button";
 
 gsap.registerPlugin(ScrollTrigger);
