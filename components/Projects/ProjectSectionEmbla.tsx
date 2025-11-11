@@ -43,10 +43,8 @@ interface ProjectSectionProps {
   fixedIdx: number | null;
   projectRef: (el: HTMLDivElement | null) => void;
   activeIdx: number;
-  menuOpen: boolean;
   infoOpen: boolean;
   handleThumbClick: (projIdx: number, imgIdx: number) => void;
-  handleMenuToggle: (projIdx: number) => void;
   handleInfoOpen: (open: boolean) => void;
   scrollToProject: (idx: number) => void;
   projectsLength: number;
@@ -59,9 +57,7 @@ export default function ProjectSection({
   fixedIdx,
   projectRef,
   activeIdx,
-  menuOpen,
   handleThumbClick,
-  handleMenuToggle,
   scrollToProject,
   projectsLength,
   formatDate,
