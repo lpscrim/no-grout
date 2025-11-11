@@ -286,7 +286,7 @@ export default function ProjectSection({
           </div>
           <button
             type="button"
-            className="mt-3 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors shadow cursor-pointer"
+            className="mt-3 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors shadow cursor-pointer"
             onClick={() => {
               handleInfoOpen(!infoOpen);
             }}
@@ -299,7 +299,7 @@ export default function ProjectSection({
 
       {/* Navigation buttons */}
       <button
-        className="fixed top-[46svh] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+        className="fixed top-[46svh] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
         onClick={() => {
           if (fixedIdx !== null && fixedIdx > 0) {
             const prevIdx = fixedIdx - 1;
@@ -311,7 +311,7 @@ export default function ProjectSection({
         <ArrowUpIcon className="w-6 h-6 " />
       </button>
       <button
-        className="fixed top-[57svh] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+        className="fixed top-[57svh] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-1 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
         onClick={() => {
           if (fixedIdx === null) {
             scrollToProject(0);
