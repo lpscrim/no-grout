@@ -146,7 +146,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
           and attention to detail. Each project is custom tailored to meet our
           clients&#39; needs and preferences.
         </p>*/}
-        <div className="flex flex-col items-center gap-2 md:gap-20">
+        <div className="flex flex-col items-center gap-15 md:gap-20">
           {projects.map((project, projIdx) => (
             <ProjectSection
               key={project.title}

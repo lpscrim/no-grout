@@ -117,16 +117,16 @@ export default function ProjectSection({
     <div
       ref={projectRef}
       id={project.title.replace(/\s+/g, "-").toLowerCase()}
-      className="relative w-full xl:max-w-[1200px] h-[100lvh] xl:h-[90lvh] xl:rounded-md overflow-hidden flex "
+      className="relative bg-accent w-full xl:max-w-[1230px] h-[100lvh] xl:h-[90lvh] xl:rounded-sm overflow-hidden flex "
     >
       {/* Fixed header */}
       {fixedIdx === projIdx && (
         <div
           id="fixedHeader"
-          className="fixed w-full top-15 lg:top-20 right-0 z-50 flex justify-end pointer-events-none transition-all"
+          className="fixed w-full top-15 lg:top-20 right-0 z-50 flex justify-end pointer-events-none transition-all bg-black/20 sm:bg-transparent backdrop-blur-sm sm:backdrop-blur-none pb-18"
           style={{ height: "60px" }}
         >
-          <div className="px-8 py-4 text-center inline-block">
+          <div className="px-8 py-4 text-center inline-block sm:bg-black/10 sm:backdrop-blur-sm sm:rounded-xs h-20">
             <h6 className="text-xl sm:text-2xl 2xl:text-3xl font-semibold text-background">
               {project.title}
             </h6>
@@ -140,7 +140,7 @@ export default function ProjectSection({
       {/* Sticky header*/}
       {fixedIdx !== projIdx && (
         <div
-          className="sticky top-0 right-0 z-40 flex justify-end pointer-events-none w-full transition-all"
+          className="sticky top-5 right-0 z-40 flex justify-end pointer-events-none w-full transition-all"
           style={{ height: "60px" }}
         >
           <div className="px-8 py-4 text-center inline-block">
@@ -204,7 +204,7 @@ export default function ProjectSection({
 
       {/* Side menu */}
       <div
-        className={`absolute left-0 top-0 h-full z-20 transition-all duration-300 ${
+        className={`absolute left-0 top-0 h-full transition-all z-60 duration-300 ${
           menuOpen ? "w-27 " : "w-2 sm:w-5 lg:w-7"
         }`}
       >
