@@ -152,15 +152,15 @@ export default function ProjectSection({
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     const newSelectedIndex = emblaApi.selectedScrollSnap();
-    
+
     // Update internal state
     setInternalSelectedIndex(newSelectedIndex);
-    
+
     // Only update parent if this wasn't triggered by an external activeIdx change
     if (!isExternalUpdate.current) {
       handleThumbClick(projIdx, newSelectedIndex);
     }
-    
+
     // Reset the external update flag
     isExternalUpdate.current = false;
   }, [emblaApi, projIdx, handleThumbClick]);
@@ -216,7 +216,7 @@ export default function ProjectSection({
   // Sync external activeIdx changes with Embla
   useEffect(() => {
     if (!emblaApi) return;
-    
+
     const currentIndex = emblaApi.selectedScrollSnap();
     if (currentIndex !== activeIdx && internalSelectedIndex !== activeIdx) {
       // Mark this as an external update to prevent triggering parent callback
@@ -282,53 +282,53 @@ export default function ProjectSection({
         </div>
       )}
 
-        {/* Info button*/}
-        {fixedIdx === projIdx && project.body && (
-          <div className="flex group w-50 justify-end fixed top-1/2 right-4 proj-nav z-50 pointer-events-auto">
-            <div className="hidden group-hover:flex flex-row mr-1 mb-1.5 animate-pulse text-xs text-background/90 pointer-events-none items-end tracking-[5]">
-              <p>about-&gt;</p>
-            </div>
-            <button
-              type="button"
-              className="mt-3 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors shadow cursor-pointer"
-              onClick={() => {
-                handleInfoOpen(!infoOpen);
-                if (menuOpen) handleMenuToggle(projIdx);
-              }}
-              aria-label="Show project info"
-            >
-              <InformationCircleIcon className="w-6 h-6  text-background" />
-            </button>
+      {/* Info button*/}
+      {fixedIdx === projIdx && project.body && (
+        <div className="flex group w-50 justify-end fixed top-[50svh] right-4 proj-nav z-50 pointer-events-auto">
+          <div className="hidden group-hover:flex flex-row mr-1 mb-1.5 animate-pulse text-xs text-background/90 pointer-events-none items-end tracking-[5]">
+            <p>about-&gt;</p>
           </div>
-        )}
+          <button
+            type="button"
+            className="mt-3 flex items-center justify-center bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors shadow cursor-pointer"
+            onClick={() => {
+              handleInfoOpen(!infoOpen);
+              if (menuOpen) handleMenuToggle(projIdx);
+            }}
+            aria-label="Show project info"
+          >
+            <InformationCircleIcon className="w-6 h-6  text-background" />
+          </button>
+        </div>
+      )}
 
-        {/* Navigation buttons */}
-        <button
-          className="fixed top-[46%] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
-          onClick={() => {
-            if (fixedIdx !== null && fixedIdx > 0) {
-              const prevIdx = fixedIdx - 1;
-              scrollToProject(prevIdx);
-            }
-          }}
-          aria-label="Previous project"
-        >
-          <ArrowUpIcon className="w-6 h-6 " />
-        </button>
-        <button
-          className="fixed top-[57%] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
-          onClick={() => {
-            if (fixedIdx === null) {
-              scrollToProject(0);
-            } else if (fixedIdx < projectsLength - 1) {
-              const nextIdx = fixedIdx + 1;
-              scrollToProject(nextIdx);
-            }
-          }}
-          aria-label="Next project"
-        >
-          <ArrowDownIcon className="w-6 h-6 " />
-        </button>
+      {/* Navigation buttons */}
+      <button
+        className="fixed top-[46svh] right-4 proj-nav z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal  cursor-pointer"
+        onClick={() => {
+          if (fixedIdx !== null && fixedIdx > 0) {
+            const prevIdx = fixedIdx - 1;
+            scrollToProject(prevIdx);
+          }
+        }}
+        aria-label="Previous project"
+      >
+        <ArrowUpIcon className="w-6 h-6 " />
+      </button>
+      <button
+        className="fixed top-[57svh] right-4 proj-nav  z-50 bg-white/10 hover:bg-white/50 text-white hover:text-foreground p-2 rounded-full transition-colors text-3xl sm:text-2xl font-normal cursor-pointer"
+        onClick={() => {
+          if (fixedIdx === null) {
+            scrollToProject(0);
+          } else if (fixedIdx < projectsLength - 1) {
+            const nextIdx = fixedIdx + 1;
+            scrollToProject(nextIdx);
+          }
+        }}
+        aria-label="Next project"
+      >
+        <ArrowDownIcon className="w-6 h-6 " />
+      </button>
 
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
@@ -387,7 +387,7 @@ export default function ProjectSection({
             project.images &&
             project.images.length > 1 && (
               <div>
-                <div className="embla__controls fixed proj-dots pl-5 top-[52svh] -translate-y-1/2 transform z-40 ">
+                <div className="embla__controls fixed proj-dots pl-5 top-[54svh] -translate-y-1/2 transform z-40 ">
                   {/* Dots */}
                   <div className="embla__dots flex flex-col justify-center gap-5">
                     {scrollSnaps.map((_, index) => (
