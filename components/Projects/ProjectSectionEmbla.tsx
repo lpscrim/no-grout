@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
-import { useEffect, useCallback, useRef } from "react";
+import { useEffect, useCallback, useRef, useState } from "react";
 import {
   EmblaCarouselType,
   EmblaEventType,
@@ -70,6 +70,8 @@ export default function ProjectSection({
 }: ProjectSectionProps) {
   const tweenFactor = useRef(0);
   const tweenNodes = useRef<HTMLElement[]>([]);
+  const [internalSelectedIndex, setInternalSelectedIndex] = useState(0);
+  const isExternalUpdate = useRef(false);
 
   const options: EmblaOptionsType = {
     loop: true,
@@ -146,11 +148,21 @@ export default function ProjectSection({
     []
   );
 
-  // Handle slide selection
+  // Handle slide selection - only update parent when it's a user interaction
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    const selectedIndex = emblaApi.selectedScrollSnap();
-    handleThumbClick(projIdx, selectedIndex);
+    const newSelectedIndex = emblaApi.selectedScrollSnap();
+    
+    // Update internal state
+    setInternalSelectedIndex(newSelectedIndex);
+    
+    // Only update parent if this wasn't triggered by an external activeIdx change
+    if (!isExternalUpdate.current) {
+      handleThumbClick(projIdx, newSelectedIndex);
+    }
+    
+    // Reset the external update flag
+    isExternalUpdate.current = false;
   }, [emblaApi, projIdx, handleThumbClick]);
 
   // Set up Embla event listeners
@@ -171,7 +183,8 @@ export default function ProjectSection({
       .on("slideFocus", tweenParallax)
       .on("select", onSelect);
 
-    onSelect();
+    // Set initial selection without triggering parent update
+    setInternalSelectedIndex(emblaApi.selectedScrollSnap());
 
     return () => {
       emblaApi.off("reInit", setTweenNodes);
@@ -203,12 +216,14 @@ export default function ProjectSection({
   // Sync external activeIdx changes with Embla
   useEffect(() => {
     if (!emblaApi) return;
-
+    
     const currentIndex = emblaApi.selectedScrollSnap();
-    if (currentIndex !== activeIdx) {
+    if (currentIndex !== activeIdx && internalSelectedIndex !== activeIdx) {
+      // Mark this as an external update to prevent triggering parent callback
+      isExternalUpdate.current = true;
       emblaApi.scrollTo(activeIdx, false);
     }
-  }, [emblaApi, activeIdx]);
+  }, [emblaApi, activeIdx, internalSelectedIndex]);
 
   // Handle dot button clicks with autoplay stop
   const handleDotClick = useCallback(
