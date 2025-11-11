@@ -184,7 +184,7 @@ H1, H2, H6 {
 }
 
 
-/* Embla Carousel Styles - Complete with controls */
+/* Embla Carousel Styles with Parallax */
 .embla {
   overflow: hidden;
   width: 100%;
@@ -211,10 +211,42 @@ H1, H2, H6 {
   height: 100%;
 }
 
+.embla__parallax {
+  height: 100%;
+  overflow: hidden;
+}
+
+.embla__parallax__layer {
+  position: relative;
+  height: 120%;
+  width: 120%;
+  top: -10%;
+  left: -10%;
+}
+
+.embla__parallax__img {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .embla__controls {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+.embla__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.embla__dot {
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .embla__buttons {
@@ -229,22 +261,6 @@ H1, H2, H6 {
   border: none;
   cursor: pointer;
   outline: none;
-}
-
-.embla__progress {
-  position: relative;
-  overflow: hidden;
-  border-radius: 9999px;
-}
-
-.embla__progress--hidden {
-  opacity: 0.5;
-}
-
-.embla__progress__bar {
-  height: 100%;
-  border-radius: 9999px;
-  transition: transform 0.1s ease-out;
 }
 
 /* Prevent image dragging and selection */

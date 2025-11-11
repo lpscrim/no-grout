@@ -1,17 +1,20 @@
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { PortableTextBlock } from "@portabletext/types";
-import { useEffect, useCallback } from "react";
-import { EmblaOptionsType } from 'embla-carousel'
-import useEmblaCarousel from 'embla-carousel-react'
-import Autoplay from 'embla-carousel-autoplay'
+import { useEffect, useCallback, useRef } from "react";
+import {
+  EmblaCarouselType,
+  EmblaEventType,
+  EmblaOptionsType,
+} from "embla-carousel";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import {
   NextButton,
   PrevButton,
-  usePrevNextButtons
-} from '../UI/Embla/EmblaCarouselArrowButtons'
-import { DotButton, useDotButton } from '../UI/Embla/EmblaCarouselDotButton'
-
+  usePrevNextButtons,
+} from "../UI/Embla/EmblaCarouselArrowButtons";
+import { DotButton, useDotButton } from "../UI/Embla/EmblaCarouselDotButton";
 
 import {
   ArrowDownIcon,
@@ -19,6 +22,8 @@ import {
   InformationCircleIcon,
   XMarkIcon,
 } from "@heroicons/react/24/solid";
+
+const TWEEN_FACTOR_BASE = 0.2;
 
 interface ProjectImage {
   src: string;
@@ -63,74 +68,163 @@ export default function ProjectSection({
   infoOpen,
   handleInfoOpen,
 }: ProjectSectionProps) {
+  const tweenFactor = useRef(0);
+  const tweenNodes = useRef<HTMLElement[]>([]);
 
   const options: EmblaOptionsType = {
     loop: true,
     skipSnaps: false,
     duration: 20,
     dragFree: false,
-    containScroll: 'trimSnaps',
-  }
+    containScroll: "trimSnaps",
+  };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
-    Autoplay({ playOnInit: false, delay: 10000, stopOnInteraction: true })
-  ])
+    Autoplay({ playOnInit: false, delay: 10000, stopOnInteraction: true }),
+  ]);
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi);
 
   const {
     prevBtnDisabled,
     nextBtnDisabled,
     onPrevButtonClick,
-    onNextButtonClick
-  } = usePrevNextButtons(emblaApi)
+    onNextButtonClick,
+  } = usePrevNextButtons(emblaApi);
 
+  // Parallax effect setup
+  const setTweenNodes = useCallback((emblaApi: EmblaCarouselType): void => {
+    tweenNodes.current = emblaApi.slideNodes().map((slideNode) => {
+      return slideNode.querySelector(".embla__parallax__layer") as HTMLElement;
+    });
+  }, []);
 
+  const setTweenFactor = useCallback((emblaApi: EmblaCarouselType) => {
+    tweenFactor.current = TWEEN_FACTOR_BASE * emblaApi.scrollSnapList().length;
+  }, []);
 
+  const tweenParallax = useCallback(
+    (emblaApi: EmblaCarouselType, eventName?: EmblaEventType) => {
+      const engine = emblaApi.internalEngine();
+      const scrollProgress = emblaApi.scrollProgress();
+      const slidesInView = emblaApi.slidesInView();
+      const isScrollEvent = eventName === "scroll";
+
+      emblaApi.scrollSnapList().forEach((scrollSnap, snapIndex) => {
+        let diffToTarget = scrollSnap - scrollProgress;
+        const slidesInSnap = engine.slideRegistry[snapIndex];
+
+        slidesInSnap.forEach((slideIndex) => {
+          if (isScrollEvent && !slidesInView.includes(slideIndex)) return;
+
+          if (engine.options.loop) {
+            engine.slideLooper.loopPoints.forEach((loopItem) => {
+              const target = loopItem.target();
+
+              if (slideIndex === loopItem.index && target !== 0) {
+                const sign = Math.sign(target);
+
+                if (sign === -1) {
+                  diffToTarget = scrollSnap - (1 + scrollProgress);
+                }
+                if (sign === 1) {
+                  diffToTarget = scrollSnap + (1 - scrollProgress);
+                }
+              }
+            });
+          }
+
+          const translate = diffToTarget * (-1 * tweenFactor.current) * 100;
+          const tweenNode = tweenNodes.current[slideIndex];
+          if (tweenNode) {
+            tweenNode.style.transform = `translateX(${translate}%)`;
+          }
+        });
+      });
+    },
+    []
+  );
 
   // Handle slide selection
   const onSelect = useCallback(() => {
-    if (!emblaApi) return
-    const selectedIndex = emblaApi.selectedScrollSnap()
-    handleThumbClick(projIdx, selectedIndex)
-  }, [emblaApi, projIdx, handleThumbClick])
+    if (!emblaApi) return;
+    const selectedIndex = emblaApi.selectedScrollSnap();
+    handleThumbClick(projIdx, selectedIndex);
+  }, [emblaApi, projIdx, handleThumbClick]);
 
   // Set up Embla event listeners
   useEffect(() => {
-    if (!emblaApi) return
-    
-    emblaApi.on('select', onSelect)
-    onSelect()
-    
+    if (!emblaApi) return;
+
+    // Parallax setup
+    setTweenNodes(emblaApi);
+    setTweenFactor(emblaApi);
+    tweenParallax(emblaApi);
+
+    // Event listeners
+    emblaApi
+      .on("reInit", setTweenNodes)
+      .on("reInit", setTweenFactor)
+      .on("reInit", tweenParallax)
+      .on("scroll", tweenParallax)
+      .on("slideFocus", tweenParallax)
+      .on("select", onSelect);
+
+    onSelect();
+
     return () => {
-      emblaApi.off('select', onSelect)
-    }
-  }, [emblaApi, onSelect])
+      emblaApi.off("reInit", setTweenNodes);
+      emblaApi.off("reInit", setTweenFactor);
+      emblaApi.off("reInit", tweenParallax);
+      emblaApi.off("scroll", tweenParallax);
+      emblaApi.off("slideFocus", tweenParallax);
+      emblaApi.off("select", onSelect);
+    };
+  }, [emblaApi, tweenParallax, setTweenNodes, setTweenFactor, onSelect]);
 
   // Control autoplay based on fixedIdx
   useEffect(() => {
-    if (!emblaApi) return
+    if (!emblaApi) return;
 
-    const autoplayPlugin = emblaApi.plugins().autoplay
-    if (!autoplayPlugin) return
+    const autoplayPlugin = emblaApi.plugins().autoplay;
+    if (!autoplayPlugin) return;
 
     if (fixedIdx === projIdx && project.images && project.images.length > 1) {
       if (!autoplayPlugin.isPlaying()) {
-        autoplayPlugin.play()
+        autoplayPlugin.play();
       }
     } else {
-      autoplayPlugin.stop()
-      autoplayPlugin.reset()
+      autoplayPlugin.stop();
+      autoplayPlugin.reset();
     }
-  }, [emblaApi, fixedIdx, projIdx, project.images])
+  }, [emblaApi, fixedIdx, projIdx, project.images]);
 
+  // Sync external activeIdx changes with Embla
   useEffect(() => {
-    if (!emblaApi) return
-    
-    const currentIndex = emblaApi.selectedScrollSnap()
-    if (currentIndex !== activeIdx) {
-      emblaApi.scrollTo(activeIdx, false)
-    }
-  }, [emblaApi, activeIdx])
+    if (!emblaApi) return;
 
+    const currentIndex = emblaApi.selectedScrollSnap();
+    if (currentIndex !== activeIdx) {
+      emblaApi.scrollTo(activeIdx, false);
+    }
+  }, [emblaApi, activeIdx]);
+
+  // Handle dot button clicks with autoplay stop
+  const handleDotClick = useCallback(
+    (index: number) => {
+      const autoplay = emblaApi?.plugins()?.autoplay;
+      if (autoplay) {
+        const resetOrStop =
+          autoplay.options.stopOnInteraction === false
+            ? autoplay.reset
+            : autoplay.stop;
+        resetOrStop();
+      }
+      onDotButtonClick(index);
+    },
+    [emblaApi, onDotButtonClick]
+  );
 
   return (
     <div
@@ -221,7 +315,6 @@ export default function ProjectSection({
         <ArrowDownIcon className="w-6 h-6 md:w-8 md:h-8" />
       </button>
 
-
       {/* Info Overlay */}
       {infoOpen && fixedIdx === projIdx && (
         <div className="mx-auto z-20 flex items-center justify-center slide-in-right">
@@ -247,45 +340,69 @@ export default function ProjectSection({
         </div>
       )}
 
-      {/* Embla Carousel */}
+      {/* Embla Carousel with Parallax */}
       {(project.images?.length ?? 0) > 0 && (
         <div className="embla absolute inset-0">
-          <div className="embla__viewport cursor-grab active:cursor-grabbing" ref={emblaRef}>
+          <div
+            className="embla__viewport cursor-grab active:cursor-grabbing"
+            ref={emblaRef}
+          >
             <div className="embla__container">
               {project.images!.map((img, index) => (
                 <div key={img.src + "-" + index} className="embla__slide">
-                  <Image
-                    src={img.src}
-                    alt={img.alt || `Project image ${index + 1}`}
-                    fill
-                    className="object-cover"
-                    priority={index === 0}
-                    draggable={false}
-                  />
+                  <div className="embla__parallax">
+                    <div className="embla__parallax__layer">
+                      <Image
+                        src={img.src}
+                        alt={img.alt || `Project image ${index + 1}`}
+                        fill
+                        className="object-cover embla__parallax__img"
+                        priority={index === 0}
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Embla Controls - Only show when project is active */}
-          {fixedIdx === projIdx && project.images && project.images.length > 1 && (
-            <div className="embla__controls absolute bottom-4 left-1/2 transform -translate-x-1/2 z-40 flex items-center gap-4">
-              {/* Navigation Buttons */}
-              <div className="embla__buttons flex gap-2">
-                <PrevButton
-                  onClick={() => onAutoplayButtonClick(onPrevButtonClick)}
-                  disabled={prevBtnDisabled}
-                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                />
-                <NextButton
-                  onClick={() => onAutoplayButtonClick(onNextButtonClick)}
-                  disabled={nextBtnDisabled}
-                  className="bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                />
-              </div>        
-             
-            </div>
-          )}
+          {fixedIdx === projIdx &&
+            project.images &&
+            project.images.length > 1 && (
+              <div>
+                <div className="embla__controls absolute bottom-4 left-1/2 transform -translate-x-1/2 z-40">
+                  {/* Dots */}
+                  <div className="embla__dots flex justify-center gap-2 mb-4">
+                    {scrollSnaps.map((_, index) => (
+                      <DotButton
+                        key={index}
+                        onClick={() => handleDotClick(index)}
+                        className={`embla__dot w-3 h-3 rounded-full transition-all duration-200 ${
+                          index === selectedIndex
+                            ? "bg-white shadow-lg scale-110"
+                            : "bg-white/50 hover:bg-white/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="embla__buttons absolute flex justify-start flex-col gap-2 top-1/2 transform -translate-y-1/2 w-10 px-2">
+                  <PrevButton
+                    onClick={onPrevButtonClick}
+                    disabled={prevBtnDisabled}
+                    className="bg-white/50 hover:bg-white/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
+                  <NextButton
+                    onClick={onNextButtonClick}
+                    disabled={nextBtnDisabled}
+                    className="bg-white/50 hover:bg-white/70 text-white p-2 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  />
+                </div>
+              </div>
+            )}
         </div>
       )}
     </div>
