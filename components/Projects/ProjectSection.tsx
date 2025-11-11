@@ -144,7 +144,7 @@ export default function ProjectSection({
           style={{ height: "60px" }}
         >
           <div className="px-8 py-4 text-center inline-block">
-            <h6 className="text-2xl font-semibold text-background">
+            <h6 className="text-xl sm:text-2xl 2xl:text-3xl font-semibold text-background">
               {project.title}
             </h6>
             <h6 className="text-md text-right text-background/95">
