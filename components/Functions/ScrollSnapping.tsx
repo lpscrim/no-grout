@@ -18,7 +18,13 @@ export class ScrollSnapping {
   private onSnapStart?: () => void;
   private onSnapComplete?: () => void;
 
-  constructor({ panels, duration = 0.5, offset = 0, onSnapStart, onSnapComplete }: SnapScrollOptions) {
+  constructor({
+    panels,
+    duration = 0.5,
+    offset = 0,
+    onSnapStart,
+    onSnapComplete,
+  }: SnapScrollOptions) {
     this.panels = panels;
     this.duration = duration;
     this.offset = offset;
@@ -28,14 +34,14 @@ export class ScrollSnapping {
 
   init(): void {
     this.cleanup();
-    
+
     if (this.panels.length === 0) return;
 
     // Create snap tracking triggers with the same offset logic as scrollToProject
-    this.tops = this.panels.map(panel => 
+    this.tops = this.panels.map((panel) =>
       ScrollTrigger.create({
         trigger: panel,
-        start: `top top+=${this.offset}` // Use the same offset
+        start: `top top+=${this.offset}`, // Use the same offset
       })
     );
 
@@ -43,17 +49,22 @@ export class ScrollSnapping {
     const snapTrigger = ScrollTrigger.create({
       snap: {
         snapTo: (progress, self) => {
+          if (!self) return progress;
           this.onSnapStart?.();
-          
-          const panelStarts = this.tops.map(st => st.start);
+
+          const panelStarts = this.tops.map((st) => st.start);
           const snapScroll = gsap.utils.snap(panelStarts, self.scroll());
-          return gsap.utils.normalize(0, ScrollTrigger.maxScroll(window), snapScroll);
+          return gsap.utils.normalize(
+            0,
+            ScrollTrigger.maxScroll(window),
+            snapScroll
+          );
         },
         duration: this.duration,
         onComplete: () => {
           this.onSnapComplete?.();
-        }
-      }
+        },
+      },
     });
 
     this.triggers.push(snapTrigger);
@@ -76,8 +87,8 @@ export class ScrollSnapping {
   }
 
   cleanup(): void {
-    this.triggers.forEach(trigger => trigger.kill());
-    this.tops.forEach(trigger => trigger.kill());
+    this.triggers.forEach((trigger) => trigger.kill());
+    this.tops.forEach((trigger) => trigger.kill());
     this.triggers = [];
     this.tops = [];
   }
@@ -87,7 +98,9 @@ export class ScrollSnapping {
   }
 }
 
-export function createScrollSnapping(options: SnapScrollOptions): ScrollSnapping {
+export function createScrollSnapping(
+  options: SnapScrollOptions
+): ScrollSnapping {
   const snapping = new ScrollSnapping(options);
   snapping.init();
   return snapping;
