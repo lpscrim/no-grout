@@ -131,7 +131,7 @@ export default function Projects() {
               
               <div
                 key={project.title + idx}
-                className="opacity-0 drop-in relative w-[90%] sm:w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
+                className="opacity-0 drop-in relative w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
                 style={{
                   animationDelay: `${(idx + 1) * 150}ms`,
                 }}
@@ -149,7 +149,7 @@ export default function Projects() {
                   href={`/projects/#${project.title.replace(/\s+/g, "-").toLowerCase()}`}
                   className={`overflow-hidden flex flex-col group h-60 sm:h-100 rounded-xs`}
                 >
-                  <div className="relative w-full h-[72%] sm:h-[80%]">
+                  <div className="relative w-full h-[70%] sm:h-[80%]">
                     <Image
                       src={project.img}
                       alt={project.alt || project.title}

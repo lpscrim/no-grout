@@ -3,7 +3,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-primary z-0 min-h-[100svh] flex flex-col justify-center items-center max-w-screen section-dark"
+      className="relative bg-primary z-1 min-h-[100svh] flex flex-col justify-center items-center max-w-screen section-dark"
     >
 
         <div className="absolute z-1 bg-fade-gradient inset-0 w-full h-full bg-[url('/diagonal-striped-brick.png')] pointer-events-none fade-in" />
