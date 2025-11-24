@@ -19,11 +19,11 @@ export default function Home() {
         <Image
           src="/hall2.svg"
           alt="Tiling Work"
-          width={1920}
-          height={1080}
+          fill
           className="object-cover blur-xs"
         />
       </div>
+      <div className="fixed inset-0 w-full h-full bg-black/10 -z-0" />
       <About />
       <Projects />
       <Services />
