@@ -129,7 +129,7 @@ export default function TextAnimation() {
       <article 
         id="horizontal-split" 
         ref={animationRef}
-        className="flex flex-col justify-center items-center pb-8 pt-0.5 text-gray-300 transition-colors duration-300 ease-out"
+        className="flex flex-col justify-center items-center pb-4 pt-0.4 text-gray-300 transition-colors duration-300 ease-out"
       > 
         <Link 
           href="https://lewisscrimgeour.com" 
