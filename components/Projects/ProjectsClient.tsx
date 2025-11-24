@@ -88,6 +88,11 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
     return () => {
       infoTriggers.forEach((trigger) => trigger.kill());
       triggers.forEach((trigger) => trigger.kill());
+
+      if (scrollSnapping.current) {
+        scrollSnapping.current.destroy();
+        scrollSnapping.current = null;
+      }
     };
   }, [projects]);
 
