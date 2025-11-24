@@ -51,7 +51,7 @@ export default function Services() {
   const imageSrc = services[hoveredIdx].image;
 
   return (
-    <section id="services" className=" bg-accent section-light">
+    <section id="services" className=" bg-accent section-light relative">
       <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18">
         <h2 className="text-4xl sm:text-5xl font-bold mb-10 sm:mb-14 mt-10 text-center text-secondary">
           Our Services
