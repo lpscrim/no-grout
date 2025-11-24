@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import AnimateMe from "./AnimateMe";
 
 const Footer = ({ mode }: { mode?: "light" | "dark" }) => (
     <footer className={`relative z-10 ${mode === "dark" ? "bg-primary" : "bg-accent"} text-foreground py-6`}>
@@ -14,9 +15,10 @@ const Footer = ({ mode }: { mode?: "light" | "dark" }) => (
                     <Link href="https://www.mybuilder.com/profile/no_grout_about_it_-_tiling_services" className="hover:text-background transition-colors duration-300">MyBuilder</Link>
                 </span>
             </div>
-            <span className="text-sm">Site by: &nbsp;
-                <Link href="https://www.lpscrim.com" className="hover:text-background transition-colors duration-300">Lpscrim</Link>
-            </span>
+            <div className="flex flex-row">
+                <span className="text-sm">Site by: &nbsp; </span>
+                <AnimateMe />
+            </div>
         </div>
     </footer>
 );

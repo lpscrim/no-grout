@@ -16,6 +16,7 @@
     "@sanity/image-url": "^1.2.0",
     "@sanity/structure": "^2.36.2",
     "@sanity/vision": "^4.10.2",
+    "animejs": "^4.2.2",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "gsap": "^3.13.0",
