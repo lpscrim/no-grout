@@ -45,6 +45,10 @@ H1, H2, H6 {
   
 }
 
+#lpscrim {
+    font-family: var(--font-karla), Helvetica, sans-serif;
+}
+
 @keyframes dropIn {
   from {
     opacity: 0;

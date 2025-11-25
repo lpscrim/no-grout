@@ -15,7 +15,7 @@ const Footer = ({ mode }: { mode?: "light" | "dark" }) => (
                     <Link href="https://www.mybuilder.com/profile/no_grout_about_it_-_tiling_services" className="hover:text-background transition-colors duration-300">MyBuilder</Link>
                 </span>
             </div>
-            <div className="flex flex-row">
+            <div className="flex flex-row ">
                 <span className="text-sm">Site by: &nbsp; </span>
                 <AnimateMe />
             </div>

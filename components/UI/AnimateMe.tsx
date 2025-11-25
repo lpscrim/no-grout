@@ -129,15 +129,15 @@ export default function TextAnimation() {
       <article 
         id="horizontal-split" 
         ref={animationRef}
-        className="flex flex-col justify-center items-center pb-4 pt-0.4 text-gray-300 transition-colors duration-300 ease-out"
+        className="flex flex-col justify-center items-center px-0.5 pb-4 text-text hover:text-accent transition-colors duration-300 ease-out"
       > 
         <Link 
-          href="https://lewisscrimgeour.com" 
+          href="https://lpscrim.com" 
           target="_blank" 
           rel="noopener noreferrer" 
           onClick={handleClick}
         >
-          <h2 className="text-center text-sm will-change-transform cursor-pointer">
+          <h2 id="lpscrim" className=" text-center text-sm will-change-transform cursor-pointer">
             Lpscrim 
           </h2>
         </Link>
