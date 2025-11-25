@@ -21,12 +21,12 @@ export default function About() {
     >
 
         <AnimatedOnView animationClass="opacity-0 slide-in-right">
-          <div className="relative rounded-xs my-auto z-10 bg-accent p-18 w-[90vw] sm:w-[80vw] lg:w-[65vw] xl:w-[45vw] flex flex-col justify-center text-left">
+          <div className="relative rounded-sm my-auto z-10 bg-accent px-10 sm:px-14 py-20 w-[90vw] sm:w-[80vw] lg:w-[65vw] xl:w-[45vw] flex flex-col justify-center text-left">
             <h2 className="text-4xl sm:text-5xl font-bold mb-12 text-secondary">
               About Us
             </h2>
             <p className="text-lg text-foreground">
-              My name is Andrew, and I run No Grout About It, a family tiling
+              My name is Andrew and I run No Grout About It, a family tiling
               company. I have experience with all types of projects, including
               bathrooms, kitchens, conservatories, hallways, and repair work.
               <br />
@@ -34,9 +34,9 @@ export default function About() {
               I am committed to delivering the highest standards on every job
               and don`t consider the work finished until both the customer and I
               are completely satisfied. Quality and customer satisfaction are
-              always my top priorities. Every Job is welcome!
-              <br />
-              <br />
+              always my top priorities. <br /><br /> Every Job is welcome!
+              
+              
             </p>
           </div>
         </AnimatedOnView>
