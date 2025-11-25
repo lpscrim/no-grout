@@ -6,9 +6,9 @@ export default function Contact() {
       id="contact"
       className="relative bg-primary section-dark"
     >
-      <div className="px-6 py-17 lg:px-8 min-h-[110svh]">
+      <div className="px-6 py-18 lg:px-8 lg:min-h-[110svh]">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl font-bold my-10 tracking-tight text-balance text-accent sm:text-5xl ">
+          <h2 className="text-4xl font-bold mt-4 sm:mt-10 mb-4 sm:mb-6 tracking-tight text-balance text-accent sm:text-5xl ">
             Contact us
           </h2>
           <p className="mt-2 text-lg/8 text-background/90 ">

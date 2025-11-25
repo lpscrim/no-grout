@@ -36,7 +36,7 @@ const services = [
   },
   {
     title: "Floor stuff",
-    description: "Comprehensive stuff for floor areas.",
+    description: "Comprehensive stuff for floor areas. etc. etc. etc. etc.",
     image: "/hall.jpg",
   },
   {
@@ -53,14 +53,14 @@ export default function Services() {
   return (
     <section id="services" className=" bg-accent section-light relative">
       <div className="px-6 sm:px-8 lg:px-16 max-w-screen-xl mx-auto py-18">
-        <h2 className="text-4xl sm:text-5xl font-bold mb-10 sm:mb-14 mt-10 text-center text-secondary">
+        <h2 className="text-4xl sm:text-5xl font-bold mb-8 sm:mb-14 mt-2 sm:mt-10 text-center text-secondary">
           Our Services
         </h2>
          <p className="text-base sm:text-lg max-w-xl text-foreground font-light text-center mx-auto mb-16">
           Each project is custom tailored, based on each client needs. We are
-          ready to take on any kind of projects, be that small or complex
+          ready to take on any kind of project.
         </p>
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 sm:gap-20 items-center">
           <div className="flex justify-center items-center h-[200px] sm:h-[300px] lg:h-[550px]">
             <Image
               src={imageSrc}

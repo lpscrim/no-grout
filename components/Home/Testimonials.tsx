@@ -156,7 +156,6 @@ export default function Testimonials() {
       id="testimonials"
       className="relative isolate bg-accent/30 py-18 section-light md:section-dark"
     >
-      {/* Decorative backgrounds */}
       <div
         aria-hidden="true"
         className="absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 transform-gpu overflow-hidden opacity-30 blur-3xl"
@@ -183,13 +182,13 @@ export default function Testimonials() {
       </div>
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-18 lg:mb-16 mt-10 text-center text-primary">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-12 lg:mb-14 mt-2 sm:mt-10 text-center text-primary">
             Reviews
           </h2>
         </div>
 
         {/* Desktop grid */}
-        <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:mt-18 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+        <div className="hidden sm:grid mx-auto mt-16 max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm text-foreground sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
           {/* Featured */}
           <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 sm:col-span-2 xl:col-start-2 xl:row-end-1">
             <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground sm:px-12 sm:text-xl">
@@ -291,7 +290,7 @@ export default function Testimonials() {
           })()}
         </div>
         {/* Mobile*/}
-          <div className="sm:hidden mt-12 flex flex-col items-center gap-8">
+          <div className="sm:hidden flex flex-col items-center gap-8">
             {/* Featured testimonial */}
             <figure className="opacity-0 drop-in rounded-sm bg-primary/90 shadow-lg ring-1 ring-accent/30 w-full">
               <blockquote className="p-6 text-lg font-semibold tracking-tight text-foreground">
