@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <Hero />
 
-      <div className="fixed inset-0 min-h-screen w-full -z-1">
+      <div className="fixed inset-0 min-h-[100lvh] w-[100lvw] -z-1">
         <Image
           src="/hall2.svg"
           alt="Tiling Work"
@@ -23,7 +23,7 @@ export default function Home() {
           className="object-cover blur-xs"
         />
       </div>
-      <div className="fixed inset-0 w-full h-full bg-black/10 -z-0" />
+      <div className="fixed inset-0 w-[100lvw] h-[100lvh] bg-black/10 -z-0" />
       <About />
       <Projects />
       <Services />
