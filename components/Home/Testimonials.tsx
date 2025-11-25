@@ -358,7 +358,9 @@ export default function Testimonials() {
           </div>
       </div>
       <Link
-        href="/testimonials"
+        href="https://www.mybuilder.com/profile/no_grout_about_it_-_tiling_services/reviews"
+        target="_blank"
+        rel="noopener noreferrer"
         className="absolute bottom-4 right-4 text-sm text-secondary hover:underline hover:text-foreground transition-all"
       >
         See more at MyBuilder.com
