@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { Providers } from "../components/Functions/providers";
 import ColorPicker from "@/components/Functions/ColorPicker";
 import { Suspense } from "react";
+import LenisScroll from "@/components/UI/LenisScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,10 +40,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${josefinSans.variable} ${karla.variable} antialiased scroll-smooth`}
       >   
+          
           <Suspense fallback={null}>
             <ColorPicker />
           </Suspense>
-          <Providers>{children}</Providers>
+          <LenisScroll />
+          <Providers> {children}</Providers>
         
       </body>
     </html>
