@@ -131,7 +131,7 @@ export default function Projects() {
               
               <div
                 key={project.title + idx}
-                className="opacity-0 drop-in relative w-[80%] md:w-[65%] lg:w-[90%] mx-auto "
+                className="opacity-0 drop-in relative w-[95%] md:w-[65%] lg:w-[90%] mx-auto "
                 style={{
                   animationDelay: `${(idx + 1) * 150}ms`,
                 }}
@@ -147,9 +147,9 @@ export default function Projects() {
                 <Link
                   id={`project-${idx}`}
                   href={`/projects/#${project.title.replace(/\s+/g, "-").toLowerCase()}`}
-                  className={`overflow-hidden flex flex-col group h-60 sm:h-100 rounded-xs`}
+                  className={`overflow-hidden flex flex-col group h-80 sm:h-100 rounded-xs`}
                 >
-                  <div className="relative w-full h-[70%] sm:h-[80%]">
+                  <div className="relative w-full h-[77%] sm:h-[80%]">
                     <Image
                       src={project.img}
                       alt={project.alt || project.title}
@@ -158,7 +158,7 @@ export default function Projects() {
                     />
                   </div>
                   <div
-                    className={`${idx % 2 ? "bg-secondary" : "bg-secondary"} lg:bg-secondary  px-6 py-3 sm:py-4  flex-1 flex flex-col justify-between text-foreground  group-hover:brightness-110 transition-all duration-500 z-10 h-[20%] overflow-hidden`}
+                    className={`${idx % 2 ? "bg-accent" : "bg-accent"} lg:bg-accent  px-6 py-3 sm:py-4  flex-1 flex flex-col justify-between text-foreground group-hover:brightness-105 transition-all duration-500 z-10 h-[20%] overflow-hidden`}
                   >
                     <div>
                       <div className="flex mb-1 justify-between gap-2 sm:gap-4">

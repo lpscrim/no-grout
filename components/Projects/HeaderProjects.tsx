@@ -88,8 +88,8 @@ export default function Header() {
               <span className="sr-only">Close menu</span>
             </button>
           </div>
-          <div className="flow-root mt-[20vh] ">
-            <div className="-my-6 divide-y divide-background-500 ">
+          <div className="flow-root h-full">
+            <div className="h-full flex flex-col mt-[10svh] justify-start">
               <div className="space-y-12 py-6 text-center ">
                 {navigation.map((item, idx) => (
                   <Link
